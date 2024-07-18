@@ -123,8 +123,8 @@ def fit_best_waveform(df_row, frequency):
             amplitudes,
             bounds=harmonic_bounds,
             sigma=weights,
-            p0=harmonic_initial_params, # Todo: ensure these are provided in the correct order
-            maxfev=1000000
+            p0=harmonic_initial_params,
+            maxfev=100000
         )
         harmonic_fitted_values = extended_harmonic_oscillator(timepoints, *harmonic_params)
         harmonic_residuals = amplitudes - harmonic_fitted_values
@@ -149,7 +149,7 @@ def fit_best_waveform(df_row, frequency):
             bounds=square_bounds,
             sigma=weights,
             p0=square_initial_params,
-            maxfev=1000000
+            maxfev=100000
         )
         square_fitted_values = pseudo_square_wave(timepoints, *square_params)
         square_residuals = amplitudes - square_fitted_values
@@ -174,7 +174,7 @@ def fit_best_waveform(df_row, frequency):
             bounds = modharm_bounds,
             sigma=weights,
             p0=mod_harmonic_initial_params,
-            maxfev=1000000
+            maxfev=100000
         )
         mod_harmonic_fitted_values = sin_mod_amp_eho(timepoints, *mod_harmonic_params)
         mod_harmonic_residuals = amplitudes - mod_harmonic_fitted_values
@@ -194,8 +194,8 @@ def fit_best_waveform(df_row, frequency):
             timepoints,
             amplitudes,
             sigma=weights,
-            p0=pulse_initial_params, # Todo: ensure these are provided in the correct order
-            maxfev=1000000
+            p0=pulse_initial_params,
+            maxfev=100000
         )
         pulse_fitted_values = pulse_wave(timepoints, *pulse_params)
         pulse_residuals = amplitudes - pulse_fitted_values
@@ -280,7 +280,6 @@ def get_pycycle(df,frequency):
 #res1 = get_echo(data)
 
 #data2 = pd.read_csv(r'C:\Users\Alex Bennett\Desktop\Python\Glycan temp\DHO\test_data\test2_relab.csv')
-#res2 = get_echo(data2)  # Todo: Different outputs from res1 and res2. Resolve.
-
+#res2 = get_echo(data2)
 data3 = pd.read_csv(r'C:\Users\Alex Bennett\Desktop\Python\Glycan temp\DHO\test_data\Example1_data_short.csv')
 res3 = get_pycycle(data3, 2)
