@@ -270,7 +270,6 @@ def get_pycycle(df, frequency):
         pvals.append(p_value)
         osc_type.append(oscillation)
         parameters.append(params)
-        print(i)
     corr_pvals = multipletests(pvals, method='fdr_tsbh')[1]
     df_out = pd.DataFrame({"Feature": df.index.tolist(), "p-val": pvals, "corr p-val": corr_pvals, "Type": osc_type, "parameters":parameters})
     return df_out.sort_values(by='p-val').sort_values(by='corr p-val')
