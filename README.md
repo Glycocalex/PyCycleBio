@@ -1,6 +1,6 @@
 # PyCycle
 
-![PyCycle sketch logo](https://github.com/user-attachments/assets/8218a0f7-4358-4abe-854e-69ffe143a1db)
+![PyCycle sketch logo small](https://github.com/user-attachments/assets/7f7156a6-0cab-45f7-bcdc-6f4d13f106df)
 
 Python based toolkit for temporal biological analysis
 
