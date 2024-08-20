@@ -22,8 +22,8 @@ def extended_harmonic_oscillator(t, A, gamma, omega, phi, y):
 
 def pseudo_square_wave(t, A, gamma, omega_c, phi, y):
     """
-    Extended harmonic oscillator function, with sinusoidal modulation of Amplitude.
-    Modulator parameters defined to produce pseudo-square expression
+    Extended harmonic oscillator function, with additional sinusoidal component.
+    Relative sinusoidal period/amplitude parameters defined to produce pseudo-square expression
 
     :param t: Time variable.
     :param A: Initial amplitude.
@@ -39,11 +39,12 @@ def pseudo_square_wave(t, A, gamma, omega_c, phi, y):
     :return: Resulting change in amplitude at time t.
     """
 
-    return A * np.exp(gamma * t)* (np.sin((omega_c*t+phi))+0.25*np.sin((omega_c*(t*3) + phi)))+ y
+    return A * np.exp(gamma * t) * (np.sin((omega_c*t+phi))+0.25*np.sin((omega_c*(t*3) + phi))) + y
 
 def pseudo_cycloid_wave(t, A, gamma, omega_c, phi, y):
     """
-    Extended harmonic oscillator function, with sinusoidal modulation of Amplitude.
+    Extended harmonic oscillator function, with additional cosine component.
+    Relative cosine period/amplitude parameters defined to produce pseudo-cycloid expression
 
     :param t: Time variable.
     :param A: Initial amplitude.
@@ -51,15 +52,42 @@ def pseudo_cycloid_wave(t, A, gamma, omega_c, phi, y):
     :param phi: Phase shift.
     :param gamma: Damping/forcing coefficient.
     :param y: Equilibrium value.
-
-    Equation terms not defined in arguments:
-    Amplitude of modulator = Amplitude of carrier (A) / 3
-    Frequency of modulator = Frequency of carrier (omega) / 3
 
     :return: Resulting change in amplitude at time t.
     """
 
     return A * np.exp(gamma * t) * -(np.cos(2 * omega_c * t + phi) + 4 * np.cos(omega_c * t + phi)) + y
+
+
+def wrong_transient_impulse(t, A, omega, T, y):
+
+    """
+    Equation modelling transient increases in expression from a baseline
+
+    :param: t: Time variable
+    :param y: Equilibrium value
+    :param A: Amplitude of transient increase
+    :param omega: Angular frequency of transient oscillation
+    :param T: periodic modulator
+    """
+
+    modulator = t % (T*math.pi)
+    return A * np.sin(omega * t) * np.cos(np.pi * modulator / T) + y
+
+def transient_impulse(t, tc, A, w, y):
+
+    """
+    Equation modelling pulse waves using a gaussian pulse
+    :param t: Time variable
+    :param tc: Time-centre of the pulse
+    :param A: Amplitude of pulse
+    :param w: Pulse-width
+    :param y: Equilibrium value
+    :return:
+    """
+
+    t_mod = np.mod(t, tc)
+    return A * np.sinc((t-tc)/w) + y
 
 
 def calculate_variances(data): # Todo: Remove 'ZT' grouping and analyse based on real timepoints- allows mutli-cycle parameterisation (better for damped / forced)
@@ -115,7 +143,7 @@ def fit_best_waveform(df_row):
         harmonic_fitted_values = [0] * len(df_row)
         harmonic_sse = np.inf
 
-    # Fit square wave
+    # Fit square oscillator
     # ((t, A, gamma, omega, phi, y):
     square_initial_params = [np.mean(amplitudes), 0, 0.5, 0, np.mean(amplitudes)]
     square_lower_bounds = [0, -0.5, 0.25, -math.pi, -np.max(amplitudes)] # (t, A, omega_c, phi, gamma, y):
@@ -140,15 +168,15 @@ def fit_best_waveform(df_row):
         square_fitted_values = [0] * len(df_row)
         square_sse = np.inf
 
-    # Fit modulated harmonic oscillator
+    # Fit cycloid oscillator
     #     # (t, A, gamma, omega, phi, y):
-    cycloid_initial_params = [np.mean(amplitudes), 0, 0.5, 0, np.mean(amplitudes)]
-    cycloid_lower_bounds = [0, -0.5, 0.25, -math.pi, -np.max(amplitudes)] # (Amax,t, A, omega_c, phi, gamma, y):
-    cycloid_upper_bounds = [np.max(amplitudes), 0.5, 1, math.pi, np.max(amplitudes)]
-    cycloid_bounds = (cycloid_lower_bounds,cycloid_upper_bounds)
+    cycloid_initial_params = [np.mean(amplitudes), 0, 0.5, 0, np.max(amplitudes)]
+    cycloid_lower_bounds = [0, -0.5, 0.2, -math.pi, -np.max(amplitudes)] # (Amax,t, A, omega_c, phi, gamma, y):
+    cycloid_upper_bounds = [np.max(amplitudes), 0.5, 1, math.pi, 4*np.max(amplitudes)]
+    cycloid_bounds = (cycloid_lower_bounds, cycloid_upper_bounds)
     try:
         cycloid_params, cycloid_covariance = curve_fit(
-            pseudo_cycloid_wave(),
+            pseudo_cycloid_wave,
             timepoints,
             amplitudes,
             bounds = cycloid_bounds,
@@ -165,8 +193,35 @@ def fit_best_waveform(df_row):
         cycloid_fitted_values = [0] * len(df_row)
         cycloid_sse = np.inf
 
+    # Fit transient oscillator
+    #     (t, A, omega, T, y):
+    transient_initial_params = [np.mean(amplitudes), 0, 2, np.min(amplitudes)]
+    #transient_lower_bounds = [-np.max(amplitudes), -math.pi, 0.2, 0] # (Amax,t, A, omega_c, phi, gamma, y):
+    #transient_upper_bounds = [np.max(amplitudes), math.pi, 2, np.max(amplitudes)]
+    transient_lower_bounds = [-np.inf, -np.inf, -np.inf,-np.inf] # (Amax,t, A, omega_c, phi, gamma, y):
+    transient_upper_bounds = [np.inf, np.inf, np.inf, np.inf]
+    transient_bounds = (transient_lower_bounds, transient_upper_bounds)
+    try:
+        transient_params, transient_covariance = curve_fit(
+            transient_impulse,
+            timepoints,
+            amplitudes,
+            bounds=transient_bounds,
+            sigma=weights,
+            p0=transient_initial_params,
+            maxfev=100000
+        )
+        transient_fitted_values = transient_impulse(timepoints, *transient_params)
+        transient_residuals = amplitudes - transient_fitted_values
+        transient_sse = np.sum(transient_residuals ** 2)
+    except:
+        transient_params = np.nan
+        transient_covariance = np.nan
+        transient_fitted_values = [0] * len(df_row)
+        transient_sse = np.inf
+
     # Determine best fit
-    sse_values = [harmonic_sse, square_sse, cycloid_sse]
+    sse_values = [harmonic_sse, square_sse, cycloid_sse, transient_sse]
     best_fit_index = np.argmin(sse_values)
     if best_fit_index == 0:
         best_params = harmonic_params
@@ -178,12 +233,17 @@ def fit_best_waveform(df_row):
         best_waveform = 'square_waveform'
         best_covariance = square_covariance
         best_fitted_values = square_fitted_values
-    else:
+    elif best_fit_index == 2:
+#    else:
         best_params = cycloid_params
         best_waveform = 'cycloid'
         best_covariance = cycloid_covariance
-        best_fitted_values =cycloid_fitted_values
-
+        best_fitted_values = cycloid_fitted_values
+    else:
+        best_params = transient_params
+        best_waveform = 'transient'
+        best_covariance = transient_covariance
+        best_fitted_values = transient_fitted_values
     return best_waveform, best_params, best_covariance, best_fitted_values
 
 
@@ -223,15 +283,18 @@ def get_pycycle(df):
         pvals.append(p_value)
         osc_type.append(oscillation)
         parameters.append(params)
-#        print(i)   # Uncomment this line for progress counter (will spam)
+        print(i)   # Uncomment this line for progress counter (will spam)
     corr_pvals = multipletests(pvals, method='fdr_tsbh')[1]
     df_out = pd.DataFrame({"Feature": df.index.tolist(), "p-val": pvals, "corr p-val": corr_pvals, "Type": osc_type, "parameters":parameters})
     return df_out.sort_values(by='p-val').sort_values(by='corr p-val')
 
-#data = pd.read_csv(r'test\data\path.csv')
-#res = get_pycycle(data)
-#res.to_csv('test\results\path.cav', sep=',', index=False)
+data = pd.read_csv(r'C:\Users\Alex Bennett\Desktop\Python\PyCycle\test data\Example_data_1.csv')
+res = get_pycycle(data)
+res.to_csv('C:\\Users\\Alex Bennett\\Desktop\\testres.csv', sep=',', index=False)
 
 #  Todo: can fourier transformations be used to aid in parameterisation of waveforms?
 #  Todo: incorportate variance filter before testing to speed things up
 #  Todo: Report damping term independently of oscillator type- and report for all 3 oscillators
+#  Todo: Introduce a term to allow wavelengths of different periods to be analysed (line 89)
+#  Todo: tighten up time extraction, ZT phrasing unnecessary (line 65)
+#  Todo: Cosinor also sums the composite eqns. can we use a eqn that multiplies components?
