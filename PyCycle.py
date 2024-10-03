@@ -39,7 +39,7 @@ def pseudo_square_wave(t, A, gamma, omega_c, phi, y):
     :return: Resulting change in amplitude at time t.
     """
 
-    return A * np.exp(gamma * t) * (np.sin((omega_c*t+phi))+0.25*np.sin((omega_c*(t*3) + phi))) + y
+    return A * np.exp(gamma * t) * (np.sin(omega_c*t+phi)+2*np.sin(omega_c*t+phi)/3) + y
 
 def pseudo_cycloid_wave(t, A, gamma, omega_c, phi, y):
     """
@@ -71,7 +71,7 @@ def transient_impulse(t, A, p, w, y):
     :return:
     """
 
-# Todo: dodgy-fix here: mod has 0 and 24 as distinct, therefore I have tau-1 in the mod. This introduces a small but accumulating error as the number of cycles in the dataset increases
+# Todo: dodgy-fix here: mod has 0 and 24 as distinct, therefore I have 24-0.000001 in the mod. This introduces a small but accumulating error as the number of cycles in the dataset increases
     t_mod = np.mod(t, 2 * math.pi - 0.000001)
     p_tau = (p/24)*(2*math.pi)
     impulse = np.where((t_mod - p_tau) >=0, np.exp(-0.5 * ((t_mod - p_tau) / w) ** 2), 0) # Included where() term to stop impulses being falsely generated at t=0. Not the ideal solution.
