@@ -281,7 +281,7 @@ def get_pycycle(df_in):
         pvals.append(p_value)
         osc_type.append(oscillation)
         parameters.append(params)
-        print(i)   # Uncomment this line for progress counter (will spam)
+        #print(i)   # Uncomment this line for progress counter (will spam)
     corr_pvals = multipletests(pvals, method='fdr_tsbh')[1]
     df_out = pd.DataFrame({"Feature": df.index.tolist(), "p-val": pvals, "corr p-val": corr_pvals, "Type": osc_type, "parameters":parameters})
     invariant_features = df_invariant.index.tolist()
@@ -296,10 +296,10 @@ def get_pycycle(df_in):
     df_out = pd.concat([df_out, invariant_rows], ignore_index=False)
     return df_out.sort_values(by='p-val').sort_values(by='corr p-val')
 
-#  Todo: can fourier transformations be used to aid in parameterisation of waveforms?
-#  Todo: Report damping term independently of oscillator type- and report for all 3 oscillators
-#  Todo: Introduce a term to allow wavelengths of different periods to be analysed (line 89)
-#  Todo: tighten up time extraction, ZT phrasing unnecessary (line 65)
-#  Todo: Cosinor also sums the composite eqns. can we use a eqn that multiplies components?
-#  Todo: Include compositional transforms + uncertainty scale model
+# Todo: can fourier transformations be used to aid in parameterisation of waveforms?
+# Todo: Report damping term independently of oscillator type- and report for all 3 oscillators
+# Todo: Introduce a term to allow wavelengths of different periods to be analysed (line 89)
+# Todo: tighten up time extraction, ZT phrasing unnecessary (line 65)
+# Todo: Cosinor also sums the composite eqns. can we use a eqn that multiplies components?
+# Todo: Include compositional transforms + uncertainty scale model
 # Todo: introduce modifier to y term (basline) to capture general trends in expression?
