@@ -10,4 +10,6 @@ Variant rows are modelled using 4 equations. The model with lowest residuals is 
 
 https://github.com/Glycocalex/PyCycle
 
+https://pypi.org/project/PyCycle-bio/
+
 Test data generated from PMID: 36862511
