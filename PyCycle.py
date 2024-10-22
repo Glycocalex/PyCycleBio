@@ -19,7 +19,6 @@ def extended_harmonic_oscillator(t, A, gamma, omega, phi, y):
     """
     return A * np.exp(gamma * t) * np.cos(omega * t + phi) + y
 
-
 def pseudo_square_wave(t, A, gamma, omega_c, phi, y):
     """
     Extended harmonic oscillator function, with additional sinusoidal component.
@@ -39,7 +38,7 @@ def pseudo_square_wave(t, A, gamma, omega_c, phi, y):
     :return: Resulting change in amplitude at time t.
     """
 
-    return A * np.exp(gamma * t) * (np.sin((omega_c*t+phi))+0.25*np.sin((omega_c*(t*3) + phi))) + y
+    return A * np.exp(gamma * t) * (np.sin(omega_c * t+ phi) + 2 * np.sin(omega_c * (t + phi) / 3)) + y
 
 def pseudo_cycloid_wave(t, A, gamma, omega_c, phi, y):
     """
@@ -56,8 +55,7 @@ def pseudo_cycloid_wave(t, A, gamma, omega_c, phi, y):
     :return: Resulting change in amplitude at time t.
     """
 
-    return A * np.exp(gamma * t) * -(np.cos(2 * omega_c * t + phi) + 4 * np.cos(omega_c * t + phi)) + y
-
+    return A * np.exp(gamma * t) * (-(np.cos(2 * omega_c * t + phi) + 4 * np.cos(omega_c * t + phi))) + y
 
 def transient_impulse(t, A, p, w, y):
 
@@ -70,13 +68,11 @@ def transient_impulse(t, A, p, w, y):
     :param y: Equilibrium value
     :return:
     """
-
-# Todo: dodgy-fix here: mod has 0 and 24 as distinct, therefore I have tau-1 in the mod. This introduces a small but accumulating error as the number of cycles in the dataset increases
+# Todo: dodgy-fix here: mod has 0 and 24 as distinct, therefore I have 24-0.000001 in the mod. This introduces a small but accumulating error as the number of cycles in the dataset increases
     t_mod = np.mod(t, 2 * math.pi - 0.000001)
     p_tau = (p/24)*(2*math.pi)
     impulse = np.where((t_mod - p_tau) >=0, np.exp(-0.5 * ((t_mod - p_tau) / w) ** 2), 0) # Included where() term to stop impulses being falsely generated at t=0. Not the ideal solution.
     return A*impulse + y
-
 
 def calculate_variances(data): # Todo: Remove 'ZT' grouping and analyse based on real timepoints- allows mutli-cycle parameterisation (better for damped / forced)
     # Extract ZT times and replicate numbers from the column names
@@ -93,7 +89,6 @@ def calculate_variances(data): # Todo: Remove 'ZT' grouping and analyse based on
         variances[zt] = zt_var if zt_var else 0  # Replace NaN variances with 0
     return variances
 
-
 def fit_best_waveform(df_row):
     """
     Fits all three waveform models to the data and determines the best fit.
@@ -108,9 +103,9 @@ def fit_best_waveform(df_row):
     weights = np.array([1 / variances[tp] if tp in variances and variances[tp] != 0 else 0 for tp in timepoints])+0.000001
 
     # Fit extended harmonic oscillator - (t, A, gamma, omega, phi, y):
-    harmonic_initial_params = [np.mean(amplitudes), 0, 0.5, 0, np.mean(amplitudes)/2] # Note: 1/24 = 0.04167- hence inital frequency param
-    lower_bounds= [0, -0.5, 0.25, -math.pi, -np.max(amplitudes)] # (t, A, gamma, omega, phi, y):
-    upper_bounds = [np.max(amplitudes), 0.5, 1, math.pi, np.max(amplitudes)]
+    harmonic_initial_params = [np.mean(amplitudes), 0, 1, 0, np.mean(amplitudes)/2]
+    lower_bounds= [0, -0.5, 0.95, -math.pi, -np.max(amplitudes)] # (t, A, gamma, omega, phi, y):
+    upper_bounds = [np.max(amplitudes), 0.5, 1.05, math.pi, np.max(amplitudes)]
     harmonic_bounds = (lower_bounds, upper_bounds)
     try:
         harmonic_params, harmonic_covariance = curve_fit(
@@ -133,9 +128,9 @@ def fit_best_waveform(df_row):
 
     # Fit square oscillator
     # ((t, A, gamma, omega, phi, y):
-    square_initial_params = [np.mean(amplitudes), 0, 0.5, 0, np.mean(amplitudes)]
-    square_lower_bounds = [-np.max(amplitudes), -0.5, 0.25, -math.pi, -np.max(amplitudes)] # (t, A, omega_c, phi, gamma, y):
-    square_upper_bounds = [np.max(amplitudes), 0.5, 1, math.pi, np.max(amplitudes)]
+    square_initial_params = [np.mean(amplitudes), 0, 1, 0, np.mean(amplitudes)]
+    square_lower_bounds = [-np.max(amplitudes), -0.5, 0.95, -math.pi, -np.max(amplitudes)] # (t, A, omega_c, phi, gamma, y):
+    square_upper_bounds = [np.max(amplitudes), 0.5, 1.05, math.pi, np.max(amplitudes)]
     square_bounds = (square_lower_bounds, square_upper_bounds)
     try:
         square_params, square_covariance = curve_fit(
@@ -158,9 +153,9 @@ def fit_best_waveform(df_row):
 
     # Fit cycloid oscillator
     #     # (t, A, gamma, omega, phi, y):
-    cycloid_initial_params = [np.mean(amplitudes), 0, 0.5, 0, np.mean(amplitudes)] # Don't need to provide t
-    cycloid_lower_bounds = [0, -0.5, 0.2, -math.pi, -np.max(amplitudes)] # (Amax,t, A, omega_c, phi, gamma, y):
-    cycloid_upper_bounds = [np.max(amplitudes), 0.5, 1, math.pi, np.max(amplitudes)]
+    cycloid_initial_params = [np.mean(amplitudes), 0, 1, 0, np.mean(amplitudes)] # Don't need to provide t
+    cycloid_lower_bounds = [-np.max(amplitudes), -0.5, 0.95, -math.pi, -np.max(amplitudes)] # (Amax,t, A, omega_c, phi, gamma, y):
+    cycloid_upper_bounds = [np.max(amplitudes), 0.5, 1.05, math.pi, np.max(amplitudes)]
     cycloid_bounds = (cycloid_lower_bounds, cycloid_upper_bounds)
     try:
         cycloid_params, cycloid_covariance = curve_fit(
@@ -233,7 +228,6 @@ def fit_best_waveform(df_row):
         best_fitted_values = transient_fitted_values
     return best_waveform, best_params, best_covariance, best_fitted_values
 
-
 def categorize_rhythm(gamma):
     """
     Categorizes the rhythm based on the value of γ.
@@ -265,7 +259,6 @@ def variance_based_filtering(df, min_feature_variance=0.02): # Lifted from Glyco
     filtered_df = df.loc[variances > min_feature_variance]
     discarded_df = df.loc[variances <= min_feature_variance]
     return filtered_df, discarded_df
-
 
 def get_pycycle(df_in):
     df_in = df_in.set_index(df_in.columns[0])
@@ -303,14 +296,10 @@ def get_pycycle(df_in):
     df_out = pd.concat([df_out, invariant_rows], ignore_index=False)
     return df_out.sort_values(by='p-val').sort_values(by='corr p-val')
 
-
-data = pd.read_csv(r'C:\Users\Alex Bennett\Desktop\Python\PyCycle\test data\Example_data_1.csv')
-res = get_pycycle(data)
-res.to_csv('C:\\Users\\Alex Bennett\\Desktop\\testres.csv', sep=',', index=False)
-
 #  Todo: can fourier transformations be used to aid in parameterisation of waveforms?
 #  Todo: Report damping term independently of oscillator type- and report for all 3 oscillators
 #  Todo: Introduce a term to allow wavelengths of different periods to be analysed (line 89)
 #  Todo: tighten up time extraction, ZT phrasing unnecessary (line 65)
 #  Todo: Cosinor also sums the composite eqns. can we use a eqn that multiplies components?
 #  Todo: Include compositional transforms + uncertainty scale model
+# Todo: introduce modifier to y term (basline) to capture general trends in expression?
