@@ -177,11 +177,9 @@ def fit_best_waveform(df_row):
         cycloid_sse = np.inf
 
     # Fit transient oscillator
-    #   (t, A, p, w, y): (t, A, p, w, y, pc):
+    #   (t, A, p, w, y):
     transient_initial_params = [np.max(amplitudes) - np.min(amplitudes), 1, 1, np.min(amplitudes)]
-    #transient_lower_bounds = [-np.max(amplitudes), 24, 1, 0] # (Amax,t, A, omega_c, phi, gamma, y):
-    #transient_upper_bounds = [2*np.max(amplitudes), 1, np.max(amplitudes)]
-    transient_lower_bounds = [np.min(amplitudes)/2, 0, 0, 0] # (Amax,t, A, omega_c, phi, gamma, y):
+    transient_lower_bounds = [np.min(amplitudes)/2, 0.1, 0.1, 0]  # (A, p, w, y) # Lower bounds of p and w need to be adjusted with experimental resolution (in extreme cases), if they are too small compared to measurements they will produce a flat line (trasnient occuring for very small duration between points) which breaks the statistical corrections
     transient_upper_bounds = [np.max(amplitudes), 24, 4, np.max(amplitudes)]
     transient_bounds = (transient_lower_bounds, transient_upper_bounds)
     try:
@@ -281,8 +279,8 @@ def get_pycycle(df_in):
         pvals.append(p_value)
         osc_type.append(oscillation)
         parameters.append(params)
-        #print(i)   # Uncomment this line for progress counter (will spam)
-    corr_pvals = multipletests(pvals, method='fdr_tsbh')[1]
+#        print(i)   # Uncomment this line for progress counter (will spam)
+    corr_pvals = multipletests(pvals, alpha = 0.05, method='fdr_tsbh')[1] # Todo: Fix p-vals
     df_out = pd.DataFrame({"Feature": df.index.tolist(), "p-val": pvals, "corr p-val": corr_pvals, "Type": osc_type, "parameters":parameters})
     invariant_features = df_invariant.index.tolist()
     invariant_rows = pd.DataFrame({
