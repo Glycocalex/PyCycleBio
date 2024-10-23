@@ -102,7 +102,8 @@ def fit_best_waveform(df_row):
     variances = calculate_variances(df_row)
     weights = np.array([1 / variances[tp] if tp in variances and variances[tp] != 0 else 0 for tp in timepoints])+0.000001
 
-    # Fit extended harmonic oscillator - (t, A, gamma, omega, phi, y):
+    # Fit extended harmonic oscillator
+    # (t, A, gamma, omega, phi, y):
     harmonic_initial_params = [np.mean(amplitudes), 0, 1, 0, np.mean(amplitudes)/2]
     lower_bounds= [0, -0.5, 0.95, -math.pi, -np.max(amplitudes)] # (t, A, gamma, omega, phi, y):
     upper_bounds = [np.max(amplitudes), 0.5, 1.05, math.pi, np.max(amplitudes)]
@@ -127,7 +128,7 @@ def fit_best_waveform(df_row):
         harmonic_sse = np.inf
 
     # Fit square oscillator
-    # ((t, A, gamma, omega, phi, y):
+    # (t, A, gamma, omega, phi, y):
     square_initial_params = [np.mean(amplitudes), 0, 1, 0, np.mean(amplitudes)]
     square_lower_bounds = [-np.max(amplitudes), -0.5, 0.95, -math.pi, -np.max(amplitudes)] # (t, A, omega_c, phi, gamma, y):
     square_upper_bounds = [np.max(amplitudes), 0.5, 1.05, math.pi, np.max(amplitudes)]
@@ -152,7 +153,7 @@ def fit_best_waveform(df_row):
         square_sse = np.inf
 
     # Fit cycloid oscillator
-    #     # (t, A, gamma, omega, phi, y):
+    # (t, A, gamma, omega, phi, y):
     cycloid_initial_params = [np.mean(amplitudes), 0, 1, 0, np.mean(amplitudes)] # Don't need to provide t
     cycloid_lower_bounds = [-np.max(amplitudes), -0.5, 0.95, -math.pi, -np.max(amplitudes)] # (Amax,t, A, omega_c, phi, gamma, y):
     cycloid_upper_bounds = [np.max(amplitudes), 0.5, 1.05, math.pi, np.max(amplitudes)]
@@ -243,7 +244,7 @@ def categorize_rhythm(gamma):
         return 'overexpressed' if gamma > 0.15 else 'repressed'
 
 def variance_based_filtering(df, min_feature_variance=0.02): # Lifted from Glycowork
-    """Variance-based filtering of features\n
+    """Variance-based filtering of features
     | Arguments:
     | :-
     | df (dataframe): dataframe containing glycan sequences in index and samples in columns
@@ -259,6 +260,15 @@ def variance_based_filtering(df, min_feature_variance=0.02): # Lifted from Glyco
     return filtered_df, discarded_df
 
 def get_pycycle(df_in):
+    """
+    Models expression data using 4 equations.
+
+    :param df_in: A dataframe organised with samples defined by columns and molecules defined by rows.
+                    The first column and row shuold contain strings identifying samples or molecules.
+                    Samples should be organised in ascending time order (all reps per timepoint should be together)
+    :return: df_out: A dataframe containing the best-fitting model, with parameters that produced the best fit,
+                        alongside statistics indicating the robustness of the model's fit compared to input data.
+    """
     df_in = df_in.set_index(df_in.columns[0])
     df, df_invariant = variance_based_filtering(df_in)  # Filtering removes invariant molecules from analysis
     pvals = []
