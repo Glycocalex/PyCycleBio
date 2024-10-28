@@ -279,19 +279,19 @@ def get_pycycle(df_in):
     for i in range(df.shape[0]):
         waveform, params, covariance, fitted_values = fit_best_waveform(df.iloc[i, :])
         tau, p_value = kendalltau(fitted_values, df.iloc[i, :].values)
-        if p_value < 0.05:
-            if waveform == 'harmonic_oscillator':
-                oscillation = categorize_rhythm(params[1])
-            else:
-                oscillation = waveform
+        if waveform == 'harmonic_oscillator':
+            oscillation = categorize_rhythm(params[1])
         else:
-            oscillation = np.nan
+            oscillation = waveform
+        if math.isnan(p_value):
+            p_value = 1
         pvals.append(p_value)
         osc_type.append(oscillation)
         parameters.append(params)
-#        print(i)   # Uncomment this line for progress counter (will spam)
-    corr_pvals = multipletests(pvals, alpha = 0.05, method='fdr_tsbh')[1] # Todo: Fix p-vals
-    df_out = pd.DataFrame({"Feature": df.index.tolist(), "p-val": pvals, "corr p-val": corr_pvals, "Type": osc_type, "parameters":parameters})
+        print(i)   # Uncomment this line for progress counter (will spam)
+    corr_pvals = multipletests(pvals, alpha= 0.000001, method='fdr_tsbh')[1] # alpha= 0.000001,
+    holm_pvals =multipletests(pvals, alpha= 0.05, method='holm')[1]
+    df_out = pd.DataFrame({"Feature": df.index.tolist(), "p-val": pvals, "BH-padj": corr_pvals, "Holm-padj":holm_pvals,"Type": osc_type, "parameters":parameters})
     invariant_features = df_invariant.index.tolist()
     invariant_rows = pd.DataFrame({
         "Feature": invariant_features,
@@ -310,4 +310,4 @@ def get_pycycle(df_in):
 # Todo: tighten up time extraction, ZT phrasing unnecessary (line 65)
 # Todo: Cosinor also sums the composite eqns. can we use a eqn that multiplies components?
 # Todo: Include compositional transforms + uncertainty scale model
-# Todo: introduce modifier to y term (basline) to capture general trends in expression?
+# Todo: introduce modifier to y term (baseline) to capture general trends in expression?
