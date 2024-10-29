@@ -291,7 +291,7 @@ def get_pycycle(df_in):
         osc_type.append(oscillation)
         mod_type.append(modulation)
         parameters.append(params)
-        print(i)   # Uncomment this line for progress counter (will spam)
+#        print(i)   # Uncomment this line for progress counter (will spam)
     corr_pvals = multipletests(pvals, alpha= 0.000001, method='fdr_tsbh')[1] # alpha= 0.000001,
     holm_pvals =multipletests(pvals, alpha= 0.05, method='holm')[1]
     df_out = pd.DataFrame({"Feature": df.index.tolist(), "p-val": pvals, "BH-padj": corr_pvals, "Holm-padj":holm_pvals,"Type": osc_type, "Mod": mod_type, "parameters":parameters})
