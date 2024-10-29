@@ -243,21 +243,21 @@ def categorize_rhythm(gamma):
     else:
         return 'overexpressed' if gamma > 0.15 else 'repressed'
 
-def variance_based_filtering(df, min_feature_variance=0.02): # Lifted from Glycowork
+def variance_based_filtering(df, min_feature_variance=0.05):
     """Variance-based filtering of features
-    | Arguments:
-    | :-
-    | df (dataframe): dataframe containing glycan sequences in index and samples in columns
-    | min_feature_variance (float): Minimum variance to include a feature in the analysis; default: 2%\n
-    | Returns:
-    | :-
-    | filtered_df (DataFrame): DataFrame with remaining glycans (variance > min_feature_variance) as indices and samples in columns.
-    | discarded_df (DataFrame): DataFrame with discarded glycans (variance <= min_feature_variance) as indices and samples in columns.
+    Arguments:
+
+    :param df (dataframe): dataframe containing molecules by row and samples by columns
+    :param min_feature_variance (float): Minimum variance to include a feature in the analysis; default: 5%
+    Returns:
+
+    :return variant_df (DataFrame): DataFrame with variant molecules (variance > min_feature_variance)
+    :return invariant_df (DataFrame): DataFrame with invariant molecules (variance <= min_feature_variance)
     """
     variances = df.var(axis=1)
-    filtered_df = df.loc[variances > min_feature_variance]
-    discarded_df = df.loc[variances <= min_feature_variance]
-    return filtered_df, discarded_df
+    variant_df = df.loc[variances > min_feature_variance]
+    invariant_df = df.loc[variances <= min_feature_variance]
+    return variant_df, invariant_df
 
 def get_pycycle(df_in):
     """
