@@ -74,7 +74,7 @@ def transient_impulse(t, A, p, w, y):
     impulse = np.where((t_mod - p_tau) >=0, np.exp(-0.5 * ((t_mod - p_tau) / w) ** 2), 0) # Included where() term to stop impulses being falsely generated at t=0. Not the ideal solution.
     return A*impulse + y
 
-def calculate_variances(data): # Todo: Remove 'ZT' grouping and analyse based on real timepoints- allows mutli-cycle parameterisation (better for damped / forced)
+def calculate_variances(data):
     # Extract ZT times and replicate numbers from the column names
     zt_replicates = data.index.str.extract(r'(ZT\d+)_(C\d+)')
     zt_times = zt_replicates[0].str.extract(r'ZT(\d+)').astype(int)[0].values
@@ -100,9 +100,10 @@ def fit_best_waveform(df_row):
     timepoints = (timepoints /24 * (2 * math.pi)) # Todo: Consider introducing another term here for vairable period length (24 will only work for circ studies)
     amplitudes = df_row.values
     variances = calculate_variances(df_row)
-    weights = np.array([1 / variances[tp] if tp in variances and variances[tp] != 0 else 0 for tp in timepoints])+0.000001
+    weights = np.array([1 / variances[tp] if tp in variances and variances[tp] != 0 else 0 for tp in timepoints])+0.000001 # 0 variance messes model selection up, so a negligable value is used here
 
-    # Fit extended harmonic oscillator - (t, A, gamma, omega, phi, y):
+    # Fit extended harmonic oscillator
+    # (t, A, gamma, omega, phi, y):
     harmonic_initial_params = [np.mean(amplitudes), 0, 1, 0, np.mean(amplitudes)/2]
     lower_bounds= [0, -0.5, 0.95, -math.pi, -np.max(amplitudes)] # (t, A, gamma, omega, phi, y):
     upper_bounds = [np.max(amplitudes), 0.5, 1.05, math.pi, np.max(amplitudes)]
@@ -127,7 +128,7 @@ def fit_best_waveform(df_row):
         harmonic_sse = np.inf
 
     # Fit square oscillator
-    # ((t, A, gamma, omega, phi, y):
+    # (t, A, gamma, omega, phi, y):
     square_initial_params = [np.mean(amplitudes), 0, 1, 0, np.mean(amplitudes)]
     square_lower_bounds = [-np.max(amplitudes), -0.5, 0.95, -math.pi, -np.max(amplitudes)] # (t, A, omega_c, phi, gamma, y):
     square_upper_bounds = [np.max(amplitudes), 0.5, 1.05, math.pi, np.max(amplitudes)]
@@ -152,7 +153,7 @@ def fit_best_waveform(df_row):
         square_sse = np.inf
 
     # Fit cycloid oscillator
-    #     # (t, A, gamma, omega, phi, y):
+    # (t, A, gamma, omega, phi, y):
     cycloid_initial_params = [np.mean(amplitudes), 0, 1, 0, np.mean(amplitudes)] # Don't need to provide t
     cycloid_lower_bounds = [-np.max(amplitudes), -0.5, 0.95, -math.pi, -np.max(amplitudes)] # (Amax,t, A, omega_c, phi, gamma, y):
     cycloid_upper_bounds = [np.max(amplitudes), 0.5, 1.05, math.pi, np.max(amplitudes)]
@@ -177,11 +178,9 @@ def fit_best_waveform(df_row):
         cycloid_sse = np.inf
 
     # Fit transient oscillator
-    #   (t, A, p, w, y): (t, A, p, w, y, pc):
+    #   (t, A, p, w, y):
     transient_initial_params = [np.max(amplitudes) - np.min(amplitudes), 1, 1, np.min(amplitudes)]
-    #transient_lower_bounds = [-np.max(amplitudes), 24, 1, 0] # (Amax,t, A, omega_c, phi, gamma, y):
-    #transient_upper_bounds = [2*np.max(amplitudes), 1, np.max(amplitudes)]
-    transient_lower_bounds = [np.min(amplitudes)/2, 0, 0, 0] # (Amax,t, A, omega_c, phi, gamma, y):
+    transient_lower_bounds = [np.min(amplitudes)/2, 0.1, 0.1, 0]  # (A, p, w, y) # Lower bounds of p and w need to be adjusted with experimental resolution (in extreme cases), if they are too small compared to measurements they will produce a flat line (trasnient occuring for very small duration between points) which breaks the statistical corrections
     transient_upper_bounds = [np.max(amplitudes), 24, 4, np.max(amplitudes)]
     transient_bounds = (transient_lower_bounds, transient_upper_bounds)
     try:
@@ -244,62 +243,74 @@ def categorize_rhythm(gamma):
     else:
         return 'overexpressed' if gamma > 0.15 else 'repressed'
 
-def variance_based_filtering(df, min_feature_variance=0.02): # Lifted from Glycowork
-    """Variance-based filtering of features\n
-    | Arguments:
-    | :-
-    | df (dataframe): dataframe containing glycan sequences in index and samples in columns
-    | min_feature_variance (float): Minimum variance to include a feature in the analysis; default: 2%\n
-    | Returns:
-    | :-
-    | filtered_df (DataFrame): DataFrame with remaining glycans (variance > min_feature_variance) as indices and samples in columns.
-    | discarded_df (DataFrame): DataFrame with discarded glycans (variance <= min_feature_variance) as indices and samples in columns.
+def variance_based_filtering(df, min_feature_variance=0.05):
+    """Variance-based filtering of features
+    Arguments:
+
+    :param df (dataframe): dataframe containing molecules by row and samples by columns
+    :param min_feature_variance (float): Minimum variance to include a feature in the analysis; default: 5%
+    Returns:
+
+    :return variant_df (DataFrame): DataFrame with variant molecules (variance > min_feature_variance)
+    :return invariant_df (DataFrame): DataFrame with invariant molecules (variance <= min_feature_variance)
     """
     variances = df.var(axis=1)
-    filtered_df = df.loc[variances > min_feature_variance]
-    discarded_df = df.loc[variances <= min_feature_variance]
-    return filtered_df, discarded_df
+    variant_df = df.loc[variances > min_feature_variance]
+    invariant_df = df.loc[variances <= min_feature_variance]
+    return variant_df, invariant_df
 
 def get_pycycle(df_in):
+    """
+    Models expression data using 4 equations.
+
+    :param df_in: A dataframe organised with samples defined by columns and molecules defined by rows.
+                    The first column and row shuold contain strings identifying samples or molecules.
+                    Samples should be organised in ascending time order (all reps per timepoint should be together)
+    :return: df_out: A dataframe containing the best-fitting model, with parameters that produced the best fit,
+                        alongside statistics indicating the robustness of the model's fit compared to input data.
+    """
     df_in = df_in.set_index(df_in.columns[0])
     df, df_invariant = variance_based_filtering(df_in)  # Filtering removes invariant molecules from analysis
     pvals = []
     osc_type = []
+    mod_type = []
     parameters = []
     if isinstance(df.iloc[0, 0], str):
         df = df.set_index(df.columns.tolist()[0])
     for i in range(df.shape[0]):
         waveform, params, covariance, fitted_values = fit_best_waveform(df.iloc[i, :])
         tau, p_value = kendalltau(fitted_values, df.iloc[i, :].values)
-        if p_value < 0.05:
-            if waveform == 'harmonic_oscillator':
-                oscillation = categorize_rhythm(params[1])
-            else:
-                oscillation = waveform
+        if waveform == 'transient':
+            modulation = params[1]
         else:
-            oscillation = np.nan
+            modulation = categorize_rhythm(params[1])
+        oscillation = waveform
+        if math.isnan(p_value):
+            p_value = 1
         pvals.append(p_value)
         osc_type.append(oscillation)
+        mod_type.append(modulation)
         parameters.append(params)
-        print(i)   # Uncomment this line for progress counter (will spam)
-    corr_pvals = multipletests(pvals, method='fdr_tsbh')[1]
-    df_out = pd.DataFrame({"Feature": df.index.tolist(), "p-val": pvals, "corr p-val": corr_pvals, "Type": osc_type, "parameters":parameters})
+#        print(i)   # Uncomment this line for progress counter (will spam)
+    corr_pvals = multipletests(pvals, alpha= 0.000001, method='fdr_tsbh')[1] # alpha= 0.000001,
+    holm_pvals =multipletests(pvals, alpha= 0.05, method='holm')[1]
+    df_out = pd.DataFrame({"Feature": df.index.tolist(), "p-val": pvals, "BH-padj": corr_pvals, "Holm-padj":holm_pvals,"Type": osc_type, "Mod": mod_type, "parameters":parameters})
     invariant_features = df_invariant.index.tolist()
     invariant_rows = pd.DataFrame({
         "Feature": invariant_features,
         "p-val": [np.nan] * len(invariant_features),
-        "corr p-val": [np.nan] * len(invariant_features),
+        "BH-padj": [np.nan] * len(invariant_features),
+        "Holm-padj": [np.nan] * len(invariant_features),
         "Type": ['invariant'] * len(invariant_features),
         "parameters": [np.nan] * len(invariant_features)
     })
     # Concatenate variant and invariant rows
     df_out = pd.concat([df_out, invariant_rows], ignore_index=False)
-    return df_out.sort_values(by='p-val').sort_values(by='corr p-val')
+    return df_out.sort_values(by='p-val').sort_values(by='BH-padj')
 
-#  Todo: can fourier transformations be used to aid in parameterisation of waveforms?
-#  Todo: Report damping term independently of oscillator type- and report for all 3 oscillators
-#  Todo: Introduce a term to allow wavelengths of different periods to be analysed (line 89)
-#  Todo: tighten up time extraction, ZT phrasing unnecessary (line 65)
-#  Todo: Cosinor also sums the composite eqns. can we use a eqn that multiplies components?
-#  Todo: Include compositional transforms + uncertainty scale model
-# Todo: introduce modifier to y term (basline) to capture general trends in expression?
+# Todo: can fourier transformations be used to aid in parameterisation of waveforms?
+# Todo: Introduce a term to allow wavelengths of different periods to be analysed
+# Todo: tighten up time extraction, ZT phrasing unnecessary
+# Todo: Cosinor also sums the composite eqns. can we use a eqn that multiplies components?
+# Todo: Include compositional transforms + uncertainty scale model
+# Todo: introduce modifier to y term (baseline) to capture general trends in expression?
