@@ -74,7 +74,7 @@ def transient_impulse(t, A, p, w, y):
     impulse = np.where((t_mod - p_tau) >=0, np.exp(-0.5 * ((t_mod - p_tau) / w) ** 2), 0) # Included where() term to stop impulses being falsely generated at t=0. Not the ideal solution.
     return A*impulse + y
 
-def calculate_variances(data): # Todo: Remove 'ZT' grouping and analyse based on real timepoints- allows mutli-cycle parameterisation (better for damped / forced)
+def calculate_variances(data):
     # Extract ZT times and replicate numbers from the column names
     zt_replicates = data.index.str.extract(r'(ZT\d+)_(C\d+)')
     zt_times = zt_replicates[0].str.extract(r'ZT(\d+)').astype(int)[0].values
@@ -273,36 +273,40 @@ def get_pycycle(df_in):
     df, df_invariant = variance_based_filtering(df_in)  # Filtering removes invariant molecules from analysis
     pvals = []
     osc_type = []
+    mod_type = []
     parameters = []
     if isinstance(df.iloc[0, 0], str):
         df = df.set_index(df.columns.tolist()[0])
     for i in range(df.shape[0]):
         waveform, params, covariance, fitted_values = fit_best_waveform(df.iloc[i, :])
         tau, p_value = kendalltau(fitted_values, df.iloc[i, :].values)
-        if waveform == 'harmonic_oscillator':
-            oscillation = categorize_rhythm(params[1])
+        if waveform == 'transient':
+            modulation = params[1]
         else:
-            oscillation = waveform
+            modulation = categorize_rhythm(params[1])
+        oscillation = waveform
         if math.isnan(p_value):
             p_value = 1
         pvals.append(p_value)
         osc_type.append(oscillation)
+        mod_type.append(modulation)
         parameters.append(params)
         print(i)   # Uncomment this line for progress counter (will spam)
     corr_pvals = multipletests(pvals, alpha= 0.000001, method='fdr_tsbh')[1] # alpha= 0.000001,
     holm_pvals =multipletests(pvals, alpha= 0.05, method='holm')[1]
-    df_out = pd.DataFrame({"Feature": df.index.tolist(), "p-val": pvals, "BH-padj": corr_pvals, "Holm-padj":holm_pvals,"Type": osc_type, "parameters":parameters})
+    df_out = pd.DataFrame({"Feature": df.index.tolist(), "p-val": pvals, "BH-padj": corr_pvals, "Holm-padj":holm_pvals,"Type": osc_type, "Mod": mod_type, "parameters":parameters})
     invariant_features = df_invariant.index.tolist()
     invariant_rows = pd.DataFrame({
         "Feature": invariant_features,
         "p-val": [np.nan] * len(invariant_features),
-        "corr p-val": [np.nan] * len(invariant_features),
+        "BH-padj": [np.nan] * len(invariant_features),
+        "Holm-padj": [np.nan] * len(invariant_features),
         "Type": ['invariant'] * len(invariant_features),
         "parameters": [np.nan] * len(invariant_features)
     })
     # Concatenate variant and invariant rows
     df_out = pd.concat([df_out, invariant_rows], ignore_index=False)
-    return df_out.sort_values(by='p-val').sort_values(by='corr p-val')
+    return df_out.sort_values(by='p-val').sort_values(by='BH-padj')
 
 # Todo: can fourier transformations be used to aid in parameterisation of waveforms?
 # Todo: Report damping term independently of oscillator type- and report for all 3 oscillators
