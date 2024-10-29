@@ -100,7 +100,7 @@ def fit_best_waveform(df_row):
     timepoints = (timepoints /24 * (2 * math.pi)) # Todo: Consider introducing another term here for vairable period length (24 will only work for circ studies)
     amplitudes = df_row.values
     variances = calculate_variances(df_row)
-    weights = np.array([1 / variances[tp] if tp in variances and variances[tp] != 0 else 0 for tp in timepoints])+0.000001
+    weights = np.array([1 / variances[tp] if tp in variances and variances[tp] != 0 else 0 for tp in timepoints])+0.000001 # 0 variance messes model selection up, so a negligable value is used here
 
     # Fit extended harmonic oscillator
     # (t, A, gamma, omega, phi, y):
@@ -309,9 +309,8 @@ def get_pycycle(df_in):
     return df_out.sort_values(by='p-val').sort_values(by='BH-padj')
 
 # Todo: can fourier transformations be used to aid in parameterisation of waveforms?
-# Todo: Report damping term independently of oscillator type- and report for all 3 oscillators
-# Todo: Introduce a term to allow wavelengths of different periods to be analysed (line 89)
-# Todo: tighten up time extraction, ZT phrasing unnecessary (line 65)
+# Todo: Introduce a term to allow wavelengths of different periods to be analysed
+# Todo: tighten up time extraction, ZT phrasing unnecessary
 # Todo: Cosinor also sums the composite eqns. can we use a eqn that multiplies components?
 # Todo: Include compositional transforms + uncertainty scale model
 # Todo: introduce modifier to y term (baseline) to capture general trends in expression?
