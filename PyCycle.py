@@ -116,7 +116,7 @@ def fit_best_waveform(df_row):
             bounds=harmonic_bounds,
             sigma=weights,
             p0=harmonic_initial_params,
-            maxfev=10000000
+            maxfev=1000000
         )
         harmonic_fitted_values = extended_harmonic_oscillator(timepoints, *harmonic_params)
         harmonic_residuals = amplitudes - harmonic_fitted_values
@@ -141,7 +141,7 @@ def fit_best_waveform(df_row):
             bounds=square_bounds,
             sigma=weights,
             p0=square_initial_params,
-            maxfev=10000000
+            maxfev=1000000
         )
         square_fitted_values = pseudo_square_wave(timepoints, *square_params)
         square_residuals = amplitudes - square_fitted_values
@@ -166,7 +166,7 @@ def fit_best_waveform(df_row):
             bounds = cycloid_bounds,
             sigma=weights,
             p0=cycloid_initial_params,
-            maxfev=10000000
+            maxfev=1000000
         )
         cycloid_fitted_values = pseudo_cycloid_wave(timepoints, *cycloid_params)
         cycloid_residuals = amplitudes - cycloid_fitted_values
@@ -291,7 +291,7 @@ def get_pycycle(df_in):
         osc_type.append(oscillation)
         mod_type.append(modulation)
         parameters.append(params)
-    #    print(i)   # Uncomment this line for progress counter (will spam)
+#        print(i)   # Uncomment this line for progress counter (will spam)
     corr_pvals = multipletests(pvals, alpha= 0.001, method='fdr_tsbh')[1] # alpha= 0.000001,
     holm_pvals =multipletests(pvals, alpha= 0.05, method='holm')[1]
     df_out = pd.DataFrame({"Feature": df.index.tolist(), "p-val": pvals, "BH-padj": corr_pvals,"Type": osc_type, "Mod": mod_type, "parameters":parameters})
