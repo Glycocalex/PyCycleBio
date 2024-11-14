@@ -105,8 +105,8 @@ def fit_best_waveform(df_row):
     # Fit extended harmonic oscillator
     # (t, A, gamma, omega, phi, y):
     harmonic_initial_params = [np.median(amplitudes), 0, 1, 0, np.mean(amplitudes)/2]
-    lower_bounds= [np.min(amplitudes), -0.05, 0.7, -12, -np.abs(amplitudes[np.argmax(np.abs(amplitudes))])] # (t, A, gamma, omega, phi, y):
-    upper_bounds = [np.max(amplitudes), 0.05, 1.3, 12, np.max(amplitudes)]
+    lower_bounds= [np.min(amplitudes), -0.05, 0.75, -12, -np.abs(amplitudes[np.argmax(np.abs(amplitudes))])] # (t, A, gamma, omega, phi, y):
+    upper_bounds = [np.max(amplitudes), 0.05, 1.25, 12, np.max(amplitudes)]
     harmonic_bounds = (lower_bounds, upper_bounds)
     try:
         harmonic_params, harmonic_covariance = curve_fit(
@@ -130,8 +130,8 @@ def fit_best_waveform(df_row):
     # Fit square oscillator
     # (t, A, gamma, omega, phi, y):
     square_initial_params = [np.median(amplitudes), 0, 1, 0, np.mean(amplitudes)]
-    square_lower_bounds = [np.min(amplitudes), -0.05, 0.7, -12, -np.abs(amplitudes[np.argmax(np.abs(amplitudes))])]
-    square_upper_bounds = [np.max(amplitudes), 0.05, 1.3, 12, np.max(amplitudes)]
+    square_lower_bounds = [np.min(amplitudes), -0.05, 0.75, -12, -np.abs(amplitudes[np.argmax(np.abs(amplitudes))])]
+    square_upper_bounds = [np.max(amplitudes), 0.05, 1.25, 12, np.max(amplitudes)]
     square_bounds = (square_lower_bounds, square_upper_bounds)
     try:
         square_params, square_covariance = curve_fit(
@@ -155,8 +155,8 @@ def fit_best_waveform(df_row):
     # Fit cycloid oscillator
     # (t, A, gamma, omega, phi, y):
     cycloid_initial_params = [np.median(amplitudes), 0, 1, 0, np.mean(amplitudes)] # Don't need to provide t
-    cycloid_lower_bounds = [-np.max(amplitudes), -0.05, 0.7, -12, -np.abs(amplitudes[np.argmax(np.abs(amplitudes))])]
-    cycloid_upper_bounds = [np.max(amplitudes), 0.05, 1.3, 12, np.max(amplitudes)]
+    cycloid_lower_bounds = [-np.max(amplitudes), -0.05, 0.75, -12, -np.abs(amplitudes[np.argmax(np.abs(amplitudes))])]
+    cycloid_upper_bounds = [np.max(amplitudes), 0.05, 1.25, 12, np.max(amplitudes)]
     cycloid_bounds = (cycloid_lower_bounds, cycloid_upper_bounds)
     try:
         cycloid_params, cycloid_covariance = curve_fit(
