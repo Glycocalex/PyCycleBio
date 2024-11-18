@@ -74,6 +74,21 @@ def transient_impulse(t, A, p, w, y):
     impulse = np.where((t_mod - p_tau) >=0, np.exp(-0.5 * ((t_mod - p_tau) / w) ** 2), 0) # Included where() term to stop impulses being falsely generated at t=0. Not the ideal solution.
     return A*impulse + y
 
+def fourier_square_wave(t, A, gamma, omega, phi,  y):
+
+    return A * np.exp(gamma * t) * (1 + (4/math.pi)*np.sum(
+        np.sin(math.pi*omega*(t+phi))+np.sin(math.pi*3*omega*(t+phi))/3)) + y
+
+def fourier_cycloid_wave(t, A, gamma, omega, phi, y):
+    return A * np.exp(gamma * t) * (2/math.pi - (4 / math.pi) * np.sum(
+        np.cos(2* omega * (t + phi))/(3) + (np.cos( 4 * omega * (t + phi)) / (4*2^2-1)))) + y
+
+def fourier_sawtooth_wave(t, A, gamma, omega, phi, y):
+    return A * np.exp(gamma * t) * (0.5 - (1/math.pi)* np.sum(
+        np.sin(2*math.pi*omega*(t+phi)) + np.sin(4*math.pi*omega*(t+phi))/2))
+
+
+
 def calculate_variances(data):
     # Extract ZT times and replicate numbers from the column names
     zt_replicates = data.index.str.extract(r'(ZT\d+)_(C\d+)')
@@ -116,7 +131,7 @@ def fit_best_waveform(df_row):
             bounds=harmonic_bounds,
             sigma=weights,
             p0=harmonic_initial_params,
-            maxfev=1000000
+            maxfev=1000
         )
         harmonic_fitted_values = extended_harmonic_oscillator(timepoints, *harmonic_params)
         harmonic_residuals = amplitudes - harmonic_fitted_values
@@ -141,7 +156,7 @@ def fit_best_waveform(df_row):
             bounds=square_bounds,
             sigma=weights,
             p0=square_initial_params,
-            maxfev=1000000
+            maxfev=1000
         )
         square_fitted_values = pseudo_square_wave(timepoints, *square_params)
         square_residuals = amplitudes - square_fitted_values
@@ -166,7 +181,7 @@ def fit_best_waveform(df_row):
             bounds = cycloid_bounds,
             sigma=weights,
             p0=cycloid_initial_params,
-            maxfev=1000000
+            maxfev=1000
         )
         cycloid_fitted_values = pseudo_cycloid_wave(timepoints, *cycloid_params)
         cycloid_residuals = amplitudes - cycloid_fitted_values
@@ -191,7 +206,7 @@ def fit_best_waveform(df_row):
             bounds=transient_bounds,
             sigma=weights,
             p0=transient_initial_params,
-            maxfev=1000000
+            maxfev=1000
         )
         transient_fitted_values = transient_impulse(timepoints, *transient_params)
         transient_residuals = amplitudes - transient_fitted_values
@@ -205,7 +220,12 @@ def fit_best_waveform(df_row):
     # Determine best fit
     sse_values = [harmonic_sse, square_sse, cycloid_sse, transient_sse]
     best_fit_index = np.argmin(sse_values)
-    if best_fit_index == 0:
+    if sse_values == [np.inf, np.inf, np.inf, np.inf]:
+        best_params = np.NaN
+        best_waveform = 'unsolved'
+        best_covariance = np.NaN
+        best_fitted_values = np.NaN
+    elif best_fit_index == 0:
         best_params = harmonic_params
         best_waveform = 'harmonic_oscillator'
         best_covariance = harmonic_covariance
@@ -279,11 +299,15 @@ def get_pycycle(df_in):
         df = df.set_index(df.columns.tolist()[0])
     for i in range(df.shape[0]):
         waveform, params, covariance, fitted_values = fit_best_waveform(df.iloc[i, :])
-        tau, p_value = kendalltau(fitted_values, df.iloc[i, :].values)
-        if waveform == 'transient':
-            modulation = params[1]
+        if waveform == 'unsolved':
+            tau, p_value = np.NaN, np.NaN
+            modulation = np.NaN
         else:
-            modulation = categorize_rhythm(params[1])
+            tau, p_value = kendalltau(fitted_values, df.iloc[i, :].values)
+            if waveform == 'transient':
+                modulation = params[1]
+            else:
+                modulation = categorize_rhythm(params[1])
         oscillation = waveform
         if math.isnan(p_value):
             p_value = 1
@@ -291,7 +315,7 @@ def get_pycycle(df_in):
         osc_type.append(oscillation)
         mod_type.append(modulation)
         parameters.append(params)
-#        print(i)   # Uncomment this line for progress counter (will spam)
+        print(i)   # Uncomment this line for progress counter (will spam)
     corr_pvals = multipletests(pvals, alpha= 0.001, method='fdr_tsbh')[1] # alpha= 0.000001,
     holm_pvals =multipletests(pvals, alpha= 0.05, method='holm')[1]
     df_out = pd.DataFrame({"Feature": df.index.tolist(), "p-val": pvals, "BH-padj": corr_pvals,"Type": osc_type, "Mod": mod_type, "parameters":parameters})
