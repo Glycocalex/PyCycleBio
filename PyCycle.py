@@ -131,7 +131,7 @@ def fit_best_waveform(df_row):
             bounds=harmonic_bounds,
             sigma=weights,
             p0=harmonic_initial_params,
-            maxfev=1000
+            maxfev=1000000
         )
         harmonic_fitted_values = extended_harmonic_oscillator(timepoints, *harmonic_params)
         harmonic_residuals = amplitudes - harmonic_fitted_values
@@ -156,7 +156,7 @@ def fit_best_waveform(df_row):
             bounds=square_bounds,
             sigma=weights,
             p0=square_initial_params,
-            maxfev=1000
+            maxfev=1000000
         )
         square_fitted_values = pseudo_square_wave(timepoints, *square_params)
         square_residuals = amplitudes - square_fitted_values
@@ -181,7 +181,7 @@ def fit_best_waveform(df_row):
             bounds = cycloid_bounds,
             sigma=weights,
             p0=cycloid_initial_params,
-            maxfev=1000
+            maxfev=1000000
         )
         cycloid_fitted_values = pseudo_cycloid_wave(timepoints, *cycloid_params)
         cycloid_residuals = amplitudes - cycloid_fitted_values
@@ -206,7 +206,7 @@ def fit_best_waveform(df_row):
             bounds=transient_bounds,
             sigma=weights,
             p0=transient_initial_params,
-            maxfev=1000
+            maxfev=1000000
         )
         transient_fitted_values = transient_impulse(timepoints, *transient_params)
         transient_residuals = amplitudes - transient_fitted_values
