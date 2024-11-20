@@ -4,75 +4,7 @@ from scipy.stats import kendalltau
 from statsmodels.stats.multitest import multipletests
 import pandas as pd
 import numpy as np
-
-def extended_harmonic_oscillator(t, A, gamma, omega, phi, y):
-    """
-    Extended harmonic oscillator function.
-
-    :param t: Time variable.
-    :param A: Initial amplitude.
-    :param gamma: Damping/forcing coefficient.
-    :param omega: Frequency of oscillation.
-    :param phi: Phase shift.
-    :param y: Equilibrium value.
-    :return: Resulting change in amplitude at time t.
-    """
-    return A * np.exp(gamma * t) * np.cos(omega * (t + phi)) + y
-
-def pseudo_square_wave(t, A, gamma, omega_c, phi, y):
-    """
-    Extended harmonic oscillator function, with additional sinusoidal component.
-    Relative sinusoidal period/amplitude parameters defined to produce pseudo-square expression
-
-    :param t: Time variable.
-    :param A: Initial amplitude.
-    :param omega_c: Frequency of carrier wave oscillation.
-    :param phi: Phase shift.
-    :param gamma: Damping/forcing coefficient.
-    :param y: Equilibrium value.
-
-    Equation terms not defined in arguments:
-    Amplitude of modulator = Amplitude of carrier (A) / 3
-    Frequency of modulator = Frequency of carrier (omega) / 3
-
-    :return: Resulting change in amplitude at time t.
-    """
-
-    return A * np.exp(gamma * t) * (np.sin(omega_c * (t + phi)) + 2 * np.sin(omega_c * (t + phi) / 3)) + y
-
-def pseudo_cycloid_wave(t, A, gamma, omega, phi, y):
-    """
-    Extended harmonic oscillator function, with additional cosine component.
-    Relative cosine period/amplitude parameters defined to produce pseudo-cycloid expression
-
-    :param t: Time variable.
-    :param A: Initial amplitude.
-    :param omega: Frequency of carrier wave oscillation.
-    :param phi: Phase shift.
-    :param gamma: Damping/forcing coefficient.
-    :param y: Equilibrium value.
-
-    :return: Resulting change in amplitude at time t.
-    """
-    omega_c = omega/(4*math.tau)
-    return A * np.exp(gamma * t) * (np.cos(2 * omega_c * (t + phi)) + 4 * np.cos(omega_c * (t + phi))) + y
-
-def transient_impulse(t, A, p, w, y):
-
-    """
-    Equation modelling pulse waves with a guassian function
-    :param t: Time variable
-    :param p: Period of the pulse (centre of the pulse)
-    :param A: Amplitude of pulse
-    :param w: Pulse-width
-    :param y: Equilibrium value
-    :return:
-    """
-# Todo: dodgy-fix here: mod has 0 and 24 as distinct, therefore I have 24-0.000001 in the mod. This introduces a small but accumulating error as the number of cycles in the dataset increases
-    t_mod = np.mod(t, 2 * math.pi - 0.000001)
-    p_tau = (p/24)*(2*math.pi)
-    impulse = np.where((t_mod - p_tau) >=0, np.exp(-0.5 * ((t_mod - p_tau) / w) ** 2), 0) # Included where() term to stop impulses being falsely generated at t=0. Not the ideal solution.
-    return A*impulse + y
+from pycycle_oscillators import harmonic_oscillator, pseudo_square_wave, pseudo_cycloid_wave, transient_impulse
 
 def fourier_square_wave(t, A, gamma, omega, phi,  y):
 
@@ -112,7 +44,7 @@ def fit_best_waveform(df_row):
     :return: A tuple containing the best-fit parameters, the waveform type, and the covariance of the fit.
     """
     timepoints = np.array([float(col.split('_')[0][2:]) for col in df_row.index])
-    #timepoints = (timepoints /24 * (2 * math.pi)) # Todo: Consider introducing another term here for vairable period length (24 will only work for circ studies)
+    timepoints = (timepoints /24 * (2 * math.pi)) # Todo: Consider introducing another term here for vairable period length (24 will only work for circ studies)
     amplitudes = df_row.values
     variances = calculate_variances(df_row)
     weights = np.array([1 / variances[tp] if tp in variances and variances[tp] != 0 else 0 for tp in timepoints])+0.000001 # 0 variance messes model selection up, so a negligable value is used here
@@ -120,20 +52,22 @@ def fit_best_waveform(df_row):
     # Fit extended harmonic oscillator
     # (t, A, gamma, omega, phi, y):
     harmonic_initial_params = [np.median(amplitudes), 0, 1, 0, np.mean(amplitudes)/2]
-    lower_bounds= [np.min(amplitudes), -0.05, 0.75, -12, -np.abs(amplitudes[np.argmax(np.abs(amplitudes))])] # (t, A, gamma, omega, phi, y):
-    upper_bounds = [np.max(amplitudes), 0.05, 1.25, 12, np.max(amplitudes)]
+    lower_bounds= [np.min(amplitudes), -0.05, 0.75, -(4*math.pi), -np.abs(amplitudes[np.argmax(np.abs(amplitudes))])] # (t, A, gamma, omega, phi, y):
+    upper_bounds = [np.max(amplitudes), 0.05, 1.25, (4*math.pi), np.max(amplitudes)]
     harmonic_bounds = (lower_bounds, upper_bounds)
     try:
         harmonic_params, harmonic_covariance = curve_fit(
-            extended_harmonic_oscillator,
+            harmonic_oscillator,
             timepoints,
             amplitudes,
             bounds=harmonic_bounds,
             sigma=weights,
             p0=harmonic_initial_params,
-            maxfev=1000000
+            maxfev=1000000,
+            ftol = 0.001,
+            xtol = 0.001
         )
-        harmonic_fitted_values = extended_harmonic_oscillator(timepoints, *harmonic_params)
+        harmonic_fitted_values = harmonic_oscillator(timepoints, *harmonic_params)
         harmonic_residuals = amplitudes - harmonic_fitted_values
         harmonic_sse = np.sum(harmonic_residuals ** 2)
     except:
@@ -145,8 +79,8 @@ def fit_best_waveform(df_row):
     # Fit square oscillator
     # (t, A, gamma, omega, phi, y):
     square_initial_params = [np.median(amplitudes), 0, 1, 0, np.mean(amplitudes)]
-    square_lower_bounds = [np.min(amplitudes), -0.05, 0.75, -12, -np.abs(amplitudes[np.argmax(np.abs(amplitudes))])]
-    square_upper_bounds = [np.max(amplitudes), 0.05, 1.25, 12, np.max(amplitudes)]
+    square_lower_bounds = [np.min(amplitudes), -0.05, 0.75, -(4*math.pi), -np.abs(amplitudes[np.argmax(np.abs(amplitudes))])]
+    square_upper_bounds = [np.max(amplitudes), 0.05, 1.25, (4*math.pi), np.max(amplitudes)]
     square_bounds = (square_lower_bounds, square_upper_bounds)
     try:
         square_params, square_covariance = curve_fit(
@@ -156,7 +90,9 @@ def fit_best_waveform(df_row):
             bounds=square_bounds,
             sigma=weights,
             p0=square_initial_params,
-            maxfev=1000000
+            maxfev=1000000,
+            ftol = 0.001,
+            xtol = 0.001
         )
         square_fitted_values = pseudo_square_wave(timepoints, *square_params)
         square_residuals = amplitudes - square_fitted_values
@@ -170,8 +106,8 @@ def fit_best_waveform(df_row):
     # Fit cycloid oscillator
     # (t, A, gamma, omega, phi, y):
     cycloid_initial_params = [np.median(amplitudes), 0, 1, 0, np.mean(amplitudes)] # Don't need to provide t
-    cycloid_lower_bounds = [-np.max(amplitudes), -0.05, 0.75, -12, -np.abs(amplitudes[np.argmax(np.abs(amplitudes))])]
-    cycloid_upper_bounds = [np.max(amplitudes), 0.05, 1.25, 12, np.max(amplitudes)]
+    cycloid_lower_bounds = [-np.max(amplitudes), -0.05, 0.75, -(4*math.pi), -np.abs(amplitudes[np.argmax(np.abs(amplitudes))])]
+    cycloid_upper_bounds = [np.max(amplitudes), 0.05, 1.25, (4*math.pi), np.max(amplitudes)]
     cycloid_bounds = (cycloid_lower_bounds, cycloid_upper_bounds)
     try:
         cycloid_params, cycloid_covariance = curve_fit(
@@ -181,7 +117,9 @@ def fit_best_waveform(df_row):
             bounds = cycloid_bounds,
             sigma=weights,
             p0=cycloid_initial_params,
-            maxfev=1000000
+            maxfev=1000000,
+            ftol = 0.001,
+            xtol = 0.001
         )
         cycloid_fitted_values = pseudo_cycloid_wave(timepoints, *cycloid_params)
         cycloid_residuals = amplitudes - cycloid_fitted_values
@@ -206,7 +144,9 @@ def fit_best_waveform(df_row):
             bounds=transient_bounds,
             sigma=weights,
             p0=transient_initial_params,
-            maxfev=1000000
+            maxfev=1000000,
+            ftol = 0.001,
+            xtol = 0.001
         )
         transient_fitted_values = transient_impulse(timepoints, *transient_params)
         transient_residuals = amplitudes - transient_fitted_values
@@ -259,7 +199,7 @@ def categorize_rhythm(gamma):
     elif -0.15 <= gamma <= -0.03:
         return 'forced'
     elif -0.03 <= gamma <= 0.03:
-        return 'harmonic'
+        return 'stable'
     else:
         return 'overexpressed' if gamma > 0.15 else 'repressed'
 
@@ -317,7 +257,6 @@ def get_pycycle(df_in):
         parameters.append(params)
         print(i)   # Uncomment this line for progress counter (will spam)
     corr_pvals = multipletests(pvals, alpha= 0.001, method='fdr_tsbh')[1] # alpha= 0.000001,
-    holm_pvals =multipletests(pvals, alpha= 0.05, method='holm')[1]
     df_out = pd.DataFrame({"Feature": df.index.tolist(), "p-val": pvals, "BH-padj": corr_pvals,"Type": osc_type, "Mod": mod_type, "parameters":parameters})
     invariant_features = df_invariant.index.tolist()
     invariant_rows = pd.DataFrame({
