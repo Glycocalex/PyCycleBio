@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="Testing action">
-      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
+    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="New pypi version">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,7 +147,7 @@
       <workItem from="1732198436597" duration="1505000" />
       <workItem from="1732199955273" duration="3815000" />
       <workItem from="1732204240580" duration="1113000" />
-      <workItem from="1732209525075" duration="480000" />
+      <workItem from="1732209525075" duration="1415000" />
     </task>
     <task id="LOCAL-00001" summary="Begining to tidy">
       <option name="closed" value="true" />
@@ -413,7 +413,23 @@
       <option name="project" value="LOCAL" />
       <updated>1732209553177</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="New pypi version">
+      <option name="closed" value="true" />
+      <created>1732210014675</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1732210014675</updated>
+    </task>
+    <task id="LOCAL-00035" summary="New pypi version">
+      <option name="closed" value="true" />
+      <created>1732210022604</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1732210022604</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -443,7 +459,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Removed progress counter" />
     <MESSAGE value="Modified equations to model: sinusoidal, square and cycloid waves.&#10;&#10;All should be properly bounded and test indicate accurate parameterisation." />
     <MESSAGE value="Fixed cycloid fitting&#10;&#10;Introduced transient eqn- not working yet" />
     <MESSAGE value="Added variance filter, so invariant molecules are not parameterised&#10;&#10;Fixed transient-fitting." />
@@ -468,7 +483,8 @@
     <MESSAGE value="Housekeeping" />
     <MESSAGE value="Added dist file" />
     <MESSAGE value="Testing action" />
-    <option name="LAST_COMMIT_MESSAGE" value="Testing action" />
+    <MESSAGE value="New pypi version" />
+    <option name="LAST_COMMIT_MESSAGE" value="New pypi version" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
