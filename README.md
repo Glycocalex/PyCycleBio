@@ -1,3 +1,5 @@
+![PyCycle sketch logo small](https://github.com/user-attachments/assets/7f7156a6-0cab-45f7-bcdc-6f4d13f106df)
+
 Python based toolkit for temporal molecular biology analysis
 
 Input data with columns denoting samples and rows denoting biological molecules.
