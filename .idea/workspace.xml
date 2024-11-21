@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="housekeeping" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Dev" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2jQL5eBeQBQKpq7qxPSpQ2v8wrY" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Python.20240819 busted ass PyCycle.executor": "Debug",
+    "Python.PyCycle analysis.executor": "Debug",
+    "Python.PyCycle.executor": "Debug",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/Alex Bennett/Desktop/Python/PyCycle/PyCycle clone",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "TOML",
+      "Python",
+      "Markdown"
+    ]
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Alex Bennett\Documents\Papers\PyCycle\Datasets\PMID34968386\direct comparison" />
+      <recent name="C:\Users\Alex Bennett\Documents\Papers\PyCycle\Datasets\PMID34059820\direct comparison" />
+      <recent name="C:\Users\Alex Bennett\Desktop\rust\PyCycle_random crap\problem defs" />
+      <recent name="C:\Users\Alex Bennett\Desktop\rust\PyCycle_random crap\Oscillator_defs" />
+      <recent name="C:\Users\Alex Bennett\Desktop\rust\PyCycle\Oscillator_defs" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-67fca87a943a-c986f194a52a-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-233.11799.259" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="" />
+      <created>1721314171280</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1721314171280</updated>
+      <workItem from="1721314172437" duration="798000" />
+      <workItem from="1721375005562" duration="1918000" />
+      <workItem from="1721382934921" duration="1790000" />
+      <workItem from="1721901691647" duration="381000" />
+      <workItem from="1723547584430" duration="19711000" />
+      <workItem from="1723708861551" duration="16753000" />
+      <workItem from="1723748143977" duration="4772000" />
+      <workItem from="1723799446204" duration="27122000" />
+      <workItem from="1724078733805" duration="7808000" />
+      <workItem from="1724094920058" duration="9435000" />
+      <workItem from="1724166839860" duration="347000" />
+      <workItem from="1724223329654" duration="14161000" />
+      <workItem from="1724317086959" duration="1773000" />
+      <workItem from="1724398630251" duration="9589000" />
+      <workItem from="1724754643794" duration="4000" />
+      <workItem from="1724829406682" duration="10815000" />
+      <workItem from="1725103559355" duration="1055000" />
+      <workItem from="1725352959035" duration="1224000" />
+      <workItem from="1726047649091" duration="581000" />
+      <workItem from="1727767771317" duration="18489000" />
+      <workItem from="1727853211887" duration="20100000" />
+      <workItem from="1728024768458" duration="8562000" />
+      <workItem from="1728042686880" duration="2000" />
+      <workItem from="1728043001866" duration="3284000" />
+      <workItem from="1728290763218" duration="740000" />
+      <workItem from="1728546613914" duration="11021000" />
+      <workItem from="1728635810578" duration="587000" />
+      <workItem from="1728644665259" duration="332000" />
+      <workItem from="1729595004021" duration="2301000" />
+      <workItem from="1729597384871" duration="499000" />
+      <workItem from="1729598069378" duration="193000" />
+      <workItem from="1729598948088" duration="12000" />
+      <workItem from="1729599009209" duration="3704000" />
+      <workItem from="1729666225709" duration="13739000" />
+      <workItem from="1729752440314" duration="5305000" />
+      <workItem from="1729771943984" duration="3351000" />
+      <workItem from="1729788793217" duration="14000" />
+      <workItem from="1729847726924" duration="923000" />
+      <workItem from="1729858780802" duration="3040000" />
+      <workItem from="1730101452987" duration="8242000" />
+      <workItem from="1730134729995" duration="629000" />
+      <workItem from="1730185403299" duration="8991000" />
+      <workItem from="1730214407261" duration="1472000" />
+      <workItem from="1730284315822" duration="7100000" />
+      <workItem from="1730376356626" duration="1000" />
+      <workItem from="1730385610764" duration="15000" />
+      <workItem from="1730713313989" duration="29000" />
+      <workItem from="1730714956051" duration="27248000" />
+      <workItem from="1730880029962" duration="4827000" />
+      <workItem from="1730966216372" duration="6404000" />
+      <workItem from="1731055348123" duration="35000" />
+      <workItem from="1731061894565" duration="1395000" />
+      <workItem from="1731319154041" duration="3017000" />
+      <workItem from="1731571948319" duration="22980000" />
+      <workItem from="1731659922428" duration="10353000" />
+      <workItem from="1731915559552" duration="16893000" />
+      <workItem from="1731946924375" duration="3261000" />
+      <workItem from="1732007408169" duration="16377000" />
+      <workItem from="1732088203187" duration="18625000" />
+      <workItem from="1732190847725" duration="4253000" />
+      <workItem from="1732195668745" duration="1386000" />
+      <workItem from="1732198436597" duration="1505000" />
+      <workItem from="1732199955273" duration="1234000" />
+    </task>
+    <task id="LOCAL-00001" summary="Begining to tidy">
+      <option name="closed" value="true" />
+      <created>1721314880959</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1721314880959</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Prepared for test data provision">
+      <option name="closed" value="true" />
+      <created>1721375828685</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1721375828685</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Removed progress counter">
+      <option name="closed" value="true" />
+      <created>1721376214613</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1721376214613</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Modified equations to model: sinusoidal, square and cycloid waves.&#10;&#10;All should be properly bounded and test indicate accurate parameterisation.">
+      <option name="closed" value="true" />
+      <created>1723810184464</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1723810184464</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Fixed cycloid fitting&#10;&#10;Introduced transient eqn- not working yet">
+      <option name="closed" value="true" />
+      <created>1724153465482</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1724153465482</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Added variance filter, so invariant molecules are not parameterised&#10;&#10;Fixed transient-fitting.">
+      <option name="closed" value="true" />
+      <created>1727865657248</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1727865657248</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Fixed square wave eqn">
+      <option name="closed" value="true" />
+      <created>1727940710759</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1727940710759</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Prepped for pip distributions">
+      <option name="closed" value="true" />
+      <created>1729599139783</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1729599139783</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Prepped for pip distributions">
+      <option name="closed" value="true" />
+      <created>1729599183943</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1729599183943</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Removed print statement counter">
+      <option name="closed" value="true" />
+      <created>1729599916393</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1729599916393</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Added transient lower bounds to fix multiple trsting corrections">
+      <option name="closed" value="true" />
+      <created>1729671411016</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1729671411016</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Updated PyCycle docstrings">
+      <option name="closed" value="true" />
+      <created>1729671823930</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1729671823930</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Added Holm adjustments and now report params for all variant molecules.">
+      <option name="closed" value="true" />
+      <created>1730114179206</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1730114179206</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Removed done todo">
+      <option name="closed" value="true" />
+      <created>1730207588584</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1730207588584</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Removed done todos">
+      <option name="closed" value="true" />
+      <created>1730207769763</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1730207769763</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Removed done todos">
+      <option name="closed" value="true" />
+      <created>1730214630059</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1730214630059</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Commented out print-statement">
+      <option name="closed" value="true" />
+      <created>1730214675167</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1730214675167</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Fixed equations&#10;Commented out print-statement">
+      <option name="closed" value="true" />
+      <created>1731578626812</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1731578626812</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Set freq to +/- 0.25&#10;Commented out print-statement">
+      <option name="closed" value="true" />
+      <created>1731579379687</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1731579379687</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Reduced fitting iterations by factor of 10&#10;Commented out print-statement">
+      <option name="closed" value="true" />
+      <created>1731579574272</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1731579574272</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Reduced iterations further in attempt to increase speed.&#10;&#10;Also introduced contingency if-statements for iterations where no solution is found">
+      <option name="closed" value="true" />
+      <created>1731944438044</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1731944438044</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Increased iterations to improve results">
+      <option name="closed" value="true" />
+      <created>1732007737346</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1732007737346</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Removed python oscillators">
+      <option name="closed" value="true" />
+      <created>1732117456503</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1732117456503</updated>
+    </task>
+    <task id="LOCAL-00024" summary="corrected imports">
+      <option name="closed" value="true" />
+      <created>1732195069961</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1732195069961</updated>
+    </task>
+    <task id="LOCAL-00025" summary="housekeeping">
+      <option name="closed" value="true" />
+      <created>1732201034866</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1732201034866</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="Dev" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Begining to tidy" />
+    <MESSAGE value="Prepared for test data provision" />
+    <MESSAGE value="Removed progress counter" />
+    <MESSAGE value="Modified equations to model: sinusoidal, square and cycloid waves.&#10;&#10;All should be properly bounded and test indicate accurate parameterisation." />
+    <MESSAGE value="Fixed cycloid fitting&#10;&#10;Introduced transient eqn- not working yet" />
+    <MESSAGE value="Added variance filter, so invariant molecules are not parameterised&#10;&#10;Fixed transient-fitting." />
+    <MESSAGE value="Fixed square wave eqn" />
+    <MESSAGE value="Prepped for pip distributions" />
+    <MESSAGE value="Removed print statement counter" />
+    <MESSAGE value="Added transient lower bounds to fix multiple trsting corrections" />
+    <MESSAGE value="Updated PyCycle docstrings" />
+    <MESSAGE value="Added Holm adjustments and now report params for all variant molecules." />
+    <MESSAGE value="Removed done todo" />
+    <MESSAGE value="Removed done todos" />
+    <MESSAGE value="Commented out print-statement" />
+    <MESSAGE value="Fixed equations&#10;Commented out print-statement" />
+    <MESSAGE value="Set freq to +/- 0.25&#10;Commented out print-statement" />
+    <MESSAGE value="Reduced fitting iterations by factor of 10&#10;Commented out print-statement" />
+    <MESSAGE value="Reduced iterations further in attempt to increase speed.&#10;&#10;Also introduced contingency if-statements for iterations where no solution is found" />
+    <MESSAGE value="Increased iterations to improve results" />
+    <MESSAGE value="Removed python oscillators" />
+    <MESSAGE value="corrected imports" />
+    <MESSAGE value="housekeeping" />
+    <option name="LAST_COMMIT_MESSAGE" value="housekeeping" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/../../Pycycledev/development/20240703 EHO defined waveforms with bounds.py</url>
+          <line>58</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/PyCycle_clone$20240819_busted_ass_PyCycle.coverage" NAME="20240819 busted ass PyCycle Coverage Results" MODIFIED="1724096502880" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../.." />
+    <SUITE FILE_PATH="coverage/PyCycle_clone$PyCycle_analysis.coverage" NAME="PyCycle analysis Coverage Results" MODIFIED="1731941506149" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../test data" />
+    <SUITE FILE_PATH="coverage/PyCycle_clone$PyCycle.coverage" NAME="PyCycle Coverage Results" MODIFIED="1730799367783" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>
