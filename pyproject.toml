@@ -1,0 +1,33 @@
+[build-system]
+requires = ["maturin>=0.14,<1.74"]
+build-backend = "maturin"
+
+[project]
+name = "pycyclebio"
+version = "0.0.5"
+authors = [
+  { name="Alexander R Bennett", email="alex.bennett@gu.se" },
+]
+description = "Python based toolkit for temporal molecular biology"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Rust",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+"scipy",
+"statsmodels",
+"pandas",
+"numpy"
+]
+
+[project.urls]
+Homepage = "https://github.com/Glycocalex/PyCycle"
+Issues = "https://github.com/Glycocalex/PyCycle/issues"
+
+[tool.maturin]
+module-name = "pycyclebio"
+bindings = "pyo3"
