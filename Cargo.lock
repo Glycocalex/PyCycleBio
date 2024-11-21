@@ -156,7 +156,7 @@ dependencies = [
 
 [[package]]
 name = "pycyclebio"
-version = "0.1.0"
+version = "0.0.7"
 dependencies = [
  "numpy",
  "pyo3",
