@@ -263,7 +263,6 @@ def get_pycycle(df_in):
         "Feature": invariant_features,
         "p-val": [np.nan] * len(invariant_features),
         "BH-padj": [np.nan] * len(invariant_features),
-        "Holm-padj": [np.nan] * len(invariant_features),
         "Type": ['invariant'] * len(invariant_features),
         "parameters": [np.nan] * len(invariant_features)
     })
