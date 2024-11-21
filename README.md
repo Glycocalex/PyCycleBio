@@ -7,3 +7,4 @@ Input data is assessed for variance.
 Variant rows are modelled using 4 equations. The model with lowest residuals is reported, alongside model parameters and statistics.
 
 https://github.com/Glycocalex/PyCycle
+https://pypi.org/project/pycyclebio/
