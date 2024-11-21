@@ -54,7 +54,5 @@ jobs:
       - name: Publish to PyPI
         if: github.event_name == 'push'  # Only publish on push events
         run: |
-          twine upload dist/*
-        env:
-          TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
-          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+          ${{ secrets.TWINE_UPLOAD }}
+          
