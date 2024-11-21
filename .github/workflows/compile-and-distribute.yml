@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  build-and-publish:
+  compile-and-distribute:
     name: Build and Publish to PyPI
     runs-on: ${{ matrix.os }}
 
