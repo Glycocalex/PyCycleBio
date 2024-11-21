@@ -4,7 +4,7 @@ build-backend = "maturin"
 
 [project]
 name = "pycyclebio"
-version = "0.0.8"
+version = "0.0.9"
 authors = [
   { name="Alexander R Bennett", email="alex.bennett@gu.se" },
 ]
