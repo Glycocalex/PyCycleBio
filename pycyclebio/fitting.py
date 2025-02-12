@@ -270,9 +270,7 @@ def get_pycycle(df_in):
     df_out = pd.concat([df_out, invariant_rows], ignore_index=False)
     return df_out.sort_values(by='p-val').sort_values(by='BH-padj')
 
-# Todo: can fourier transformations be used to aid in parameterisation of waveforms?
+# Todo: can fourier transformations be used to aid in parameterisation of waveforms? (detect fundament/harmonics)
 # Todo: Introduce a term to allow wavelengths of different periods to be analysed
-# Todo: tighten up time extraction, ZT phrasing unnecessary
-# Todo: Cosinor also sums the composite eqns. can we use a eqn that multiplies components?
 # Todo: Include compositional transforms + uncertainty scale model
 # Todo: introduce modifier to y term (baseline) to capture general trends in expression?
