@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="New pypi version">
+    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="Updated todo list">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -42,7 +42,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/Alex Bennett/Documents/Papers/PyCycle/Datasets/timetrial/ROC plots.py",
+    "last_opened_file_path": "C:/Users/Alex Bennett/Desktop/Python/Glycowork/glycowork_ab",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -164,6 +164,8 @@
       <workItem from="1737026076376" duration="2773000" />
       <workItem from="1737538049501" duration="505000" />
       <workItem from="1737632955749" duration="1382000" />
+      <workItem from="1739347271791" duration="21563000" />
+      <workItem from="1739542462049" duration="1212000" />
     </task>
     <task id="LOCAL-00001" summary="Begining to tidy">
       <option name="closed" value="true" />
@@ -461,7 +463,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732217347301</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="Updated todo list">
+      <option name="closed" value="true" />
+      <created>1739372035477</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1739372035477</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -491,7 +501,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Modified equations to model: sinusoidal, square and cycloid waves.&#10;&#10;All should be properly bounded and test indicate accurate parameterisation." />
     <MESSAGE value="Fixed cycloid fitting&#10;&#10;Introduced transient eqn- not working yet" />
     <MESSAGE value="Added variance filter, so invariant molecules are not parameterised&#10;&#10;Fixed transient-fitting." />
     <MESSAGE value="Fixed square wave eqn" />
@@ -516,7 +525,8 @@
     <MESSAGE value="Added dist file" />
     <MESSAGE value="Testing action" />
     <MESSAGE value="New pypi version" />
-    <option name="LAST_COMMIT_MESSAGE" value="New pypi version" />
+    <MESSAGE value="Updated todo list" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated todo list" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

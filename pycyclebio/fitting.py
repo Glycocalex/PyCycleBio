@@ -36,7 +36,7 @@ def calculate_variances(data):
         variances[zt] = zt_var if zt_var else 0  # Replace NaN variances with 0
     return variances
 
-def fit_best_waveform(df_row):
+def fit_best_waveform(df_row, period):
     """
     Fits all three waveform models to the data and determines the best fit.
 
@@ -219,13 +219,14 @@ def variance_based_filtering(df, min_feature_variance=0.05):
     invariant_df = df.loc[variances <= min_feature_variance]
     return variant_df, invariant_df
 
-def get_pycycle(df_in):
+def get_pycycle(df_in, period):
     """
     Models expression data using 4 equations.
 
     :param df_in: A dataframe organised with samples defined by columns and molecules defined by rows.
                     The first column and row shuold contain strings identifying samples or molecules.
                     Samples should be organised in ascending time order (all reps per timepoint should be together)
+    :param period: An integer indictaing the primary period length of interest (in same AU as timepoints)
     :return: df_out: A dataframe containing the best-fitting model, with parameters that produced the best fit,
                         alongside statistics indicating the robustness of the model's fit compared to input data.
     """
@@ -238,7 +239,7 @@ def get_pycycle(df_in):
     if isinstance(df.iloc[0, 0], str):
         df = df.set_index(df.columns.tolist()[0])
     for i in range(df.shape[0]):
-        waveform, params, covariance, fitted_values = fit_best_waveform(df.iloc[i, :])
+        waveform, params, covariance, fitted_values = fit_best_waveform(df.iloc[i, :], period)
         if waveform == 'unsolved':
             tau, p_value = np.NaN, np.NaN
             modulation = np.NaN
@@ -271,6 +272,5 @@ def get_pycycle(df_in):
     return df_out.sort_values(by='p-val').sort_values(by='BH-padj')
 
 # Todo: can fourier transformations be used to aid in parameterisation of waveforms? (detect fundament/harmonics)
-# Todo: Introduce a term to allow wavelengths of different periods to be analysed
 # Todo: Include compositional transforms + uncertainty scale model
 # Todo: introduce modifier to y term (baseline) to capture general trends in expression?
