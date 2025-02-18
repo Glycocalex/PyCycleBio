@@ -167,7 +167,7 @@ def fit_best_waveform(df_row, period):
         best_fitted_values = np.NaN
     elif best_fit_index == 0:
         best_params = harmonic_params
-        best_waveform = 'harmonic_oscillator'
+        best_waveform = 'sinusoidal'
         best_covariance = harmonic_covariance
         best_fitted_values = harmonic_fitted_values
     elif best_fit_index == 1:
