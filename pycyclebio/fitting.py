@@ -20,6 +20,11 @@ def fourier_sawtooth_wave(t, A, gamma, omega, phi, y):
         np.sin(2*math.pi*omega*(t+phi)) + np.sin(4*math.pi*omega*(t+phi))/2))
 
 
+def p_square_wave(t, A, gamma, omega, phi, y):
+    return A * np.exp(gamma * t) * (np.sin((omega*t)+phi) + 0.25*np.sin(((omega*t)+phi)*3.0)) + y
+
+def p_cycloid_wave(t, A, gamma, omega, phi, y):
+    return A * np.exp(gamma * t) * ((4.0 * np.cos((omega*t)+phi)) + np.cos(2.0*((omega*t) + phi))) + y
 
 def calculate_variances(data):
     # Extract ZT times and replicate numbers from the column names
@@ -44,7 +49,7 @@ def fit_best_waveform(df_row, period):
     :return: A tuple containing the best-fit parameters, the waveform type, and the covariance of the fit.
     """
     timepoints = np.array([float(col.split('_')[0][2:]) for col in df_row.index])
-    timepoints = (timepoints /24 * (2 * math.pi)) # Todo: Consider introducing another term here for vairable period length (24 will only work for circ studies)
+    timepoints = (timepoints / period * (2 * math.pi))
     amplitudes = df_row.values
     variances = calculate_variances(df_row)
     weights = np.array([1 / variances[tp] if tp in variances and variances[tp] != 0 else 0 for tp in timepoints])+0.000001 # 0 variance messes model selection up, so a negligable value is used here
@@ -84,7 +89,7 @@ def fit_best_waveform(df_row, period):
     square_bounds = (square_lower_bounds, square_upper_bounds)
     try:
         square_params, square_covariance = curve_fit(
-            pseudo_square_wave,
+            p_square_wave,
             timepoints,
             amplitudes,
             bounds=square_bounds,
@@ -106,12 +111,12 @@ def fit_best_waveform(df_row, period):
     # Fit cycloid oscillator
     # (t, A, gamma, omega, phi, y):
     cycloid_initial_params = [np.median(amplitudes), 0, 1, 0, np.mean(amplitudes)] # Don't need to provide t
-    cycloid_lower_bounds = [-np.max(amplitudes), -0.05, 0.75, -(4*math.pi), -np.abs(amplitudes[np.argmax(np.abs(amplitudes))])]
-    cycloid_upper_bounds = [np.max(amplitudes), 0.05, 1.25, (4*math.pi), np.max(amplitudes)]
+    cycloid_lower_bounds = [-np.max(amplitudes), -0.05, 0.99, -(4*math.pi), -np.abs(amplitudes[np.argmax(np.abs(amplitudes))])]
+    cycloid_upper_bounds = [np.max(amplitudes), 0.05, 1.01, (4*math.pi), np.max(amplitudes)]
     cycloid_bounds = (cycloid_lower_bounds, cycloid_upper_bounds)
     try:
         cycloid_params, cycloid_covariance = curve_fit(
-            pseudo_cycloid_wave,
+            p_cycloid_wave,
             timepoints,
             amplitudes,
             bounds = cycloid_bounds,
@@ -236,6 +241,7 @@ def get_pycycle(df_in, period):
     osc_type = []
     mod_type = []
     parameters = []
+    fitted_model = []
     if isinstance(df.iloc[0, 0], str):
         df = df.set_index(df.columns.tolist()[0])
     for i in range(df.shape[0]):
@@ -256,9 +262,11 @@ def get_pycycle(df_in, period):
         osc_type.append(oscillation)
         mod_type.append(modulation)
         parameters.append(params)
+        fitted_model.append(fitted_values)
 #        print(i)   # Uncomment this line for progress counter (will spam)
     corr_pvals = multipletests(pvals, alpha= 0.001, method='fdr_tsbh')[1] # alpha= 0.000001,
-    df_out = pd.DataFrame({"Feature": df.index.tolist(), "p-val": pvals, "BH-padj": corr_pvals,"Type": osc_type, "Mod": mod_type, "parameters":parameters})
+    df_out = pd.DataFrame({"Feature": df.index.tolist(), "p-val": pvals, "BH-padj": corr_pvals,"Type": osc_type,
+                           "Mod": mod_type, "parameters":parameters, "Fitted_values":fitted_model})
     invariant_features = df_invariant.index.tolist()
     invariant_rows = pd.DataFrame({
         "Feature": invariant_features,

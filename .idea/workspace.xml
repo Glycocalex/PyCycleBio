@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="Updated todo list">
+    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="Renamed 'harmonic' to 'sinusoidal' in outputs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pycyclebio/fitting.py" beforeDir="false" afterPath="$PROJECT_DIR$/pycyclebio/fitting.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,33 +33,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Python.20240208 james glycan plotting.executor": "Debug",
-    "Python.20240819 busted ass PyCycle.executor": "Debug",
-    "Python.PyCycle analysis.executor": "Debug",
-    "Python.PyCycle.executor": "Debug",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/Alex Bennett/Desktop/Python/Glycowork/glycowork_ab",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Python.20240208 james glycan plotting.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.20240819 busted ass PyCycle.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.PyCycle analysis.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.PyCycle.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Alex Bennett/Desktop/Python/Scripts/20240201 james glycan plotting.py&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "TOML",
-      "Python",
-      "Markdown"
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;TOML&quot;,
+      &quot;Python&quot;,
+      &quot;Markdown&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Alex Bennett\Documents\Papers\PyCycle\Datasets\PMID35511946\sampling conditions res" />
@@ -166,6 +167,12 @@
       <workItem from="1737632955749" duration="1382000" />
       <workItem from="1739347271791" duration="21563000" />
       <workItem from="1739542462049" duration="1212000" />
+      <workItem from="1739868898063" duration="5864000" />
+      <workItem from="1740044485034" duration="666000" />
+      <workItem from="1740062196098" duration="803000" />
+      <workItem from="1740126624494" duration="266000" />
+      <workItem from="1740472654018" duration="19851000" />
+      <workItem from="1740508887746" duration="7475000" />
     </task>
     <task id="LOCAL-00001" summary="Begining to tidy">
       <option name="closed" value="true" />
@@ -471,7 +478,23 @@
       <option name="project" value="LOCAL" />
       <updated>1739372035477</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Added new parameter that allows period of interest to be defined">
+      <option name="closed" value="true" />
+      <created>1739892400775</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1739892400775</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Renamed 'harmonic' to 'sinusoidal' in outputs">
+      <option name="closed" value="true" />
+      <created>1739892981991</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1739892981991</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -501,8 +524,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed cycloid fitting&#10;&#10;Introduced transient eqn- not working yet" />
-    <MESSAGE value="Added variance filter, so invariant molecules are not parameterised&#10;&#10;Fixed transient-fitting." />
     <MESSAGE value="Fixed square wave eqn" />
     <MESSAGE value="Prepped for pip distributions" />
     <MESSAGE value="Removed print statement counter" />
@@ -526,7 +547,9 @@
     <MESSAGE value="Testing action" />
     <MESSAGE value="New pypi version" />
     <MESSAGE value="Updated todo list" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated todo list" />
+    <MESSAGE value="Added new parameter that allows period of interest to be defined" />
+    <MESSAGE value="Renamed 'harmonic' to 'sinusoidal' in outputs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Renamed 'harmonic' to 'sinusoidal' in outputs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
