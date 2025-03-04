@@ -28,11 +28,11 @@ def p_square_wave(t, A, gamma, omega, phi, y):
 def p_cycloid_wave(t, A, gamma, omega, phi, y):
     return A * np.exp(gamma * t) * (-0.5 * ((np.cos(2*((omega*t)+phi))) - 2*np.cos((omega*t) + phi))) + y
 
-def p_transient_impulse(t, A, period, width, y):
+def p_transient_impulse(t, A,gamma,  period, width, y):
     p_tau = (period/24)  * (2.0*np.pi)
     t_mod = np.mod(t, 2*np.pi - 1e-7)
     impulse = np.where(t_mod - p_tau >=0, np.exp(-0.5*((t_mod - p_tau)/width)**2), 0.0)
-    return A * impulse + y
+    return A * np.exp(gamma * t) * impulse + y
 def calculate_variances(data):
     # Extract ZT times and replicate numbers from the column names
     zt_replicates = data.index.str.extract(r'(ZT\d+)_(C\d+)')
@@ -144,9 +144,9 @@ def fit_best_waveform(df_row, period):
 
     # Fit transient oscillator
     #   (t, A, p, w, y):
-    transient_initial_params = [np.median(amplitudes), 1, 1, np.min(amplitudes)]
-    transient_lower_bounds = [np.min(amplitudes)/2, 0.1, 0.1, 0]  # (A, p, w, y) # Lower bounds of p and w need to be adjusted with experimental resolution (in extreme cases), if they are too small compared to measurements they will produce a flat line (trasnient occuring for very small duration between points) which breaks the statistical corrections
-    transient_upper_bounds = [np.max(amplitudes), 24, 4, np.max(amplitudes)]
+    transient_initial_params = [np.median(amplitudes), 0, 1, 1, np.min(amplitudes)]
+    transient_lower_bounds = [np.min(amplitudes)/2, -0.05, 0.1, 0.1, 0]  # (A, p, w, y) # Lower bounds of p and w need to be adjusted with experimental resolution (in extreme cases), if they are too small compared to measurements they will produce a flat line (trasnient occuring for very small duration between points) which breaks the statistical corrections
+    transient_upper_bounds = [np.max(amplitudes), 0.05, 24, 4, np.max(amplitudes)]
     transient_bounds = (transient_lower_bounds, transient_upper_bounds)
     try:
         transient_params, transient_covariance = curve_fit(
@@ -258,10 +258,7 @@ def get_pycycle(df_in, period):
             modulation = np.NaN
         else:
             tau, p_value = kendalltau(fitted_values, df.iloc[i, :].values)
-            if waveform == 'transient':
-                modulation = params[1]
-            else:
-                modulation = categorize_rhythm(params[1])
+            modulation = categorize_rhythm(params[1])
         oscillation = waveform
         if math.isnan(p_value):
             p_value = 1
@@ -289,8 +286,3 @@ def get_pycycle(df_in, period):
 # Todo: can fourier transformations be used to aid in parameterisation of waveforms? (detect fundament/harmonics)
 # Todo: Include compositional transforms + uncertainty scale model
 # Todo: introduce modifier to y term (baseline) to capture general trends in expression?
-
-
-data = pd.read_csv(r'C:\Users\Alex Bennett\Documents\Papers\PyCycle\Datasets\PMID34968386\Liver_WT_reads_pycy_format.csv')
-res = get_pycycle(data, 24)
-res.to_csv('C:\\Users\\Alex Bennett\\Desktop\\250226pycyres.csv', sep=',', index=False)
