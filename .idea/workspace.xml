@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="Fixed cycloid and trand labels">
+    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="Implemented all oscillators in Python">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pycyclebio/fitting.py" beforeDir="false" afterPath="$PROJECT_DIR$/pycyclebio/fitting.py" afterDir="false" />
     </list>
@@ -51,7 +51,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Alex Bennett/Documents/Papers/PyCycle/Datasets/runtimes&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Alex Bennett/Desktop/Python/Glycowork/glycowork_ab&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -62,19 +62,19 @@
   },
   &quot;keyToStringList&quot;: {
     &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
-      &quot;TOML&quot;,
       &quot;Python&quot;,
+      &quot;TOML&quot;,
       &quot;Markdown&quot;
     ]
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Alex Bennett\Documents\Papers\PyCycle\Datasets\PMID29911688" />
+      <recent name="C:\Users\Alex Bennett\Documents\Papers\PyCycle\wave graphs" />
       <recent name="C:\Users\Alex Bennett\Documents\Papers\PyCycle\Datasets\runtimes" />
       <recent name="C:\Users\Alex Bennett\Documents\Papers\PyCycle\Datasets\PMID35511946\sampling conditions res" />
       <recent name="C:\Users\Alex Bennett\Documents\Papers\PyCycle\Datasets\PMID34968386\direct comparison" />
-      <recent name="C:\Users\Alex Bennett\Documents\Papers\PyCycle\Datasets\PMID34059820\direct comparison" />
-      <recent name="C:\Users\Alex Bennett\Desktop\rust\PyCycle_random crap\problem defs" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -186,6 +186,17 @@
       <workItem from="1740646382816" duration="10488000" />
       <workItem from="1740738183332" duration="2403000" />
       <workItem from="1740994374361" duration="4075000" />
+      <workItem from="1741078621391" duration="38233000" />
+      <workItem from="1741185693867" duration="380000" />
+      <workItem from="1741187032091" duration="137000" />
+      <workItem from="1741190087101" duration="5000" />
+      <workItem from="1741336630630" duration="9291000" />
+      <workItem from="1741953081246" duration="57000" />
+      <workItem from="1742221842116" duration="203000" />
+      <workItem from="1742475013520" duration="9384000" />
+      <workItem from="1742493574082" duration="7364000" />
+      <workItem from="1742553645121" duration="614000" />
+      <workItem from="1742572504873" duration="2429000" />
     </task>
     <task id="LOCAL-00001" summary="Begining to tidy">
       <option name="closed" value="true" />
@@ -523,7 +534,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740584280278</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="Implemented all oscillators in Python">
+      <option name="closed" value="true" />
+      <created>1741078714251</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1741078714251</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -553,7 +572,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Removed print statement counter" />
     <MESSAGE value="Added transient lower bounds to fix multiple trsting corrections" />
     <MESSAGE value="Updated PyCycle docstrings" />
     <MESSAGE value="Added Holm adjustments and now report params for all variant molecules." />
@@ -578,7 +596,8 @@
     <MESSAGE value="Renamed 'harmonic' to 'sinusoidal' in outputs" />
     <MESSAGE value="Added model values to output" />
     <MESSAGE value="Fixed cycloid and trand labels" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed cycloid and trand labels" />
+    <MESSAGE value="Implemented all oscillators in Python" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented all oscillators in Python" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -595,68 +614,43 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/../test data/PyCycle analysis.py</url>
-          <line>106</line>
+          <line>115</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/pycyclebio/fitting.py</url>
-          <line>174</line>
+          <line>175</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/pycyclebio/fitting.py</url>
-          <line>173</line>
+          <line>174</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/pycyclebio/fitting.py</url>
-          <line>172</line>
+          <line>173</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/pycyclebio/fitting.py</url>
-          <line>123</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/pycyclebio/fitting.py</url>
-          <line>124</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/pycyclebio/fitting.py</url>
-          <line>135</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/pycyclebio/fitting.py</url>
-          <line>136</line>
+          <line>137</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/pycyclebio/fitting.py</url>
-          <line>137</line>
-          <option name="timeStamp" value="14" />
+          <line>83</line>
+          <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/pycyclebio/fitting.py</url>
-          <line>139</line>
-          <option name="timeStamp" value="15" />
+          <line>110</line>
+          <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/pycyclebio/fitting.py</url>
-          <line>142</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/pycyclebio/fitting.py</url>
-          <line>141</line>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/pycyclebio/fitting.py</url>
-          <line>140</line>
-          <option name="timeStamp" value="19" />
+          <line>164</line>
+          <option name="timeStamp" value="26" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -664,7 +658,7 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/PyCycle_clone$20240819_busted_ass_PyCycle.coverage" NAME="20240819 busted ass PyCycle Coverage Results" MODIFIED="1724096502880" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../.." />
     <SUITE FILE_PATH="coverage/PyCycle_clone$20240208_james_glycan_plotting.coverage" NAME="20240208 james glycan plotting Coverage Results" MODIFIED="1740571116967" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../Scripts" />
-    <SUITE FILE_PATH="coverage/PyCycle_clone$fitting.coverage" NAME="fitting Coverage Results" MODIFIED="1740571135226" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pycyclebio" />
+    <SUITE FILE_PATH="coverage/PyCycle_clone$fitting.coverage" NAME="fitting Coverage Results" MODIFIED="1741164171504" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pycyclebio" />
     <SUITE FILE_PATH="coverage/PyCycle_clone$PyCycle_analysis.coverage" NAME="PyCycle analysis Coverage Results" MODIFIED="1731941506149" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../test data" />
     <SUITE FILE_PATH="coverage/PyCycle_clone$PyCycle.coverage" NAME="PyCycle Coverage Results" MODIFIED="1730799367783" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
