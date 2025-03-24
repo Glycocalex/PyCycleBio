@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="Implemented all oscillators in Python">
+    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="Cleaned up for new version">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pycyclebio/fitting.py" beforeDir="false" afterPath="$PROJECT_DIR$/pycyclebio/fitting.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -197,6 +196,12 @@
       <workItem from="1742493574082" duration="7364000" />
       <workItem from="1742553645121" duration="614000" />
       <workItem from="1742572504873" duration="2429000" />
+      <workItem from="1742577244323" duration="149000" />
+      <workItem from="1742662961276" duration="621000" />
+      <workItem from="1742746814504" duration="2376000" />
+      <workItem from="1742802034975" duration="908000" />
+      <workItem from="1742808074389" duration="2388000" />
+      <workItem from="1742817539754" duration="1075000" />
     </task>
     <task id="LOCAL-00001" summary="Begining to tidy">
       <option name="closed" value="true" />
@@ -542,7 +547,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741078714251</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Cleaned up for new version">
+      <option name="closed" value="true" />
+      <created>1742577289656</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1742577289656</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -572,7 +585,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added transient lower bounds to fix multiple trsting corrections" />
     <MESSAGE value="Updated PyCycle docstrings" />
     <MESSAGE value="Added Holm adjustments and now report params for all variant molecules." />
     <MESSAGE value="Removed done todo" />
@@ -597,7 +609,8 @@
     <MESSAGE value="Added model values to output" />
     <MESSAGE value="Fixed cycloid and trand labels" />
     <MESSAGE value="Implemented all oscillators in Python" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented all oscillators in Python" />
+    <MESSAGE value="Cleaned up for new version" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cleaned up for new version" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
