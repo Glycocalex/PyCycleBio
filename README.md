@@ -9,3 +9,5 @@ Variant rows are modelled using 4 equations. The model with lowest residuals is 
 https://github.com/Glycocalex/PyCycle-bio
 
 https://pypi.org/project/pycyclebio/
+
+Example data taken from: [Aviram, _et al._ 2021](https://doi.org/10.1371/journal.pbio.3001492)
