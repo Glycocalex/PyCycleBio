@@ -4,7 +4,6 @@ from scipy.stats import kendalltau
 from statsmodels.stats.multitest import multipletests
 import pandas as pd
 import numpy as np
-#from pycyclebio.pycyclebio import harmonic_oscillator, pseudo_square_wave, pseudo_cycloid_wave, transient_impulse
 
 def fourier_square_wave(t, A, gamma, omega, phi,  y):
 
