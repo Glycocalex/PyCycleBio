@@ -173,10 +173,10 @@ def fit_best_waveform(df_row, period):
     sse_values = [harmonic_sse, square_sse, cycloid_sse, transient_sse]
     best_fit_index = np.argmin(sse_values)
     if sse_values == [np.inf, np.inf, np.inf, np.inf]:
-        best_params = np.NaN
+        best_params = np.nan
         best_waveform = 'unsolved'
-        best_covariance = np.NaN
-        best_fitted_values = np.NaN
+        best_covariance = np.nan
+        best_fitted_values = np.nan
     elif best_fit_index == 0:
         best_params = harmonic_params
         best_waveform = 'sinusoidal'
@@ -254,8 +254,8 @@ def get_pycycle(df_in, period):
     for i in range(df.shape[0]):
         waveform, params, covariance, fitted_values = fit_best_waveform(df.iloc[i, :], period)
         if waveform == 'unsolved':
-            tau, p_value = np.NaN, np.NaN
-            modulation = np.NaN
+            tau, p_value = np.nan, np.nan
+            modulation = np.nan
         else:
             tau, p_value = kendalltau(fitted_values, df.iloc[i, :].values)
             modulation = categorize_rhythm(params[1])
