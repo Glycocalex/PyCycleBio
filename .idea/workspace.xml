@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="Pypi version upgrade">
+    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="Corrected version in pyproject.toml">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pycyclebio/fitting.py" beforeDir="false" afterPath="$PROJECT_DIR$/pycyclebio/fitting.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +22,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="dev" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -597,7 +596,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742829556647</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="Corrected version in pyproject.toml">
+      <option name="closed" value="true" />
+      <created>1744640530524</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1744640530524</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -627,7 +634,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed equations&#10;Commented out print-statement" />
     <MESSAGE value="Set freq to +/- 0.25&#10;Commented out print-statement" />
     <MESSAGE value="Reduced fitting iterations by factor of 10&#10;Commented out print-statement" />
     <MESSAGE value="Reduced iterations further in attempt to increase speed.&#10;&#10;Also introduced contingency if-statements for iterations where no solution is found" />
@@ -652,7 +658,8 @@
     <MESSAGE value="Updating pyproject.toml" />
     <MESSAGE value="Merge branch 'main' into dev" />
     <MESSAGE value="Pypi version upgrade" />
-    <option name="LAST_COMMIT_MESSAGE" value="Pypi version upgrade" />
+    <MESSAGE value="Corrected version in pyproject.toml" />
+    <option name="LAST_COMMIT_MESSAGE" value="Corrected version in pyproject.toml" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
