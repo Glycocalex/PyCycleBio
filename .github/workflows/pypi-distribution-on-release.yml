@@ -23,10 +23,16 @@ jobs:
           python -m pip install --upgrade pip
           pip install build twine
 
+      - name: Remove old distributions
+        run: rm -rf dist/*
+
       - name: Build the package
         run: python -m build
 
-      - name: Check the package (optional but recommended)
+      - name: Show built files
+        run: ls -lh dist/
+
+      - name: Check the package
         run: twine check dist/*
 
       - name: Publish to PyPI
