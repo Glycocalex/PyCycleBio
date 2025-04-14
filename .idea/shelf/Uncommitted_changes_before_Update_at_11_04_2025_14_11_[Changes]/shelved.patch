@@ -1,0 +1,19 @@
+Index: pyproject.toml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>[build-system]\r\nrequires = [\"setuptools>=61.0\", \"wheel\"]\r\nbuild-backend = \"setuptools.build_meta\"\r\n\r\n[project]\r\nname = \"pycyclebio\"\r\nversion = \"1.0\"\r\nauthors = [\r\n  { name=\"Alexander R Bennett\", email=\"alex.bennett@gu.se\" },\r\n]\r\nlicense = { text = \"MIT\" }\r\ndescription = \"Python based toolkit for temporal molecular biology\"\r\nreadme = \"README.md\"\r\nrequires-python = \">=3.8\"\r\nclassifiers = [\r\n    \"Programming Language :: Python :: 3\",\r\n    \"License :: OSI Approved :: MIT License\",\r\n    \"Operating System :: OS Independent\",\r\n]\r\ndependencies = [\r\n\"scipy\",\r\n\"statsmodels\",\r\n\"pandas\",\r\n\"numpy\"\r\n]\r\n\r\n[project.urls]\r\nHomepage = \"https://github.com/Glycocalex/PyCycle\"\r\nIssues = \"https://github.com/Glycocalex/PyCycle/issues\"\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pyproject.toml b/pyproject.toml
+--- a/pyproject.toml	(revision a0e9367bbf4b6329590ca1987c57a12ed4b688b4)
++++ b/pyproject.toml	(date 1744373492809)
+@@ -4,7 +4,7 @@
+ 
+ [project]
+ name = "pycyclebio"
+-version = "1.0"
++version = "1.0.2"
+ authors = [
+   { name="Alexander R Bennett", email="alex.bennett@gu.se" },
+ ]

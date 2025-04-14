@@ -4,6 +4,7 @@ from scipy.stats import kendalltau
 from statsmodels.stats.multitest import multipletests
 import pandas as pd
 import numpy as np
+import re
 
 def fourier_square_wave(t, A, gamma, omega, phi,  y):
 
@@ -35,8 +36,8 @@ def p_transient_impulse(t, A,gamma,  period, width, phi,  y):
 
 def calculate_variances(data):
     # Extract ZT times and replicate numbers from the column names
-    zt_replicates = data.index.str.extract(r'(ZT\d+)_(C\d+)')
-    zt_times = zt_replicates[0].str.extract(r'ZT(\d+)').astype(int)[0].values
+    zt_replicates = data.index.str.extract(r'(\d+)_\D*(\d+)')
+    zt_times = zt_replicates[0].str.extract(r'(\d+)').astype(int)[0].values
 
     # Group by ZT times and calculate variances
     variances = {}
@@ -55,7 +56,7 @@ def fit_best_waveform(df_row, period):
     :param df_row: A DataFrame row containing the data to fit.
     :return: A tuple containing the best-fit parameters, the waveform type, and the covariance of the fit.
     """
-    timepoints = np.array([float(col.split('_')[0][2:]) for col in df_row.index])
+    timepoints = np.array([float(re.findall(r'\d+', col)[0]) for col in df_row.index])
     timepoints = (timepoints / period * (2 * math.pi))
     amplitudes = df_row.values
     variances = calculate_variances(df_row)
