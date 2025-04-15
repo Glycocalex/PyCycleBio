@@ -284,7 +284,10 @@ def get_pycycle(df_in, period):
     df_out = pd.concat([df_out, invariant_rows], ignore_index=False)
     return df_out.sort_values(by='p-val').sort_values(by='BH-padj')
 
-# Todo: can fourier transformations be used to aid in parameterisation of waveforms? (detect fundament/harmonics)
+# Todo: Differential expression
+# Todo: Visualisation functions for dataset-wide phases ect.
+# Todo: Phase-set enrichment tools for transcripts / proteins / glycans?
+# Todo: can fourier transformations be used to aid in parameterisation of waveforms? (detect fundamental/harmonics)
 # Todo: Include compositional transforms + uncertainty scale model
 # Todo: introduce modifier to y term (baseline) to capture general trends in expression?
 # Todo: Add 'plot(res[Arntl])' sort of function that plots a molecule with model?
