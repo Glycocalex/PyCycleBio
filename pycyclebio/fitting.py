@@ -7,33 +7,41 @@ import numpy as np
 import re
 from tqdm import tqdm
 
+
 def fourier_square_wave(t, A, gamma, omega, phi,  y):
 
     return A * np.exp(gamma * t) * (1 + (4/math.pi)*np.sum(
         np.sin(math.pi*omega*(t+phi))+np.sin(math.pi*3*omega*(t+phi))/3)) + y
 
+
 def fourier_cycloid_wave(t, A, gamma, omega, phi, y):
     return A * np.exp(gamma * t) * (2/math.pi - (4 / math.pi) * np.sum(
         np.cos(2* omega * (t + phi))/(3) + (np.cos( 4 * omega * (t + phi)) / (4*2^2-1)))) + y
+
 
 def fourier_sawtooth_wave(t, A, gamma, omega, phi, y):
     return A * np.exp(gamma * t) * (0.5 - (1/math.pi)* np.sum(
         np.sin(2*math.pi*omega*(t+phi)) + np.sin(4*math.pi*omega*(t+phi))/2))
 
+
 def p_harmonic_oscillator(t, A, gamma, omega, phi, y):
     return A * np.exp(gamma*t)*np.cos((omega*t)+phi)+y
+
 
 def p_square_wave(t, A, gamma, omega, phi, y):
     return A * np.exp(gamma * t) * (np.sin((omega*t)+phi) + 0.25*np.sin(((omega*t)+phi)*3.0)) + y
 
+
 def p_cycloid_wave(t, A, gamma, omega, phi, y):
     return A * np.exp(gamma * t) * (-0.5 * ((np.cos(2*((omega*t)+phi))) - 2*np.cos((omega*t) + phi))) + y
+
 
 def p_transient_impulse(t, A,gamma,  period, width, phi,  y):
     p_tau = (period/24) * (2.0*np.pi)
     t_mod = np.mod(t - phi, 2*np.pi - 1e-7)
     impulse = np.where(t_mod - p_tau >=0, np.exp(-0.5*((t_mod - p_tau)/width)**2), 0.0)
     return A * np.exp(gamma * t) * impulse + y
+
 
 def calculate_variances(data):
     # Extract ZT times and replicate numbers from the column names
@@ -49,6 +57,7 @@ def calculate_variances(data):
         zt_var = data[zt_columns].var(ddof=1)
         variances[zt] = zt_var if zt_var else 0  # Replace NaN variances with 0
     return variances
+
 
 def fit_best_waveform(df_row, period):
     """
@@ -201,6 +210,7 @@ def fit_best_waveform(df_row, period):
         best_fitted_values = transient_fitted_values
     return best_waveform, best_params, best_covariance, best_fitted_values
 
+
 def categorize_rhythm(gamma):
     """
     Categorizes the rhythm based on the value of γ.
@@ -217,6 +227,7 @@ def categorize_rhythm(gamma):
     else:
         return 'overexpressed' if gamma > 0.15 else 'repressed'
 
+
 def variance_based_filtering(df, min_feature_variance=0.05):
     """Variance-based filtering of features
     Arguments:
@@ -232,6 +243,7 @@ def variance_based_filtering(df, min_feature_variance=0.05):
     variant_df = df.loc[variances > min_feature_variance]
     invariant_df = df.loc[variances <= min_feature_variance]
     return variant_df, invariant_df
+
 
 def get_pycycle(df_in, period):
     """
