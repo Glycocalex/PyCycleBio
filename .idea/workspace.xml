@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="Corrected version in pyproject.toml">
+    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="Version bump">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pycyclebio/fitting.py" beforeDir="false" afterPath="$PROJECT_DIR$/pycyclebio/fitting.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +23,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="dev" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -39,35 +40,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Python.20240208 james glycan plotting.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.20240819 busted ass PyCycle.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.PyCycle analysis.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.PyCycle.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.colab prototype.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.fitting.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Alex Bennett/Desktop/Python/Glycowork/glycowork_ab&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Python.20240208 james glycan plotting.executor": "Debug",
+    "Python.20240819 busted ass PyCycle.executor": "Debug",
+    "Python.PyCycle analysis.executor": "Debug",
+    "Python.PyCycle.executor": "Debug",
+    "Python.colab prototype.executor": "Debug",
+    "Python.fitting.executor": "Debug",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/Alex Bennett/Desktop/Python/PyCycle/test data/PyCycle analysis.py",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
-      &quot;Python&quot;,
-      &quot;TOML&quot;,
-      &quot;Markdown&quot;
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "Python",
+      "TOML",
+      "Markdown"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Alex Bennett\Desktop\Python\Scripts" />
@@ -219,6 +220,9 @@
       <workItem from="1744617236236" duration="1225000" />
       <workItem from="1744618928924" duration="702000" />
       <workItem from="1744626771266" duration="4020000" />
+      <workItem from="1744642392508" duration="41000" />
+      <workItem from="1744642443472" duration="99000" />
+      <workItem from="1744723407155" duration="928000" />
     </task>
     <task id="LOCAL-00001" summary="Begining to tidy">
       <option name="closed" value="true" />
@@ -604,7 +608,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744640530524</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="Version bump">
+      <option name="closed" value="true" />
+      <created>1744642213226</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1744642213226</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -634,7 +646,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Set freq to +/- 0.25&#10;Commented out print-statement" />
     <MESSAGE value="Reduced fitting iterations by factor of 10&#10;Commented out print-statement" />
     <MESSAGE value="Reduced iterations further in attempt to increase speed.&#10;&#10;Also introduced contingency if-statements for iterations where no solution is found" />
     <MESSAGE value="Increased iterations to improve results" />
@@ -659,7 +670,8 @@
     <MESSAGE value="Merge branch 'main' into dev" />
     <MESSAGE value="Pypi version upgrade" />
     <MESSAGE value="Corrected version in pyproject.toml" />
-    <option name="LAST_COMMIT_MESSAGE" value="Corrected version in pyproject.toml" />
+    <MESSAGE value="Version bump" />
+    <option name="LAST_COMMIT_MESSAGE" value="Version bump" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -681,7 +693,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/pycyclebio/fitting.py</url>
-          <line>58</line>
+          <line>59</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
