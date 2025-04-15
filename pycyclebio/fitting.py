@@ -5,6 +5,7 @@ from statsmodels.stats.multitest import multipletests
 import pandas as pd
 import numpy as np
 import re
+from tqdm import tqdm
 
 def fourier_square_wave(t, A, gamma, omega, phi,  y):
 
@@ -252,7 +253,7 @@ def get_pycycle(df_in, period):
     fitted_model = []
     if isinstance(df.iloc[0, 0], str):
         df = df.set_index(df.columns.tolist()[0])
-    for i in range(df.shape[0]):
+    for i in tqdm(range(df.shape[0])):
         waveform, params, covariance, fitted_values = fit_best_waveform(df.iloc[i, :], period)
         if waveform == 'unsolved':
             tau, p_value = np.nan, np.nan
@@ -268,7 +269,6 @@ def get_pycycle(df_in, period):
         mod_type.append(modulation)
         parameters.append(params)
         fitted_model.append(fitted_values)
-#        print(i)   # Uncomment this line for progress counter (will spam)
     corr_pvals = multipletests(pvals, alpha= 0.001, method='fdr_tsbh')[1] # alpha= 0.000001,
     df_out = pd.DataFrame({"Feature": df.index.tolist(), "p-val": pvals, "BH-padj": corr_pvals,"Type": osc_type,
                            "Mod": mod_type, "parameters":parameters, "Fitted_values":fitted_model})
@@ -284,7 +284,10 @@ def get_pycycle(df_in, period):
     df_out = pd.concat([df_out, invariant_rows], ignore_index=False)
     return df_out.sort_values(by='p-val').sort_values(by='BH-padj')
 
-# Todo: can fourier transformations be used to aid in parameterisation of waveforms? (detect fundament/harmonics)
+# Todo: Differential expression
+# Todo: Visualisation functions for dataset-wide phases ect.
+# Todo: Phase-set enrichment tools for transcripts / proteins / glycans?
+# Todo: can fourier transformations be used to aid in parameterisation of waveforms? (detect fundamental/harmonics)
 # Todo: Include compositional transforms + uncertainty scale model
 # Todo: introduce modifier to y term (baseline) to capture general trends in expression?
 # Todo: Add 'plot(res[Arntl])' sort of function that plots a molecule with model?
