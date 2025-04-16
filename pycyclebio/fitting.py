@@ -95,7 +95,7 @@ def fit_best_waveform(df_row, period):
         harmonic_fitted_values = p_harmonic_oscillator(timepoints, *harmonic_params)
         harmonic_residuals = amplitudes - harmonic_fitted_values
         harmonic_sse = np.sum(harmonic_residuals ** 2)
-    except:
+    except RuntimeError:
         harmonic_params = np.nan
         harmonic_covariance = np.nan
         harmonic_fitted_values = [0] * len(df_row)
@@ -122,7 +122,7 @@ def fit_best_waveform(df_row, period):
         square_fitted_values = p_square_wave(timepoints, *square_params)
         square_residuals = amplitudes - square_fitted_values
         square_sse = np.sum(square_residuals ** 2)
-    except:
+    except RuntimeError:
         square_params = np.nan
         square_covariance = np.nan
         square_fitted_values = [0] * len(df_row)
@@ -150,7 +150,7 @@ def fit_best_waveform(df_row, period):
         cycloid_fitted_values = p_cycloid_wave(timepoints, *cycloid_params)
         cycloid_residuals = amplitudes - cycloid_fitted_values
         cycloid_sse = np.sum(cycloid_residuals ** 2)
-    except:
+    except RuntimeError:
         cycloid_params = np.nan
         cycloid_covariance = np.nan
         cycloid_fitted_values = [0] * len(df_row)
@@ -180,7 +180,7 @@ def fit_best_waveform(df_row, period):
         transient_fitted_values = p_transient_impulse(timepoints, *transient_params)
         transient_residuals = amplitudes - transient_fitted_values
         transient_sse = np.sum(transient_residuals ** 2)
-    except:
+    except RuntimeError:
         transient_params = np.nan
         transient_covariance = np.nan
         transient_fitted_values = [0] * len(df_row)
@@ -303,7 +303,6 @@ def get_pycycle(df_in, period):
     df_out = pd.concat([df_out, invariant_rows], ignore_index=False)
     return df_out.sort_values(by='p-val').sort_values(by='BH-padj')
 
-# Todo: Fix the bare excepts
 # Todo: Differential expression
 # Todo: Visualisation functions for dataset-wide phases ect.
 # Todo: Phase-set enrichment tools for transcripts / proteins / glycans?
