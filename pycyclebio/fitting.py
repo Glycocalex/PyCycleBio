@@ -7,33 +7,41 @@ import numpy as np
 import re
 from tqdm import tqdm
 
+
 def fourier_square_wave(t, A, gamma, omega, phi,  y):
 
     return A * np.exp(gamma * t) * (1 + (4/math.pi)*np.sum(
         np.sin(math.pi*omega*(t+phi))+np.sin(math.pi*3*omega*(t+phi))/3)) + y
 
+
 def fourier_cycloid_wave(t, A, gamma, omega, phi, y):
     return A * np.exp(gamma * t) * (2/math.pi - (4 / math.pi) * np.sum(
         np.cos(2* omega * (t + phi))/(3) + (np.cos( 4 * omega * (t + phi)) / (4*2^2-1)))) + y
+
 
 def fourier_sawtooth_wave(t, A, gamma, omega, phi, y):
     return A * np.exp(gamma * t) * (0.5 - (1/math.pi)* np.sum(
         np.sin(2*math.pi*omega*(t+phi)) + np.sin(4*math.pi*omega*(t+phi))/2))
 
+
 def p_harmonic_oscillator(t, A, gamma, omega, phi, y):
     return A * np.exp(gamma*t)*np.cos((omega*t)+phi)+y
+
 
 def p_square_wave(t, A, gamma, omega, phi, y):
     return A * np.exp(gamma * t) * (np.sin((omega*t)+phi) + 0.25*np.sin(((omega*t)+phi)*3.0)) + y
 
+
 def p_cycloid_wave(t, A, gamma, omega, phi, y):
     return A * np.exp(gamma * t) * (-0.5 * ((np.cos(2*((omega*t)+phi))) - 2*np.cos((omega*t) + phi))) + y
+
 
 def p_transient_impulse(t, A,gamma,  period, width, phi,  y):
     p_tau = (period/24) * (2.0*np.pi)
     t_mod = np.mod(t - phi, 2*np.pi - 1e-7)
-    impulse = np.where(t_mod - p_tau >=0, np.exp(-0.5*((t_mod - p_tau)/width)**2), 0.0)
+    impulse = np.where(t_mod - p_tau >= 0, np.exp(-0.5*((t_mod - p_tau)/width)**2), 0.0)
     return A * np.exp(gamma * t) * impulse + y
+
 
 def calculate_variances(data):
     # Extract ZT times and replicate numbers from the column names
@@ -49,6 +57,7 @@ def calculate_variances(data):
         zt_var = data[zt_columns].var(ddof=1)
         variances[zt] = zt_var if zt_var else 0  # Replace NaN variances with 0
     return variances
+
 
 def fit_best_waveform(df_row, period):
     """
@@ -66,7 +75,7 @@ def fit_best_waveform(df_row, period):
     # Fit extended harmonic oscillator
     # (t, A, gamma, omega, phi, y):
     harmonic_initial_params = [np.median(amplitudes), 0, 1, 0, np.mean(amplitudes)/2]
-    lower_bounds= [0, -0.2, 0.9, -period/2, -np.abs(amplitudes[np.argmax(np.abs(amplitudes))])] # (t, A, gamma, omega, phi, y):
+    lower_bounds= [0, -0.2, 0.9, -period/2, -np.abs(amplitudes[np.argmax(np.abs(amplitudes))])]
     upper_bounds = [np.max(amplitudes), 0.2, 1.1, period/2, np.max(amplitudes)]
     harmonic_bounds = (lower_bounds, upper_bounds)
     try:
@@ -119,7 +128,7 @@ def fit_best_waveform(df_row, period):
 
     # Fit cycloid oscillators
     # (t, A, gamma, omega, phi, y):
-    cycloid_initial_params = [np.median(amplitudes), 0, 1, 0, np.mean(amplitudes)] # Don't need to provide t
+    cycloid_initial_params = [np.median(amplitudes), 0, 1, 0, np.mean(amplitudes)]
     cycloid_lower_bounds = [-np.max(amplitudes), -0.2, 0.9, -period/2, -np.abs(amplitudes[np.argmax(np.abs(amplitudes))])]
     cycloid_upper_bounds = [np.max(amplitudes), 0.2, 1.1, period/2, np.max(amplitudes)]
     cycloid_bounds = (cycloid_lower_bounds, cycloid_upper_bounds)
@@ -201,6 +210,7 @@ def fit_best_waveform(df_row, period):
         best_fitted_values = transient_fitted_values
     return best_waveform, best_params, best_covariance, best_fitted_values
 
+
 def categorize_rhythm(gamma):
     """
     Categorizes the rhythm based on the value of γ.
@@ -217,6 +227,7 @@ def categorize_rhythm(gamma):
     else:
         return 'overexpressed' if gamma > 0.15 else 'repressed'
 
+
 def variance_based_filtering(df, min_feature_variance=0.05):
     """Variance-based filtering of features
     Arguments:
@@ -232,6 +243,7 @@ def variance_based_filtering(df, min_feature_variance=0.05):
     variant_df = df.loc[variances > min_feature_variance]
     invariant_df = df.loc[variances <= min_feature_variance]
     return variant_df, invariant_df
+
 
 def get_pycycle(df_in, period):
     """
@@ -269,8 +281,9 @@ def get_pycycle(df_in, period):
         mod_type.append(modulation)
         parameters.append(params)
         fitted_model.append(fitted_values)
-    corr_pvals = multipletests(pvals, alpha= 0.001, method='fdr_tsbh')[1] # alpha= 0.000001,
-    df_out = pd.DataFrame({"Feature": df.index.tolist(), "p-val": pvals, "BH-padj": corr_pvals,"Type": osc_type,
+    corr_pvals = multipletests(pvals, alpha= 0.001, method='fdr_tsbh')[1]
+    cap_corr_pvals = np.where(pvals > corr_pvals, pvals, corr_pvals)
+    df_out = pd.DataFrame({"Feature": df.index.tolist(), "p-val": pvals, "BH-padj": cap_corr_pvals,"Type": osc_type,
                            "Mod": mod_type, "parameters":parameters, "Fitted_values":fitted_model})
     invariant_features = df_invariant.index.tolist()
     invariant_rows = pd.DataFrame({
