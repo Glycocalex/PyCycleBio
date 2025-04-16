@@ -72,12 +72,12 @@ def fit_best_waveform(df_row, period):
     amplitudes = df_row.values
 #     variances = calculate_variances(df_row)
 #     weights = np.array([1 / variances[tp] if tp in variances and variances[tp] != 0 else 0.0001 for tp in timepoints]
-    # 0 variance messes model selection up, so a negligable value is used in above line
+    # 0 variance messes model selection up, so a negligible value is used in above line
 
     # Fit extended harmonic oscillator
     # (t, a, gamma, omega, phi, y):
     harmonic_initial_params = [np.median(amplitudes), 0, 1, 0, np.mean(amplitudes)/2]
-    lower_bounds= [0, -0.2, 0.9, -period/2, -np.abs(amplitudes[np.argmax(np.abs(amplitudes))])]
+    lower_bounds = [0, -0.2, 0.9, -period/2, -np.abs(amplitudes[np.argmax(np.abs(amplitudes))])]
     upper_bounds = [np.max(amplitudes), 0.2, 1.1, period/2, np.max(amplitudes)]
     harmonic_bounds = (lower_bounds, upper_bounds)
     try:
@@ -86,7 +86,7 @@ def fit_best_waveform(df_row, period):
             timepoints,
             amplitudes,
             bounds=harmonic_bounds,
-            #sigma=weights,
+            # sigma=weights,
             p0=harmonic_initial_params,
             maxfev=10000000,
             ftol=0.0001,
@@ -113,7 +113,7 @@ def fit_best_waveform(df_row, period):
             timepoints,
             amplitudes,
             bounds=square_bounds,
-            #sigma=weights,
+            # sigma=weights,
             p0=square_initial_params,
             maxfev=10000000,
             ftol=0.0001,
@@ -141,7 +141,7 @@ def fit_best_waveform(df_row, period):
             timepoints,
             amplitudes,
             bounds=cycloid_bounds,
-            #sigma=weights,
+            # sigma=weights,
             p0=cycloid_initial_params,
             maxfev=10000000,
             ftol=0.0001,
@@ -171,7 +171,7 @@ def fit_best_waveform(df_row, period):
             timepoints,
             amplitudes,
             bounds=transient_bounds,
-            #sigma=weights,
+            # sigma=weights,
             p0=transient_initial_params,
             maxfev=10000000,
             ftol=0.0001,
@@ -256,9 +256,9 @@ def get_pycycle(df_in, period):
     Models expression data using 4 equations.
 
     :param df_in: A dataframe organised with samples defined by columns and molecules defined by rows.
-                    The first column and row shuold contain strings identifying samples or molecules.
+                    The first column and row should contain strings identifying samples or molecules.
                     Samples should be organised in ascending time order (all reps per timepoint should be together)
-    :param period: An integer indictaing the primary period length of interest (in same AU as timepoints)
+    :param period: An integer indicating the primary period length of interest (in same AU as timepoints)
     :return: df_out: A dataframe containing the best-fitting model, with parameters that produced the best fit,
                         alongside statistics indicating the robustness of the model's fit compared to input data.
     """

@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="More cleanup of variable names and functions">
+    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="Fixed bare exceptions during model fitting">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pycyclebio/fitting.py" beforeDir="false" afterPath="$PROJECT_DIR$/pycyclebio/fitting.py" afterDir="false" />
     </list>
@@ -225,15 +225,7 @@
       <workItem from="1744723407155" duration="3268000" />
       <workItem from="1744728430071" duration="1347000" />
       <workItem from="1744806677930" duration="68000" />
-      <workItem from="1744809986656" duration="4376000" />
-    </task>
-    <task id="LOCAL-00011" summary="Added transient lower bounds to fix multiple trsting corrections">
-      <option name="closed" value="true" />
-      <created>1729671411016</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1729671411016</updated>
+      <workItem from="1744809986656" duration="4606000" />
     </task>
     <task id="LOCAL-00012" summary="Updated PyCycle docstrings">
       <option name="closed" value="true" />
@@ -619,7 +611,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744814298973</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="Fixed bare exceptions during model fitting">
+      <option name="closed" value="true" />
+      <created>1744815087330</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1744815087330</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -665,7 +665,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added dist file" />
     <MESSAGE value="Testing action" />
     <MESSAGE value="New pypi version" />
     <MESSAGE value="Updated todo list" />
@@ -690,7 +689,8 @@
     <MESSAGE value="Version bump" />
     <MESSAGE value="Major cleanup of variable names and functions" />
     <MESSAGE value="More cleanup of variable names and functions" />
-    <option name="LAST_COMMIT_MESSAGE" value="More cleanup of variable names and functions" />
+    <MESSAGE value="Fixed bare exceptions during model fitting" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed bare exceptions during model fitting" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
