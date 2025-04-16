@@ -159,8 +159,8 @@ def fit_best_waveform(df_row, period):
     # Fit transient oscillator
     #   (t, a, p, w, y):
     # Lower bounds of p and w need to be adjusted with experimental resolution (in extreme cases),if they are too small
-    # compared to measurements they will produce a flat line (trasnient occuring for very small duration between points)
-    # which breaks the statistical corrections
+    #   compared to measurements they will produce a flat line (transient occurring for very small duration between
+    #   points) which breaks the statistical corrections
     transient_initial_params = [np.median(amplitudes), 0, 1, 1, 0,  np.min(amplitudes)]
     transient_lower_bounds = [0, -0.2, 0.1, 0.1, -period, 0]
     transient_upper_bounds = [np.max(amplitudes), 0.2, 24, 4, period, np.max(amplitudes)]
