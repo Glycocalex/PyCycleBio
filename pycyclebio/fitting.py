@@ -39,7 +39,7 @@ def p_cycloid_wave(t, A, gamma, omega, phi, y):
 def p_transient_impulse(t, A,gamma,  period, width, phi,  y):
     p_tau = (period/24) * (2.0*np.pi)
     t_mod = np.mod(t - phi, 2*np.pi - 1e-7)
-    impulse = np.where(t_mod - p_tau >=0, np.exp(-0.5*((t_mod - p_tau)/width)**2), 0.0)
+    impulse = np.where(t_mod - p_tau >= 0, np.exp(-0.5*((t_mod - p_tau)/width)**2), 0.0)
     return A * np.exp(gamma * t) * impulse + y
 
 
@@ -75,7 +75,7 @@ def fit_best_waveform(df_row, period):
     # Fit extended harmonic oscillator
     # (t, A, gamma, omega, phi, y):
     harmonic_initial_params = [np.median(amplitudes), 0, 1, 0, np.mean(amplitudes)/2]
-    lower_bounds= [0, -0.2, 0.9, -period/2, -np.abs(amplitudes[np.argmax(np.abs(amplitudes))])] # (t, A, gamma, omega, phi, y):
+    lower_bounds= [0, -0.2, 0.9, -period/2, -np.abs(amplitudes[np.argmax(np.abs(amplitudes))])]
     upper_bounds = [np.max(amplitudes), 0.2, 1.1, period/2, np.max(amplitudes)]
     harmonic_bounds = (lower_bounds, upper_bounds)
     try:
@@ -128,7 +128,7 @@ def fit_best_waveform(df_row, period):
 
     # Fit cycloid oscillators
     # (t, A, gamma, omega, phi, y):
-    cycloid_initial_params = [np.median(amplitudes), 0, 1, 0, np.mean(amplitudes)] # Don't need to provide t
+    cycloid_initial_params = [np.median(amplitudes), 0, 1, 0, np.mean(amplitudes)]
     cycloid_lower_bounds = [-np.max(amplitudes), -0.2, 0.9, -period/2, -np.abs(amplitudes[np.argmax(np.abs(amplitudes))])]
     cycloid_upper_bounds = [np.max(amplitudes), 0.2, 1.1, period/2, np.max(amplitudes)]
     cycloid_bounds = (cycloid_lower_bounds, cycloid_upper_bounds)
@@ -281,8 +281,9 @@ def get_pycycle(df_in, period):
         mod_type.append(modulation)
         parameters.append(params)
         fitted_model.append(fitted_values)
-    corr_pvals = multipletests(pvals, alpha= 0.001, method='fdr_tsbh')[1] # alpha= 0.000001,
-    df_out = pd.DataFrame({"Feature": df.index.tolist(), "p-val": pvals, "BH-padj": corr_pvals,"Type": osc_type,
+    corr_pvals = multipletests(pvals, alpha= 0.001, method='fdr_tsbh')[1]
+    cap_corr_pvals = np.where(pvals > corr_pvals, pvals, corr_pvals)
+    df_out = pd.DataFrame({"Feature": df.index.tolist(), "p-val": pvals, "BH-padj": cap_corr_pvals,"Type": osc_type,
                            "Mod": mod_type, "parameters":parameters, "Fitted_values":fitted_model})
     invariant_features = df_invariant.index.tolist()
     invariant_rows = pd.DataFrame({

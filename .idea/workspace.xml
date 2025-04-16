@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="Readme revision" />
+    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="Added whitespace for a e s t h e t i c s">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pycyclebio/fitting.py" beforeDir="false" afterPath="$PROJECT_DIR$/pycyclebio/fitting.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,35 +40,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Python.20240208 james glycan plotting.executor": "Debug",
-    "Python.20240819 busted ass PyCycle.executor": "Debug",
-    "Python.PyCycle analysis.executor": "Debug",
-    "Python.PyCycle.executor": "Debug",
-    "Python.colab prototype.executor": "Debug",
-    "Python.fitting.executor": "Debug",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/Alex Bennett/Desktop/Python/PyCycle/test data/PyCycle analysis.py",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Python.20240208 james glycan plotting.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.20240819 busted ass PyCycle.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.PyCycle analysis.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.PyCycle.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.colab prototype.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.fitting.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Alex Bennett/Desktop/Python/PyCycle/test data/PyCycle analysis.py&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "Python",
-      "TOML",
-      "Markdown"
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;Python&quot;,
+      &quot;TOML&quot;,
+      &quot;Markdown&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Alex Bennett\Desktop\Python\Scripts" />
@@ -219,15 +222,10 @@
       <workItem from="1744626771266" duration="4020000" />
       <workItem from="1744642392508" duration="41000" />
       <workItem from="1744642443472" duration="99000" />
-      <workItem from="1744723407155" duration="2750000" />
-    </task>
-    <task id="LOCAL-00005" summary="Fixed cycloid fitting&#10;&#10;Introduced transient eqn- not working yet">
-      <option name="closed" value="true" />
-      <created>1724153465482</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1724153465482</updated>
+      <workItem from="1744723407155" duration="3268000" />
+      <workItem from="1744728430071" duration="1347000" />
+      <workItem from="1744806677930" duration="68000" />
+      <workItem from="1744809986656" duration="1267000" />
     </task>
     <task id="LOCAL-00006" summary="Added variance filter, so invariant molecules are not parameterised&#10;&#10;Fixed transient-fitting.">
       <option name="closed" value="true" />
@@ -613,13 +611,26 @@
       <option name="project" value="LOCAL" />
       <updated>1744727521400</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="Added whitespace for a e s t h e t i c s">
+      <option name="closed" value="true" />
+      <created>1744728074169</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1744728074169</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="c36c828d-5606-47f6-9a3f-d1993c748343" value="TOOL_WINDOW" />
+      </map>
+    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
@@ -630,10 +641,21 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="main" />
+                        <option value="dev" />
                       </list>
                     </value>
                   </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+        <entry key="c36c828d-5606-47f6-9a3f-d1993c748343">
+          <value>
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="true" />
                 </map>
               </option>
             </State>
@@ -643,7 +665,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="corrected imports" />
     <MESSAGE value="housekeeping" />
     <MESSAGE value="Removed redundent output parameters" />
     <MESSAGE value="Housekeeping" />
@@ -668,7 +689,8 @@
     <MESSAGE value="Updated todos" />
     <MESSAGE value="Version bump&#10;Added colab notebook to readme" />
     <MESSAGE value="Readme revision" />
-    <option name="LAST_COMMIT_MESSAGE" value="Readme revision" />
+    <MESSAGE value="Added whitespace for a e s t h e t i c s" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added whitespace for a e s t h e t i c s" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -690,7 +712,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/pycyclebio/fitting.py</url>
-          <line>59</line>
+          <line>283</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
