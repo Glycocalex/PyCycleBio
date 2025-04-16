@@ -89,8 +89,8 @@ def fit_best_waveform(df_row, period):
             #sigma=weights,
             p0=harmonic_initial_params,
             maxfev=10000000,
-            ftol = 0.0001,
-            xtol = 0.0001
+            ftol=0.0001,
+            xtol=0.0001
         )
         harmonic_fitted_values = p_harmonic_oscillator(timepoints, *harmonic_params)
         harmonic_residuals = amplitudes - harmonic_fitted_values
@@ -116,8 +116,8 @@ def fit_best_waveform(df_row, period):
             #sigma=weights,
             p0=square_initial_params,
             maxfev=10000000,
-            ftol = 0.0001,
-            xtol = 0.0001
+            ftol=0.0001,
+            xtol=0.0001
         )
         square_fitted_values = p_square_wave(timepoints, *square_params)
         square_residuals = amplitudes - square_fitted_values
@@ -131,7 +131,8 @@ def fit_best_waveform(df_row, period):
     # Fit cycloid oscillators
     # (t, a, gamma, omega, phi, y):
     cycloid_initial_params = [np.median(amplitudes), 0, 1, 0, np.mean(amplitudes)]
-    cycloid_lower_bounds = [-np.max(amplitudes), -0.2, 0.9, -period/2, -np.abs(amplitudes[np.argmax(np.abs(amplitudes))])]
+    cycloid_lower_bounds = [-np.max(amplitudes), -0.2, 0.9, -period/2,
+                            -np.abs(amplitudes[np.argmax(np.abs(amplitudes))])]
     cycloid_upper_bounds = [np.max(amplitudes), 0.2, 1.1, period/2, np.max(amplitudes)]
     cycloid_bounds = (cycloid_lower_bounds, cycloid_upper_bounds)
     try:
@@ -139,12 +140,12 @@ def fit_best_waveform(df_row, period):
             p_cycloid_wave,
             timepoints,
             amplitudes,
-            bounds = cycloid_bounds,
+            bounds=cycloid_bounds,
             #sigma=weights,
             p0=cycloid_initial_params,
             maxfev=10000000,
-            ftol = 0.0001,
-            xtol = 0.0001
+            ftol=0.0001,
+            xtol=0.0001
         )
         cycloid_fitted_values = p_cycloid_wave(timepoints, *cycloid_params)
         cycloid_residuals = amplitudes - cycloid_fitted_values
@@ -157,8 +158,11 @@ def fit_best_waveform(df_row, period):
 
     # Fit transient oscillator
     #   (t, a, p, w, y):
+    # Lower bounds of p and w need to be adjusted with experimental resolution (in extreme cases),if they are too small
+    # compared to measurements they will produce a flat line (trasnient occuring for very small duration between points)
+    # which breaks the statistical corrections
     transient_initial_params = [np.median(amplitudes), 0, 1, 1, 0,  np.min(amplitudes)]
-    transient_lower_bounds = [0, -0.2, 0.1, 0.1, -period, 0]  # (A, p, w, y) # Lower bounds of p and w need to be adjusted with experimental resolution (in extreme cases), if they are too small compared to measurements they will produce a flat line (trasnient occuring for very small duration between points) which breaks the statistical corrections
+    transient_lower_bounds = [0, -0.2, 0.1, 0.1, -period, 0]
     transient_upper_bounds = [np.max(amplitudes), 0.2, 24, 4, period, np.max(amplitudes)]
     transient_bounds = (transient_lower_bounds, transient_upper_bounds)
     try:
@@ -170,8 +174,8 @@ def fit_best_waveform(df_row, period):
             #sigma=weights,
             p0=transient_initial_params,
             maxfev=10000000,
-            ftol = 0.0001,
-            xtol = 0.0001
+            ftol=0.0001,
+            xtol=0.0001
         )
         transient_fitted_values = p_transient_impulse(timepoints, *transient_params)
         transient_residuals = amplitudes - transient_fitted_values
