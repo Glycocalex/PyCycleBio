@@ -6,7 +6,7 @@ Input data with columns denoting samples and rows denoting biological molecules.
 Input data is assessed for variance.
 Variant rows are modelled using 4 equations. The model with lowest residuals is reported, alongside model parameters and statistics.
 
-You can use PyCycle without installing python [here.](https://colab.research.google.com/drive/1XZUe5PRvbl4UvESDQd9N4BxUfCLXfZmz?usp=sharing)
+You can use PyCycle without installing python [here.](https://colab.research.google.com/github/Glycocalex/PyCycleBio/blob/main/PyCycleBio.ipynb)
 
 https://github.com/Glycocalex/PyCycleBio
 
