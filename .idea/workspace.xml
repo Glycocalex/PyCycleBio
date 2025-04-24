@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="Fixed typos">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_04_2025_14_17_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_04_2025_14_17__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_04_2025_14_11_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_04_2025_14_11__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="Cleaned up curve_fit usage" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -230,14 +224,7 @@
       <workItem from="1744806677930" duration="68000" />
       <workItem from="1744809986656" duration="6092000" />
       <workItem from="1745498875359" duration="186000" />
-    </task>
-    <task id="LOCAL-00013" summary="Added Holm adjustments and now report params for all variant molecules.">
-      <option name="closed" value="true" />
-      <created>1730114179206</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1730114179206</updated>
+      <workItem from="1745499127746" duration="311000" />
     </task>
     <task id="LOCAL-00014" summary="Removed done todo">
       <option name="closed" value="true" />
@@ -623,7 +610,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744815415193</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="Cleaned up curve_fit usage">
+      <option name="closed" value="true" />
+      <created>1745499346238</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1745499346238</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -669,7 +664,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="New pypi version" />
     <MESSAGE value="Updated todo list" />
     <MESSAGE value="Added new parameter that allows period of interest to be defined" />
     <MESSAGE value="Renamed 'harmonic' to 'sinusoidal' in outputs" />
@@ -694,7 +688,8 @@
     <MESSAGE value="More cleanup of variable names and functions" />
     <MESSAGE value="Fixed bare exceptions during model fitting" />
     <MESSAGE value="Fixed typos" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed typos" />
+    <MESSAGE value="Cleaned up curve_fit usage" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cleaned up curve_fit usage" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

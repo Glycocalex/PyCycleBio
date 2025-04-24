@@ -59,6 +59,7 @@ def calculate_variances(data):
     return variances
 
 
+# noinspection DuplicatedCode
 def fit_best_waveform(df_row, period):
     """
     Fits all three waveform models to the data and determines the best fit.
