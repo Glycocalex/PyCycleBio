@@ -81,7 +81,7 @@ def fit_best_waveform(df_row, period):
     upper_bounds = [np.max(amplitudes), 0.2, 1.1, period/2, np.max(amplitudes)]
     harmonic_bounds = (lower_bounds, upper_bounds)
     try:
-        harmonic_params, harmonic_covariance = curve_fit(
+        harmonic_res = curve_fit(
             p_harmonic_oscillator,
             timepoints,
             amplitudes,
@@ -92,6 +92,8 @@ def fit_best_waveform(df_row, period):
             ftol=0.0001,
             xtol=0.0001
         )
+        harmonic_params = harmonic_res[0]
+        harmonic_covariance = harmonic_res[1]
         harmonic_fitted_values = p_harmonic_oscillator(timepoints, *harmonic_params)
         harmonic_residuals = amplitudes - harmonic_fitted_values
         harmonic_sse = np.sum(harmonic_residuals ** 2)
@@ -108,7 +110,7 @@ def fit_best_waveform(df_row, period):
     square_upper_bounds = [np.max(amplitudes), 0.2, 1.1, period/2, np.max(amplitudes)]
     square_bounds = (square_lower_bounds, square_upper_bounds)
     try:
-        square_params, square_covariance = curve_fit(
+        square_res = curve_fit(
             p_square_wave,
             timepoints,
             amplitudes,
@@ -119,6 +121,8 @@ def fit_best_waveform(df_row, period):
             ftol=0.0001,
             xtol=0.0001
         )
+        square_params = square_res[0]
+        square_covariance = square_res[1]
         square_fitted_values = p_square_wave(timepoints, *square_params)
         square_residuals = amplitudes - square_fitted_values
         square_sse = np.sum(square_residuals ** 2)
@@ -136,7 +140,7 @@ def fit_best_waveform(df_row, period):
     cycloid_upper_bounds = [np.max(amplitudes), 0.2, 1.1, period/2, np.max(amplitudes)]
     cycloid_bounds = (cycloid_lower_bounds, cycloid_upper_bounds)
     try:
-        cycloid_params, cycloid_covariance = curve_fit(
+        cycloid_res = curve_fit(
             p_cycloid_wave,
             timepoints,
             amplitudes,
@@ -147,6 +151,8 @@ def fit_best_waveform(df_row, period):
             ftol=0.0001,
             xtol=0.0001
         )
+        cycloid_params = cycloid_res[0]
+        cycloid_covariance = cycloid_res[1]
         cycloid_fitted_values = p_cycloid_wave(timepoints, *cycloid_params)
         cycloid_residuals = amplitudes - cycloid_fitted_values
         cycloid_sse = np.sum(cycloid_residuals ** 2)
@@ -166,7 +172,7 @@ def fit_best_waveform(df_row, period):
     transient_upper_bounds = [np.max(amplitudes), 0.2, 24, 4, period, np.max(amplitudes)]
     transient_bounds = (transient_lower_bounds, transient_upper_bounds)
     try:
-        transient_params, transient_covariance = curve_fit(
+        transient_res = curve_fit(
             p_transient_impulse,
             timepoints,
             amplitudes,
@@ -177,6 +183,8 @@ def fit_best_waveform(df_row, period):
             ftol=0.0001,
             xtol=0.0001
         )
+        transient_params = transient_res[0]
+        transient_covariance = transient_res[1]
         transient_fitted_values = p_transient_impulse(timepoints, *transient_params)
         transient_residuals = amplitudes - transient_fitted_values
         transient_sse = np.sum(transient_residuals ** 2)
