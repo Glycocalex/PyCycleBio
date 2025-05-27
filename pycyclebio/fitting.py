@@ -313,9 +313,9 @@ def get_pycycle(df_in, period):
     return df_out.sort_values(by='p-val').sort_values(by='BH-padj')
 
 # Todo: Differential expression
-# Todo: Visualisation functions for dataset-wide phases ect.
+# Todo: Visualisation functions for dataset-wide phases ect + 'plot(res[Arntl])' sort of thing for molecule with model?
 # Todo: Phase-set enrichment tools for transcripts / proteins / glycans?
-# Todo: can fourier transformations be used to aid in parameterisation of waveforms? (detect fundamental/harmonics)
 # Todo: Include compositional transforms + uncertainty scale model
 # Todo: introduce modifier to y term (baseline) to capture general trends in expression?
-# Todo: Add 'plot(res[Arntl])' sort of function that plots a molecule with model?
+# Todo: Is an integral/dot product a better index of similarity than residuals?
+# Todo: improve stats

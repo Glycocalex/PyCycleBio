@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="Cleaned up curve_fit usage" />
+    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="Removed duplicate inspection from fitting function: maintains ability to bound waveforms differently in the future.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pycyclebio/fitting.py" beforeDir="false" afterPath="$PROJECT_DIR$/pycyclebio/fitting.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,6 +28,9 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/pycyclebio/fitting.py" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -49,7 +55,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Alex Bennett/Desktop/Python/PyCycle/test data/PyCycle analysis.py&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Alex Bennett/Desktop/Python/Glycowork/glycowork_ab&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -224,15 +230,23 @@
       <workItem from="1744806677930" duration="68000" />
       <workItem from="1744809986656" duration="6092000" />
       <workItem from="1745498875359" duration="186000" />
-      <workItem from="1745499127746" duration="311000" />
-    </task>
-    <task id="LOCAL-00014" summary="Removed done todo">
-      <option name="closed" value="true" />
-      <created>1730207588584</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1730207588584</updated>
+      <workItem from="1745499127746" duration="546000" />
+      <workItem from="1745564647064" duration="3370000" />
+      <workItem from="1745584799068" duration="581000" />
+      <workItem from="1745830160894" duration="2037000" />
+      <workItem from="1746514628513" duration="617000" />
+      <workItem from="1746520668893" duration="1313000" />
+      <workItem from="1746533878637" duration="635000" />
+      <workItem from="1746536553391" duration="599000" />
+      <workItem from="1746540054321" duration="455000" />
+      <workItem from="1746601167584" duration="1303000" />
+      <workItem from="1746774916970" duration="609000" />
+      <workItem from="1746782448791" duration="175000" />
+      <workItem from="1747212970145" duration="254000" />
+      <workItem from="1747750829834" duration="20000" />
+      <workItem from="1747983132476" duration="14000" />
+      <workItem from="1747985933770" duration="1261000" />
+      <workItem from="1748333634033" duration="671000" />
     </task>
     <task id="LOCAL-00015" summary="Removed done todos">
       <option name="closed" value="true" />
@@ -618,7 +632,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745499346238</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="Removed duplicate inspection from fitting function: maintains ability to bound waveforms differently in the future.">
+      <option name="closed" value="true" />
+      <created>1745499637317</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1745499637317</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -664,7 +686,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Updated todo list" />
     <MESSAGE value="Added new parameter that allows period of interest to be defined" />
     <MESSAGE value="Renamed 'harmonic' to 'sinusoidal' in outputs" />
     <MESSAGE value="Added model values to output" />
@@ -689,7 +710,8 @@
     <MESSAGE value="Fixed bare exceptions during model fitting" />
     <MESSAGE value="Fixed typos" />
     <MESSAGE value="Cleaned up curve_fit usage" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cleaned up curve_fit usage" />
+    <MESSAGE value="Removed duplicate inspection from fitting function: maintains ability to bound waveforms differently in the future." />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed duplicate inspection from fitting function: maintains ability to bound waveforms differently in the future." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
