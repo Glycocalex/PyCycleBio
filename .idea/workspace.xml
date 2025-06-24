@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="Expanded todo list">
+    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="Implemented lack-of-fit F statistic function">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pycyclebio/fitting.py" beforeDir="false" afterPath="$PROJECT_DIR$/pycyclebio/fitting.py" afterDir="false" />
     </list>
@@ -267,15 +267,7 @@
       <workItem from="1750063240167" duration="185000" />
       <workItem from="1750662769743" duration="22000" />
       <workItem from="1750683892244" duration="24000" />
-      <workItem from="1750754343162" duration="7452000" />
-    </task>
-    <task id="LOCAL-00016" summary="Removed done todos">
-      <option name="closed" value="true" />
-      <created>1730214630059</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1730214630059</updated>
+      <workItem from="1750754343162" duration="8149000" />
     </task>
     <task id="LOCAL-00017" summary="Commented out print-statement">
       <option name="closed" value="true" />
@@ -661,7 +653,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748334528923</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="Implemented lack-of-fit F statistic function">
+      <option name="closed" value="true" />
+      <created>1750770693961</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1750770693961</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -707,7 +707,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Renamed 'harmonic' to 'sinusoidal' in outputs" />
     <MESSAGE value="Added model values to output" />
     <MESSAGE value="Fixed cycloid and trand labels" />
     <MESSAGE value="Implemented all oscillators in Python" />
@@ -732,7 +731,8 @@
     <MESSAGE value="Cleaned up curve_fit usage" />
     <MESSAGE value="Removed duplicate inspection from fitting function: maintains ability to bound waveforms differently in the future." />
     <MESSAGE value="Expanded todo list" />
-    <option name="LAST_COMMIT_MESSAGE" value="Expanded todo list" />
+    <MESSAGE value="Implemented lack-of-fit F statistic function" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented lack-of-fit F statistic function" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -759,7 +759,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/pycyclebio/fitting.py</url>
-          <line>104</line>
+          <line>106</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>

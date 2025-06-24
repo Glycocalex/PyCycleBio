@@ -58,6 +58,7 @@ def calculate_variances(data):
         variances[zt] = zt_var if zt_var else 0  # Replace NaN variances with 0
     return variances
 
+
 def lack_of_fit_f(timepoints, y_obs, y_fit, params, reps):
     n = len(y_obs)
     p = len(params)
@@ -83,7 +84,6 @@ def lack_of_fit_f(timepoints, y_obs, y_fit, params, reps):
     return f_stat, p_value
 
 
-
 # noinspection DuplicatedCode
 def fit_best_waveform(df_row, period):
     """
@@ -95,6 +95,7 @@ def fit_best_waveform(df_row, period):
     """
     timepoints = np.array([float(re.findall(r'\d+', col)[0]) for col in df_row.index])
     timepoints = (timepoints / period * (2 * math.pi))
+    reps = len(timepoints) / len(np.unique(timepoints))  # Todo: take this out of loop to speed things up
     amplitudes = df_row.values
 #     variances = calculate_variances(df_row)
 #     weights = np.array([1 / variances[tp] if tp in variances and variances[tp] != 0 else 0.0001 for tp in timepoints]
@@ -229,32 +230,57 @@ def fit_best_waveform(df_row, period):
         best_covariance = np.nan
         best_fitted_values = np.nan
     elif best_fit_index == 0:
-        best_params = harmonic_params
-        best_waveform = 'sinusoidal'
-        best_covariance = harmonic_covariance
-        best_fitted_values = harmonic_fitted_values
+        test_params = harmonic_params
+        test_params[0] = 0
+        if lack_of_fit_f(timepoints, amplitudes, harmonic_fitted_values, test_params, reps)[1] > 0.05:
+            best_params = np.nan
+            best_waveform = 'non-rhythmic'
+            best_covariance = np.nan
+            best_fitted_values = np.nan
+        else:
+            best_params = harmonic_params
+            best_waveform = 'sinusoidal'
+            best_covariance = harmonic_covariance
+            best_fitted_values = harmonic_fitted_values
     elif best_fit_index == 1:
-        best_params = square_params
-        best_waveform = 'square_waveform'
-        best_covariance = square_covariance
-        best_fitted_values = square_fitted_values
+        test_params = square_params
+        test_params[0] = 0
+        if lack_of_fit_f(timepoints, amplitudes, square_fitted_values, test_params, reps)[1] > 0.05:
+            best_params = np.nan
+            best_waveform = 'non-rhythmic'
+            best_covariance = np.nan
+            best_fitted_values = np.nan
+        else:
+            best_params = square_params
+            best_waveform = 'square_waveform'
+            best_covariance = square_covariance
+            best_fitted_values = square_fitted_values
     elif best_fit_index == 2:
-        best_params = cycloid_params
-        best_waveform = 'cycloid'
-        best_covariance = cycloid_covariance
-        best_fitted_values = cycloid_fitted_values
+        test_params = cycloid_params
+        test_params[0] = 0
+        if lack_of_fit_f(timepoints, amplitudes, cycloid_fitted_values, test_params, reps)[1] > 0.05:
+            best_params = np.nan
+            best_waveform = 'non-rhythmic'
+            best_covariance = np.nan
+            best_fitted_values = np.nan
+        else:
+            best_params = cycloid_params
+            best_waveform = 'cycloid'
+            best_covariance = cycloid_covariance
+            best_fitted_values = cycloid_fitted_values
     else:
-        best_params = transient_params
-        best_waveform = 'transient'
-        best_covariance = transient_covariance
-        best_fitted_values = transient_fitted_values
-
-    if best_waveform == 'sinusoidal':
-        y_obs = amplitudes
-        y_fit = harmonic_fitted_values
-        times = timepoints
-
-
+        test_params = transient_params
+        test_params[0] = 0
+        if lack_of_fit_f(timepoints, amplitudes, transient_fitted_values, test_params, reps)[1] > 0.05:
+            best_params = np.nan
+            best_waveform = 'non-rhythmic'
+            best_covariance = np.nan
+            best_fitted_values = np.nan
+        else:
+            best_params = transient_params
+            best_waveform = 'transient'
+            best_covariance = transient_covariance
+            best_fitted_values = transient_fitted_values
 
     return best_waveform, best_params, best_covariance, best_fitted_values
 
