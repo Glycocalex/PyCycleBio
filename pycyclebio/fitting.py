@@ -1,6 +1,6 @@
 import math
 from scipy.optimize import curve_fit
-from scipy.stats import kendalltau
+from scipy.stats import kendalltau, f
 from statsmodels.stats.multitest import multipletests
 import pandas as pd
 import numpy as np
@@ -57,6 +57,31 @@ def calculate_variances(data):
         zt_var = data[zt_columns].var(ddof=1)
         variances[zt] = zt_var if zt_var else 0  # Replace NaN variances with 0
     return variances
+
+def lack_of_fit_f(timepoints, y_obs, y_fit, params, reps):
+    n = len(y_obs)
+    p = len(params)
+    k = len(np.unique(timepoints))
+
+    sspure = 0
+    sslof = 0
+    lof_degfre = k - p
+    pure_degfre = n - k
+    timepoint_bins = timepoints/reps
+    for i in range(0, timepoint_bins):
+        y_at_t = np.array([y_obs[(i*timepoint_bins):(i*timepoint_bins+reps-1)]])
+        y_mean_at_t = np.array([np.mean(y_at_t)]*5)
+        t_sspure = np.sum((y_at_t - y_mean_at_t)**2)
+        y_fit_at_t = np.array([y_fit[(i*timepoint_bins):(i*timepoint_bins+reps-1)]])
+        t_sslof = np.sum((y_mean_at_t - y_fit_at_t)**2)
+        sspure = sspure + t_sspure
+        sslof = sslof + t_sslof
+    mean_sspure = sspure / pure_degfre
+    mean_sslof = sslof / lof_degfre
+    f_stat = mean_sslof / mean_sspure
+    p_value = 1 - f.cdf(f_stat, lof_degfre, pure_degfre)
+    return f_stat, p_value
+
 
 
 # noinspection DuplicatedCode
@@ -223,6 +248,14 @@ def fit_best_waveform(df_row, period):
         best_waveform = 'transient'
         best_covariance = transient_covariance
         best_fitted_values = transient_fitted_values
+
+    if best_waveform == 'sinusoidal':
+        y_obs = amplitudes
+        y_fit = harmonic_fitted_values
+        times = timepoints
+
+
+
     return best_waveform, best_params, best_covariance, best_fitted_values
 
 
