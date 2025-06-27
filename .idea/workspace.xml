@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="Implemented lack-of-fit test with 0 amplitude after optimal waveform is selected">
+    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="Bugfixed lack-of-fit F test&#10;&#10;Included RMSE in outputs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pycyclebio/fitting.py" beforeDir="false" afterPath="$PROJECT_DIR$/pycyclebio/fitting.py" afterDir="false" />
     </list>
@@ -270,15 +270,10 @@
       <workItem from="1750683892244" duration="24000" />
       <workItem from="1750754343162" duration="15665000" />
       <workItem from="1750787110348" duration="957000" />
-      <workItem from="1750836002042" duration="7824000" />
-    </task>
-    <task id="LOCAL-00018" summary="Fixed equations&#10;Commented out print-statement">
-      <option name="closed" value="true" />
-      <created>1731578626812</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1731578626812</updated>
+      <workItem from="1750836002042" duration="13764000" />
+      <workItem from="1750871077219" duration="2003000" />
+      <workItem from="1750921486022" duration="6758000" />
+      <workItem from="1751009578438" duration="3758000" />
     </task>
     <task id="LOCAL-00019" summary="Set freq to +/- 0.25&#10;Commented out print-statement">
       <option name="closed" value="true" />
@@ -664,7 +659,15 @@
       <option name="project" value="LOCAL" />
       <updated>1750771432208</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="Bugfixed lack-of-fit F test&#10;&#10;Included RMSE in outputs">
+      <option name="closed" value="true" />
+      <created>1750860079449</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1750860079450</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -710,7 +713,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed cycloid and trand labels" />
     <MESSAGE value="Implemented all oscillators in Python" />
     <MESSAGE value="Cleaned up for new version" />
     <MESSAGE value="Fixed pyproject.toml error" />
@@ -735,7 +737,8 @@
     <MESSAGE value="Expanded todo list" />
     <MESSAGE value="Implemented lack-of-fit F statistic function" />
     <MESSAGE value="Implemented lack-of-fit test with 0 amplitude after optimal waveform is selected" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented lack-of-fit test with 0 amplitude after optimal waveform is selected" />
+    <MESSAGE value="Bugfixed lack-of-fit F test&#10;&#10;Included RMSE in outputs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bugfixed lack-of-fit F test&#10;&#10;Included RMSE in outputs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

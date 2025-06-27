@@ -86,7 +86,7 @@ def lack_of_fit_f(timepoints, y_obs, y_fit, params, reps):
 
 
 # noinspection DuplicatedCode
-def fit_best_waveform(df_row, period):
+def fit_best_waveform(df_row, period, models):
     """
     Fits all three waveform models to the data and determines the best fit.
 
@@ -104,132 +104,159 @@ def fit_best_waveform(df_row, period):
 
     # Fit extended harmonic oscillator
     # (t, a, gamma, omega, phi, y):
-    harmonic_initial_params = [np.median(amplitudes), 0, 1, 0, np.mean(amplitudes)/2]
-    lower_bounds = [0, -0.2, 0.9, -period/2, -np.abs(amplitudes[np.argmax(np.abs(amplitudes))])]
-    upper_bounds = [np.max(amplitudes), 0.2, 1.1, period/2, np.max(amplitudes)]
-    harmonic_bounds = (lower_bounds, upper_bounds)
-    try:
-        harmonic_res = curve_fit(
-            p_harmonic_oscillator,
-            timepoints,
-            amplitudes,
-            bounds=harmonic_bounds,
-            # sigma=weights,
-            p0=harmonic_initial_params,
-            maxfev=10000000,
-            ftol=0.0001,
-            xtol=0.0001
-        )
-        harmonic_params = harmonic_res[0]
-        harmonic_covariance = harmonic_res[1]
-        harmonic_fitted_values = p_harmonic_oscillator(timepoints, *harmonic_params)
-        harmonic_residuals = amplitudes - harmonic_fitted_values
-        harmonic_sse = np.sum(harmonic_residuals ** 2)
-        harmonic_rmse = np.sqrt(harmonic_sse/len(harmonic_sse))
-    except RuntimeError:
+    if 'harmonic' in models:
+        harmonic_initial_params = [np.median(amplitudes), 0, 1, 0, np.mean(amplitudes)/2]
+        lower_bounds = [0, -0.2, 0.9, -period/2, -np.abs(amplitudes[np.argmax(np.abs(amplitudes))])]
+        upper_bounds = [np.max(amplitudes), 0.2, 1.1, period/2, np.max(amplitudes)]
+        harmonic_bounds = (lower_bounds, upper_bounds)
+        try:
+            harmonic_res = curve_fit(
+                p_harmonic_oscillator,
+                timepoints,
+                amplitudes,
+                bounds=harmonic_bounds,
+                # sigma=weights,
+                p0=harmonic_initial_params,
+                maxfev=10000000,
+                ftol=0.0001,
+                xtol=0.0001
+            )
+            harmonic_params = harmonic_res[0]
+            harmonic_covariance = harmonic_res[1]
+            harmonic_fitted_values = p_harmonic_oscillator(timepoints, *harmonic_params)
+            harmonic_residuals = amplitudes - harmonic_fitted_values
+            harmonic_sse = np.sum(harmonic_residuals ** 2)
+            harmonic_rmse = np.sqrt(harmonic_sse/len(harmonic_sse))
+        except RuntimeError:
+            harmonic_params = np.nan
+            harmonic_covariance = np.nan
+            harmonic_fitted_values = [0] * len(df_row)
+            harmonic_sse = np.inf
+            harmonic_rmse = np.inf
+    else:
         harmonic_params = np.nan
         harmonic_covariance = np.nan
         harmonic_fitted_values = [0] * len(df_row)
         harmonic_sse = np.inf
         harmonic_rmse = np.inf
 
-    # Fit square oscillator
-    # (t, a, gamma, omega, phi, y):
-    square_initial_params = [np.median(amplitudes), 0, 1, 0, np.mean(amplitudes)]
-    square_lower_bounds = [0, -0.2, 0.9, -period/2, -np.abs(amplitudes[np.argmax(np.abs(amplitudes))])]
-    square_upper_bounds = [np.max(amplitudes), 0.2, 1.1, period/2, np.max(amplitudes)]
-    square_bounds = (square_lower_bounds, square_upper_bounds)
-    try:
-        square_res = curve_fit(
-            p_square_wave,
-            timepoints,
-            amplitudes,
-            bounds=square_bounds,
-            # sigma=weights,
-            p0=square_initial_params,
-            maxfev=10000000,
-            ftol=0.0001,
-            xtol=0.0001
-        )
-        square_params = square_res[0]
-        square_covariance = square_res[1]
-        square_fitted_values = p_square_wave(timepoints, *square_params)
-        square_residuals = amplitudes - square_fitted_values
-        square_sse = np.sum(square_residuals ** 2)
-        square_rmse = np.sqrt(square_sse/len(square_sse))
-    except RuntimeError:
+    if 'square' in models:
+        # Fit square oscillator
+        # (t, a, gamma, omega, phi, y):
+        square_initial_params = [np.median(amplitudes), 0, 1, 0, np.mean(amplitudes)]
+        square_lower_bounds = [0, -0.2, 0.9, -period/2, -np.abs(amplitudes[np.argmax(np.abs(amplitudes))])]
+        square_upper_bounds = [np.max(amplitudes), 0.2, 1.1, period/2, np.max(amplitudes)]
+        square_bounds = (square_lower_bounds, square_upper_bounds)
+        try:
+            square_res = curve_fit(
+                p_square_wave,
+                timepoints,
+                amplitudes,
+                bounds=square_bounds,
+                # sigma=weights,
+                p0=square_initial_params,
+                maxfev=10000000,
+                ftol=0.0001,
+                xtol=0.0001
+            )
+            square_params = square_res[0]
+            square_covariance = square_res[1]
+            square_fitted_values = p_square_wave(timepoints, *square_params)
+            square_residuals = amplitudes - square_fitted_values
+            square_sse = np.sum(square_residuals ** 2)
+            square_rmse = np.sqrt(square_sse/len(square_sse))
+        except RuntimeError:
+            square_params = np.nan
+            square_covariance = np.nan
+            square_fitted_values = [0] * len(df_row)
+            square_sse = np.inf
+            square_rmse = np.inf
+    else:
         square_params = np.nan
         square_covariance = np.nan
         square_fitted_values = [0] * len(df_row)
         square_sse = np.inf
         square_rmse = np.inf
 
-    # Fit cycloid oscillators
-    # (t, a, gamma, omega, phi, y):
-    cycloid_initial_params = [np.median(amplitudes), 0, 1, 0, np.mean(amplitudes)]
-    cycloid_lower_bounds = [-np.max(amplitudes), -0.2, 0.9, -period/2,
-                            -np.abs(amplitudes[np.argmax(np.abs(amplitudes))])]
-    cycloid_upper_bounds = [np.max(amplitudes), 0.2, 1.1, period/2, np.max(amplitudes)]
-    cycloid_bounds = (cycloid_lower_bounds, cycloid_upper_bounds)
-    try:
-        cycloid_res = curve_fit(
-            p_cycloid_wave,
-            timepoints,
-            amplitudes,
-            bounds=cycloid_bounds,
-            # sigma=weights,
-            p0=cycloid_initial_params,
-            maxfev=10000000,
-            ftol=0.0001,
-            xtol=0.0001
-        )
-        cycloid_params = cycloid_res[0]
-        cycloid_covariance = cycloid_res[1]
-        cycloid_fitted_values = p_cycloid_wave(timepoints, *cycloid_params)
-        cycloid_residuals = amplitudes - cycloid_fitted_values
-        cycloid_sse = np.sum(cycloid_residuals ** 2)
-        cycloid_rmse = np.sqrt(cycloid_sse/len(cycloid_sse))
-    except RuntimeError:
+    if 'cycloid' in models:
+        # Fit cycloid oscillators
+        # (t, a, gamma, omega, phi, y):
+        cycloid_initial_params = [np.median(amplitudes), 0, 1, 0, np.mean(amplitudes)]
+        cycloid_lower_bounds = [-np.max(amplitudes), -0.2, 0.9, -period/2,
+                                -np.abs(amplitudes[np.argmax(np.abs(amplitudes))])]
+        cycloid_upper_bounds = [np.max(amplitudes), 0.2, 1.1, period/2, np.max(amplitudes)]
+        cycloid_bounds = (cycloid_lower_bounds, cycloid_upper_bounds)
+        try:
+            cycloid_res = curve_fit(
+                p_cycloid_wave,
+                timepoints,
+                amplitudes,
+                bounds=cycloid_bounds,
+                # sigma=weights,
+                p0=cycloid_initial_params,
+                maxfev=10000000,
+                ftol=0.0001,
+                xtol=0.0001
+            )
+            cycloid_params = cycloid_res[0]
+            cycloid_covariance = cycloid_res[1]
+            cycloid_fitted_values = p_cycloid_wave(timepoints, *cycloid_params)
+            cycloid_residuals = amplitudes - cycloid_fitted_values
+            cycloid_sse = np.sum(cycloid_residuals ** 2)
+            cycloid_rmse = np.sqrt(cycloid_sse/len(cycloid_sse))
+        except RuntimeError:
+            cycloid_params = np.nan
+            cycloid_covariance = np.nan
+            cycloid_fitted_values = [0] * len(df_row)
+            cycloid_sse = np.inf
+            cycloid_rmse = np.inf
+    else:
         cycloid_params = np.nan
         cycloid_covariance = np.nan
         cycloid_fitted_values = [0] * len(df_row)
         cycloid_sse = np.inf
         cycloid_rmse = np.inf
 
-    # Fit transient oscillator
-    #   (t, a, p, w, y):
-    # Lower bounds of p and w need to be adjusted with experimental resolution (in extreme cases),if they are too small
-    #   compared to measurements they will produce a flat line (transient occurring for very small duration between
-    #   points) which breaks the statistical corrections
-    transient_initial_params = [np.median(amplitudes), 0, 1, 1, 0,  np.min(amplitudes)]
-    transient_lower_bounds = [0, -0.2, 0.1, 0.1, -period, 0]
-    transient_upper_bounds = [np.max(amplitudes), 0.2, 24, 4, period, np.max(amplitudes)]
-    transient_bounds = (transient_lower_bounds, transient_upper_bounds)
-    try:
-        transient_res = curve_fit(
-            p_transient_impulse,
-            timepoints,
-            amplitudes,
-            bounds=transient_bounds,
-            # sigma=weights,
-            p0=transient_initial_params,
-            maxfev=10000000,
-            ftol=0.0001,
-            xtol=0.0001
-        )
-        transient_params = transient_res[0]
-        transient_covariance = transient_res[1]
-        transient_fitted_values = p_transient_impulse(timepoints, *transient_params)
-        transient_residuals = amplitudes - transient_fitted_values
-        transient_sse = np.sum(transient_residuals ** 2)
-        transient_rmse = np.sqrt(transient_sse/len(transient_sse))
-    except RuntimeError:
+    if 'transient' in models:
+        # Fit transient oscillator
+        #   (t, a, p, w, y):
+        # Lower bounds of p and w need to be adjusted with experimental resolution (in extreme cases),if they are too small
+        #   compared to measurements they will produce a flat line (transient occurring for very small duration between
+        #   points) which breaks the statistical corrections
+        transient_initial_params = [np.median(amplitudes), 0, 1, 1, 0,  np.min(amplitudes)]
+        transient_lower_bounds = [0, -0.2, 0.1, 0.1, -period, 0]
+        transient_upper_bounds = [np.max(amplitudes), 0.2, 24, 4, period, np.max(amplitudes)]
+        transient_bounds = (transient_lower_bounds, transient_upper_bounds)
+        try:
+            transient_res = curve_fit(
+                p_transient_impulse,
+                timepoints,
+                amplitudes,
+                bounds=transient_bounds,
+                # sigma=weights,
+                p0=transient_initial_params,
+                maxfev=10000000,
+                ftol=0.0001,
+                xtol=0.0001
+            )
+            transient_params = transient_res[0]
+            transient_covariance = transient_res[1]
+            transient_fitted_values = p_transient_impulse(timepoints, *transient_params)
+            transient_residuals = amplitudes - transient_fitted_values
+            transient_sse = np.sum(transient_residuals ** 2)
+            transient_rmse = np.sqrt(transient_sse/len(transient_sse))
+        except RuntimeError:
+            transient_params = np.nan
+            transient_covariance = np.nan
+            transient_fitted_values = [0] * len(df_row)
+            transient_sse = np.inf
+            transient_rmse = np.inf
+    else:
         transient_params = np.nan
         transient_covariance = np.nan
         transient_fitted_values = [0] * len(df_row)
         transient_sse = np.inf
         transient_rmse = np.inf
-
     # Determine best fit
     sse_values = [harmonic_sse, square_sse, cycloid_sse, transient_sse]
     best_fit_index = np.argmin(sse_values)
@@ -364,10 +391,11 @@ def get_pycycle(df_in, period):
     parameters = []
     fitted_model = []
     rmse = []
+    models = ['harmonic','square','cycloid','transient']
     if isinstance(df.iloc[0, 0], str):
         df = df.set_index(df.columns.tolist()[0])
     for i in tqdm(range(df.shape[0])):
-        waveform, params, covariance, fitted_values, rmse = fit_best_waveform(df.iloc[i, :], period)
+        waveform, params, covariance, fitted_values, rmse = fit_best_waveform(df.iloc[i, :], period, models)
         if waveform == 'unsolved' or waveform == 'non-rhythmic':
             tau, p_value = np.nan, np.nan
             modulation = np.nan
@@ -406,3 +434,49 @@ def get_pycycle(df_in, period):
 # Todo: introduce modifier to y term (baseline) to capture general trends in expression?
 # Todo: Is an integral/dot product a better index of similarity than residuals?
 # Todo: improve stats
+
+def fit_repro(df_in):
+    df_in = df_in.set_index(df_in.columns[0])
+    df, df_invariant = variance_based_filtering(df_in)
+    pvals = []
+    osc_type = []
+    mod_type = []
+    parameters = []
+    fitted_model = []
+    rmse = []
+    period = 4
+    models = ['harmonic', 'transient']
+    if isinstance(df.iloc[0, 0], str):
+        df = df.set_index(df.columns.tolist()[0])
+    for i in tqdm(range(df.shape[0])):
+        waveform, params, covariance, fitted_values, rmse = fit_best_waveform(df.iloc[i, :], period, models)
+        if waveform == 'unsolved' or waveform == 'non-rhythmic':
+            tau, p_value = np.nan, np.nan
+            modulation = np.nan
+        else:
+            tau, p_value = kendalltau(fitted_values, df.iloc[i, :].values)
+            modulation = categorize_rhythm(params[1])
+        oscillation = waveform
+        if math.isnan(p_value):
+            p_value = 1
+        pvals.append(p_value)
+        osc_type.append(oscillation)
+        mod_type.append(modulation)
+        parameters.append(params)
+        fitted_model.append(fitted_values)
+    corr_pvals = multipletests(pvals, alpha=0.001, method='fdr_tsbh')[1]
+    cap_bh_pvals = np.where(pvals > corr_pvals, pvals, corr_pvals)
+    df_out = pd.DataFrame({"Feature": df.index.tolist(), "p-val": pvals, "BH-padj": cap_bh_pvals, "Waveform": osc_type,
+                           "Modulation": mod_type, "parameters": parameters, "Fitted_values": fitted_model,
+                          "RMSE": rmse})
+    invariant_features = df_invariant.index.tolist()
+    invariant_rows = pd.DataFrame({
+        "Feature": invariant_features,
+        "p-val": [np.nan] * len(invariant_features),
+        "BH-padj": [np.nan] * len(invariant_features),
+        "Type": ['invariant'] * len(invariant_features),
+        "parameters": [np.nan] * len(invariant_features)
+    })
+    # Concatenate variant and invariant rows
+    df_out = pd.concat([df_out, invariant_rows], ignore_index=False)
+    return df_out.sort_values(by='p-val').sort_values(by='BH-padj')
