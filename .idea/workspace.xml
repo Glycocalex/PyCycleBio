@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="Added functionality for reproductive rhythms">
+    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="Code cleanup">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pycyclebio/fitting.py" beforeDir="false" afterPath="$PROJECT_DIR$/pycyclebio/fitting.py" afterDir="false" />
     </list>
@@ -43,38 +43,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Python.20240208 james glycan plotting.executor": "Debug",
-    "Python.20240819 busted ass PyCycle.executor": "Debug",
-    "Python.PyCycle analysis.executor": "Debug",
-    "Python.PyCycle.executor": "Debug",
-    "Python.colab prototype.executor": "Debug",
-    "Python.diifrhth.executor": "Debug",
-    "Python.drhyth test.executor": "Debug",
-    "Python.fitting.executor": "Debug",
-    "Python.pcb 0amp testing.executor": "Debug",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/Alex Bennett/Desktop/Python/Glycowork/glycowork_ab",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Python.20240208 james glycan plotting.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.20240819 busted ass PyCycle.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.PyCycle analysis.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.PyCycle.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.colab prototype.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.diifrhth.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.drhyth test.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.fitting.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.pcb 0amp testing.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Alex Bennett/Documents/Papers/PyCycle/wave graphs/waveform plotting.py&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "Python",
-      "TOML",
-      "Markdown"
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;Python&quot;,
+      &quot;TOML&quot;,
+      &quot;Markdown&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Alex Bennett\Desktop\Python\Scripts" />
@@ -273,15 +273,9 @@
       <workItem from="1750836002042" duration="13764000" />
       <workItem from="1750871077219" duration="2003000" />
       <workItem from="1750921486022" duration="6758000" />
-      <workItem from="1751009578438" duration="10224000" />
-    </task>
-    <task id="LOCAL-00020" summary="Reduced fitting iterations by factor of 10&#10;Commented out print-statement">
-      <option name="closed" value="true" />
-      <created>1731579574272</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1731579574272</updated>
+      <workItem from="1751009578438" duration="11684000" />
+      <workItem from="1752475887146" duration="13646000" />
+      <workItem from="1752568511414" duration="6294000" />
     </task>
     <task id="LOCAL-00021" summary="Reduced iterations further in attempt to increase speed.&#10;&#10;Also introduced contingency if-statements for iterations where no solution is found">
       <option name="closed" value="true" />
@@ -667,7 +661,15 @@
       <option name="project" value="LOCAL" />
       <updated>1751017386633</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="Code cleanup">
+      <option name="closed" value="true" />
+      <created>1751293588635</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1751293588635</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -713,7 +715,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Cleaned up for new version" />
     <MESSAGE value="Fixed pyproject.toml error" />
     <MESSAGE value="Four nans Jeremy?! That's insane" />
     <MESSAGE value="Updating pyproject.toml" />
@@ -738,7 +739,8 @@
     <MESSAGE value="Implemented lack-of-fit test with 0 amplitude after optimal waveform is selected" />
     <MESSAGE value="Bugfixed lack-of-fit F test&#10;&#10;Included RMSE in outputs" />
     <MESSAGE value="Added functionality for reproductive rhythms" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added functionality for reproductive rhythms" />
+    <MESSAGE value="Code cleanup" />
+    <option name="LAST_COMMIT_MESSAGE" value="Code cleanup" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -765,13 +767,33 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/pycyclebio/fitting.py</url>
-          <line>403</line>
-          <option name="timeStamp" value="35" />
+          <line>497</line>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/pycyclebio/fitting.py</url>
-          <line>84</line>
-          <option name="timeStamp" value="37" />
+          <line>496</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/pycyclebio/fitting.py</url>
+          <line>495</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/pycyclebio/fitting.py</url>
+          <line>494</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/pycyclebio/fitting.py</url>
+          <line>500</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/pycyclebio/fitting.py</url>
+          <line>501</line>
+          <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -787,7 +809,7 @@
     <SUITE FILE_PATH="coverage/PyCycle_clone$20240819_busted_ass_PyCycle.coverage" NAME="20240819 busted ass PyCycle Coverage Results" MODIFIED="1724096502880" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../.." />
     <SUITE FILE_PATH="coverage/PyCycle_clone$diifrhth.coverage" NAME="diifrhth Coverage Results" MODIFIED="1749049659114" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../Scripts" />
     <SUITE FILE_PATH="coverage/PyCycle_clone$20240208_james_glycan_plotting.coverage" NAME="20240208 james glycan plotting Coverage Results" MODIFIED="1740571116967" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../Scripts" />
-    <SUITE FILE_PATH="coverage/PyCycle_clone$fitting.coverage" NAME="fitting Coverage Results" MODIFIED="1750771546252" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pycyclebio" />
+    <SUITE FILE_PATH="coverage/PyCycle_clone$fitting.coverage" NAME="fitting Coverage Results" MODIFIED="1752584998511" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pycyclebio" />
     <SUITE FILE_PATH="coverage/PyCycle_clone$colab_prototype.coverage" NAME="colab prototype Coverage Results" MODIFIED="1742997925863" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../Scripts" />
     <SUITE FILE_PATH="coverage/PyCycle_clone$pcb_0amp_testing.coverage" NAME="pcb 0amp testing Coverage Results" MODIFIED="1750777457214" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../Scripts" />
     <SUITE FILE_PATH="coverage/PyCycle_clone$PyCycle_analysis.coverage" NAME="PyCycle analysis Coverage Results" MODIFIED="1731941506149" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../test data" />

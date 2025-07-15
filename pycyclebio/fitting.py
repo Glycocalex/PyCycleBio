@@ -7,6 +7,7 @@ import numpy as np
 import re
 from tqdm import tqdm
 import copy
+import matplotlib.pyplot as plt
 
 
 def fourier_square_wave(t, a, gamma, omega, phi,  y):
@@ -433,12 +434,12 @@ def get_pycycle(df_in, period):
     return df_out.sort_values(by='p-val').sort_values(by='BH-padj')
 
 # Todo: Differential expression
-# Todo: Visualisation functions for dataset-wide phases ect + 'plot(res[Arntl])' sort of thing for molecule with model?
+# Todo: Visualisation functions for dataset-wide phases ect
 # Todo: Phase-set enrichment tools for transcripts / proteins / glycans?
 # Todo: Include compositional transforms + uncertainty scale model
 # Todo: introduce modifier to y term (baseline) to capture general trends in expression?
 # Todo: Is an integral/dot product a better index of similarity than residuals?
-# Todo: improve stats
+# Todo: improve stats, KT needs an upgrade
 
 
 # noinspection DuplicatedCode
@@ -487,3 +488,39 @@ def fit_repro(df_in):
     # Concatenate variant and invariant rows
     df_out = pd.concat([df_out, invariant_rows], ignore_index=False)
     return df_out.sort_values(by='p-val').sort_values(by='BH-padj')
+
+
+def pcbplot(data, res, molecule, period=24):
+
+    data = data.set_index(data.columns[0])
+    res = res.set_index(res.columns[0])
+    measurements = data.loc[molecule, :]
+    waveform = res.loc[molecule][2]
+    params = res.loc[molecule][4]
+
+    timepoints = np.array([float(re.findall(r'\d+', col)[0]) for col in data.columns])
+    timepoints = (timepoints / period * (2 * math.pi))  # Plots against time constant rather than time
+    t = np.linspace(0, np.max(timepoints), 500)
+
+    if waveform == 'sinusoidal':
+        eq = p_harmonic_oscillator(t, params[0], params[1], params[2], params[3], params[4])
+        wavecolour = '#1EA896'
+    elif waveform == 'cycloid':
+        eq = p_cycloid_wave(t, params[0], params[1], params[2], params[3], params[4])
+        wavecolour = "#FF715B"
+    elif waveform == 'square':
+        eq = p_square_wave(t, params[0], params[1], params[2], params[3], params[4])
+        wavecolour = "#545775"
+    elif waveform == 'transient':
+        eq = p_transient_impulse(params[0], params[1], params[2], params[3], params[4], params[5], params[6])
+        wavecolour = "#AFAFEB"
+    else:
+        return 'No suitable model found'
+
+    timepoints_plot = (timepoints * period) / (2 * math.pi)
+    t_plot = (t * period) / (2 * math.pi)
+
+    plt.scatter(x=timepoints_plot, y=measurements.transpose(), color="#000000")
+    plt.plot(t_plot, eq, color=wavecolour, linewidth=3)
+    plt.xticks(np.arange(0, np.max(timepoints_plot), 6))
+    plt.show()
