@@ -87,7 +87,7 @@ def lack_of_fit_f(timepoints, y_obs, y_fit, params, reps):
 
 
 # noinspection DuplicatedCode
-def fit_best_waveform(df_row, period, models):
+def fit_best_waveform(df_row, period, models, timepoints, reps):
     """
     Fits all three waveform models to the data and determines the best fit.
 
@@ -96,9 +96,6 @@ def fit_best_waveform(df_row, period, models):
     :param models: (list) a list of models to fit. Typically not changed by user.
     :return: A tuple containing the best-fit parameters, the waveform type, and the covariance of the fit.
     """
-    timepoints = np.array([float(re.findall(r'\d+', col)[0]) for col in df_row.index])
-    timepoints = (timepoints / period * (2 * math.pi))
-    reps = len(timepoints) / len(np.unique(timepoints))  # Todo: take this out of loop to speed things up
     amplitudes = df_row.values
 #     variances = calculate_variances(df_row)
 #     weights = np.array([1 / variances[tp] if tp in variances and variances[tp] != 0 else 0.0001 for tp in timepoints]
@@ -398,10 +395,13 @@ def get_pycycle(df_in, period):
     fitted_model = []
     rmse = []
     models = ['harmonic', 'square', 'cycloid', 'transient']
+    timepoints = np.array([float(re.findall(r'\d+', col)[0]) for col in df.columns])
+    timepoints = (timepoints / period * (2 * math.pi))
+    reps = len(timepoints) / len(np.unique(timepoints))
     if isinstance(df.iloc[0, 0], str):
         df = df.set_index(df.columns.tolist()[0])
     for i in tqdm(range(df.shape[0])):
-        waveform, params, covariance, fitted_values, rmse = fit_best_waveform(df.iloc[i, :], period, models)
+        waveform, params, covariance, fitted_values, rmse = fit_best_waveform(df.iloc[i, :], period, models, timepoints, reps)
         if waveform == 'unsolved' or waveform == 'non-rhythmic':
             tau, p_value = np.nan, np.nan
             modulation = np.nan

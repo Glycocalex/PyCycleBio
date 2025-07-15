@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="Fixed plot colours, added custom colour option">
+    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="Cleanup">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pycyclebio/fitting.py" beforeDir="false" afterPath="$PROJECT_DIR$/pycyclebio/fitting.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -274,15 +275,7 @@
       <workItem from="1750921486022" duration="6758000" />
       <workItem from="1751009578438" duration="11684000" />
       <workItem from="1752475887146" duration="13646000" />
-      <workItem from="1752568511414" duration="7727000" />
-    </task>
-    <task id="LOCAL-00023" summary="Removed python oscillators">
-      <option name="closed" value="true" />
-      <created>1732117456503</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1732117456503</updated>
+      <workItem from="1752568511414" duration="9174000" />
     </task>
     <task id="LOCAL-00024" summary="corrected imports">
       <option name="closed" value="true" />
@@ -668,7 +661,15 @@
       <option name="project" value="LOCAL" />
       <updated>1752586788476</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="Cleanup">
+      <option name="closed" value="true" />
+      <created>1752587391458</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1752587391458</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -714,7 +715,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Updating pyproject.toml" />
     <MESSAGE value="Merge branch 'main' into dev" />
     <MESSAGE value="Pypi version upgrade" />
     <MESSAGE value="Corrected version in pyproject.toml" />
@@ -739,7 +739,8 @@
     <MESSAGE value="Code cleanup" />
     <MESSAGE value="Added plot function" />
     <MESSAGE value="Fixed plot colours, added custom colour option" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed plot colours, added custom colour option" />
+    <MESSAGE value="Cleanup" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cleanup" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
