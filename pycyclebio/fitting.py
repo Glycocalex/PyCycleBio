@@ -490,7 +490,7 @@ def fit_repro(df_in):
     return df_out.sort_values(by='p-val').sort_values(by='BH-padj')
 
 
-def pcbplot(data, res, molecule, period=24):
+def pcbplot(data, res, molecule, period=24, colour = None):
 
     data = data.set_index(data.columns[0])
     res = res.set_index(res.columns[0])
@@ -507,7 +507,7 @@ def pcbplot(data, res, molecule, period=24):
         wavecolour = '#1EA896'
     elif waveform == 'cycloid':
         eq = p_cycloid_wave(t, params[0], params[1], params[2], params[3], params[4])
-        wavecolour = "#FF715B"
+        wavecolour = "#81A68C"
     elif waveform == 'square':
         eq = p_square_wave(t, params[0], params[1], params[2], params[3], params[4])
         wavecolour = "#545775"
@@ -516,6 +516,9 @@ def pcbplot(data, res, molecule, period=24):
         wavecolour = "#AFAFEB"
     else:
         return 'No suitable model found'
+
+    if colour is not None:
+        wavecolour = colour
 
     timepoints_plot = (timepoints * period) / (2 * math.pi)
     t_plot = (t * period) / (2 * math.pi)
