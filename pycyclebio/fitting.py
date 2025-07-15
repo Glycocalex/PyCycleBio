@@ -490,7 +490,7 @@ def fit_repro(df_in):
     return df_out.sort_values(by='p-val').sort_values(by='BH-padj')
 
 
-def pcbplot(data, res, molecule, period=24, colour = None):
+def pcbplot(data, res, molecule, period=24, colour=None):
 
     data = data.set_index(data.columns[0])
     res = res.set_index(res.columns[0])
