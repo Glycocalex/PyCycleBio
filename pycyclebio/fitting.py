@@ -300,7 +300,7 @@ def fit_best_waveform(df_row, period, models, timepoints, reps):
             best_rmse = np.nan
         else:
             best_params = square_params
-            best_waveform = 'square_waveform'
+            best_waveform = 'square'
             best_covariance = square_covariance
             best_fitted_values = square_fitted_values
             best_rmse = square_rmse
@@ -423,7 +423,7 @@ def get_pycycle(df_in, period):
     cap_bh_pvals = np.where(pvals > corr_pvals, pvals, corr_pvals)
     df_out = pd.DataFrame({"Feature": df.index.tolist(), "p-val": pvals, "BH-padj": cap_bh_pvals, "Waveform": osc_type,
                            "Modulation": mod_type, "parameters": parameters, "Fitted_values": fitted_model,
-                          "RMSE": rmse})
+                          "RMSE": rmse}) # Todo: all RMSE is the same, fix this
     invariant_features = df_invariant.index.tolist()
     invariant_rows = pd.DataFrame({
         "Feature": invariant_features,
