@@ -87,7 +87,7 @@ def lack_of_fit_f(timepoints, y_obs, y_fit, params, reps):
 
 
 # noinspection DuplicatedCode
-def fit_best_waveform(df_row, period, models, timepoints, reps):
+def fit_best_waveform(df_row, period, models, timepoints, reps, lbound):
     """
     Fits all three waveform models to the data and determines the best fit.
 
@@ -99,6 +99,13 @@ def fit_best_waveform(df_row, period, models, timepoints, reps):
     :return: A tuple containing the best-fit parameters, the waveform type, and the covariance of the fit.
     """
     amplitudes = df_row.values
+
+    if lbound == 1:  # 1 = neg values present
+        lbound = np.min(amplitudes)
+    if lbound == 0:  # 0 = neg values absent
+        lbound = 0
+    cyclbound = -np.abs(amplitudes[np.argmax(np.abs(amplitudes))])
+
 #     variances = calculate_variances(df_row)
 #     weights = np.array([1 / variances[tp] if tp in variances and variances[tp] != 0 else 0.0001 for tp in timepoints]
     # 0 variance messes model selection up, so a negligible value is used in above line
@@ -106,8 +113,8 @@ def fit_best_waveform(df_row, period, models, timepoints, reps):
     # Fit extended harmonic oscillator
     # (t, a, gamma, omega, phi, y):
     if 'harmonic' in models:
-        harmonic_initial_params = [np.median(amplitudes), 0, 1, 0, np.mean(amplitudes)/2]
-        lower_bounds = [0, -0.2, 0.9, -period/2, -np.abs(amplitudes[np.argmax(np.abs(amplitudes))])]
+        harmonic_initial_params = [np.median(amplitudes), 0, 1, 0, np.mean(amplitudes)]
+        lower_bounds = [lbound, -0.2, 0.9, -period/2, -np.abs(amplitudes[np.argmax(np.abs(amplitudes))])]
         upper_bounds = [np.max(amplitudes), 0.2, 1.1, period/2, np.max(amplitudes)]
         harmonic_bounds = (lower_bounds, upper_bounds)
         try:
@@ -145,7 +152,7 @@ def fit_best_waveform(df_row, period, models, timepoints, reps):
         # Fit square oscillator
         # (t, a, gamma, omega, phi, y):
         square_initial_params = [np.median(amplitudes), 0, 1, 0, np.mean(amplitudes)]
-        square_lower_bounds = [0, -0.2, 0.9, -period/2, -np.abs(amplitudes[np.argmax(np.abs(amplitudes))])]
+        square_lower_bounds = [lbound, -0.2, 0.9, -period/2, -np.abs(amplitudes[np.argmax(np.abs(amplitudes))])]
         square_upper_bounds = [np.max(amplitudes), 0.2, 1.1, period/2, np.max(amplitudes)]
         square_bounds = (square_lower_bounds, square_upper_bounds)
         try:
@@ -183,8 +190,8 @@ def fit_best_waveform(df_row, period, models, timepoints, reps):
         # Fit cycloid oscillators
         # (t, a, gamma, omega, phi, y):
         cycloid_initial_params = [np.median(amplitudes), 0, 1, 0, np.mean(amplitudes)]
-        cycloid_lower_bounds = [-np.max(amplitudes), -0.2, 0.9, -period/2,
-                                -np.abs(amplitudes[np.argmax(np.abs(amplitudes))])]
+        cycloid_lower_bounds = [cyclbound, -0.2, 0.9, -period/2,
+                                cyclbound]
         cycloid_upper_bounds = [np.max(amplitudes), 0.2, 1.1, period/2, np.max(amplitudes)]
         cycloid_bounds = (cycloid_lower_bounds, cycloid_upper_bounds)
         try:
@@ -220,13 +227,13 @@ def fit_best_waveform(df_row, period, models, timepoints, reps):
 
     if 'transient' in models:
         # Fit transient oscillator
-        #   (t, a, p, w, y):
+        # (t, a, gamma,  period, width, phi,  y):
+
         # Lower bounds of p and w need to be adjusted with experimental resolution (in extreme cases),
-        # if they are too small
-        #   compared to measurements they will produce a flat line (transient occurring for very small duration between
-        #   points) which breaks the statistical corrections
+        # if they are too small compared to measurements they will produce a flat line
+        # (transient occurring for very small duration between points) which breaks the statistical corrections
         transient_initial_params = [np.median(amplitudes), 0, 1, 1, 0,  np.min(amplitudes)]
-        transient_lower_bounds = [0, -0.2, 0.1, 0.1, -period, 0]
+        transient_lower_bounds = [lbound, -0.2, 0.1, 0.1, -period, lbound]
         transient_upper_bounds = [np.max(amplitudes), 0.2, 24, 4, period, np.max(amplitudes)]
         transient_bounds = (transient_lower_bounds, transient_upper_bounds)
         try:
@@ -400,11 +407,15 @@ def get_pycycle(df_in, period):
     timepoints = np.array([float(re.findall(r'\d+', col)[0]) for col in df.columns])
     timepoints = (timepoints / period * (2 * math.pi))
     reps = len(timepoints) / len(np.unique(timepoints))
+    if np.any(df.to_numpy() < 0):
+        lbound = 1  # 1 = neg values present
+    else:
+        lbound = 0  # 0 = neg values absent
     if isinstance(df.iloc[0, 0], str):
         df = df.set_index(df.columns.tolist()[0])
     for i in tqdm(range(df.shape[0])):
         waveform, params, covariance, fitted_values, rmse = fit_best_waveform(df.iloc[i, :], period, models, timepoints,
-                                                                              reps)
+                                                                              reps, lbound)
         if waveform == 'unsolved' or waveform == 'non-rhythmic':
             tau, p_value = np.nan, np.nan
             modulation = np.nan
@@ -519,7 +530,7 @@ def pcbplot(data, res, molecule, period=24, colour=None):
         eq = p_square_wave(t, params[0], params[1], params[2], params[3], params[4])
         wavecolour = "#545775"
     elif waveform == 'transient':
-        eq = p_transient_impulse(params[0], params[1], params[2], params[3], params[4], params[5], params[6])
+        eq = p_transient_impulse(t, params[0], params[1], params[2], params[3], params[4], params[5])
         wavecolour = "#AFAFEB"
     else:
         return 'No suitable model found'
