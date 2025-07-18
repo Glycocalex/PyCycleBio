@@ -96,6 +96,8 @@ def fit_best_waveform(df_row, period, models, timepoints, reps, lbound):
     :param models: (list) a list of models to fit. Typically not changed by user.
     :param timepoints: (array) timepoints, extracted from column labels of input df.
     :param reps: (int) number of replicates per timepoint, calculated from column labels.
+    :param lbound: (binary) boolean to identify if dataframe contains normalised (negative) values,
+    which require models to be rebounded.
     :return: A tuple containing the best-fit parameters, the waveform type, and the covariance of the fit.
     """
     amplitudes = df_row.values
@@ -434,7 +436,7 @@ def get_pycycle(df_in, period):
     cap_bh_pvals = np.where(pvals > corr_pvals, pvals, corr_pvals)
     df_out = pd.DataFrame({"Feature": df.index.tolist(), "p-val": pvals, "BH-padj": cap_bh_pvals, "Waveform": osc_type,
                            "Modulation": mod_type, "parameters": parameters, "Fitted_values": fitted_model,
-                          "RMSE": rmse}) # Todo: all RMSE is the same, fix this
+                          "RMSE": rmse})  # Todo: all RMSE is the same, fix this
     invariant_features = df_invariant.index.tolist()
     invariant_rows = pd.DataFrame({
         "Feature": invariant_features,
@@ -471,11 +473,15 @@ def fit_repro(df_in):
     timepoints = np.array([float(re.findall(r'\d+', col)[0]) for col in df.columns])
     timepoints = (timepoints / period * (2 * math.pi))
     reps = len(timepoints) / len(np.unique(timepoints))
+    if np.any(df.to_numpy() < 0):
+        lbound = 1  # 1 = neg values present
+    else:
+        lbound = 0  # 0 = neg values absent
     if isinstance(df.iloc[0, 0], str):
         df = df.set_index(df.columns.tolist()[0])
     for i in tqdm(range(df.shape[0])):
         waveform, params, covariance, fitted_values, rmse = fit_best_waveform(df.iloc[i, :], period, models, timepoints,
-                                                                              reps)
+                                                                              reps, lbound)
         if waveform == 'unsolved' or waveform == 'non-rhythmic':
             tau, p_value = np.nan, np.nan
             modulation = np.nan

@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="Tweaked waveform labels">
+    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="Added exception for bounds to handle z-scored inputs with negative magnitudes.&#10;&#10;Fixed plotting of transients in pcbplot">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pycyclebio/fitting.py" beforeDir="false" afterPath="$PROJECT_DIR$/pycyclebio/fitting.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -277,15 +276,8 @@
       <workItem from="1752475887146" duration="13646000" />
       <workItem from="1752568511414" duration="10446000" />
       <workItem from="1752650738057" duration="10930000" />
-      <workItem from="1752674816452" duration="6956000" />
-    </task>
-    <task id="LOCAL-00027" summary="Removed redundent output parameters">
-      <option name="closed" value="true" />
-      <created>1732201803910</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1732201803910</updated>
+      <workItem from="1752674816452" duration="12302000" />
+      <workItem from="1752755481857" duration="1823000" />
     </task>
     <task id="LOCAL-00028" summary="Removed redundent output parameters">
       <option name="closed" value="true" />
@@ -671,7 +663,15 @@
       <option name="project" value="LOCAL" />
       <updated>1752656085941</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="Added exception for bounds to handle z-scored inputs with negative magnitudes.&#10;&#10;Fixed plotting of transients in pcbplot">
+      <option name="closed" value="true" />
+      <created>1752742991235</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1752742991235</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -717,7 +717,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Corrected version in pyproject.toml" />
     <MESSAGE value="Added tqdm progress bar" />
     <MESSAGE value="Updated todos" />
     <MESSAGE value="Version bump&#10;Added colab notebook to readme" />
@@ -742,7 +741,8 @@
     <MESSAGE value="Cleanup" />
     <MESSAGE value="Edited docstrings" />
     <MESSAGE value="Tweaked waveform labels" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tweaked waveform labels" />
+    <MESSAGE value="Added exception for bounds to handle z-scored inputs with negative magnitudes.&#10;&#10;Fixed plotting of transients in pcbplot" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added exception for bounds to handle z-scored inputs with negative magnitudes.&#10;&#10;Fixed plotting of transients in pcbplot" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
