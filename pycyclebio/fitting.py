@@ -514,7 +514,7 @@ def fit_repro(df_in):
     return df_out.sort_values(by='p-val').sort_values(by='BH-padj')
 
 
-def pcbplot(data, res, molecule, period=24, colour=None):
+def pcbplot(data, res, molecule, period=24, colour=None, path = None):
 
     data = data.set_index(data.columns[0])
     res = res.set_index(res.columns[0])
@@ -550,4 +550,6 @@ def pcbplot(data, res, molecule, period=24, colour=None):
     plt.scatter(x=timepoints_plot, y=measurements.transpose(), color="#000000")
     plt.plot(t_plot, eq, color=wavecolour, linewidth=3)
     plt.xticks(np.arange(0, np.max(timepoints_plot), 6))
+    if path != None:
+        plt.savefig(path)
     plt.show()

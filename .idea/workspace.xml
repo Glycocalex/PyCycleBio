@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="Added exception for bounds to handle z-scored inputs with negative magnitudes.&#10;&#10;Fixed plotting of transients in pcbplot">
+    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="Updated docstrings, added negative value exceptions to reproductive function">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -278,14 +278,7 @@
       <workItem from="1752650738057" duration="10930000" />
       <workItem from="1752674816452" duration="12302000" />
       <workItem from="1752755481857" duration="1823000" />
-    </task>
-    <task id="LOCAL-00028" summary="Removed redundent output parameters">
-      <option name="closed" value="true" />
-      <created>1732201816477</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1732201816477</updated>
+      <workItem from="1752830755233" duration="1202000" />
     </task>
     <task id="LOCAL-00029" summary="Housekeeping">
       <option name="closed" value="true" />
@@ -671,7 +664,15 @@
       <option name="project" value="LOCAL" />
       <updated>1752742991235</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="Updated docstrings, added negative value exceptions to reproductive function">
+      <option name="closed" value="true" />
+      <created>1752830955173</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1752830955173</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -717,7 +718,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added tqdm progress bar" />
     <MESSAGE value="Updated todos" />
     <MESSAGE value="Version bump&#10;Added colab notebook to readme" />
     <MESSAGE value="Readme revision" />
@@ -742,7 +742,8 @@
     <MESSAGE value="Edited docstrings" />
     <MESSAGE value="Tweaked waveform labels" />
     <MESSAGE value="Added exception for bounds to handle z-scored inputs with negative magnitudes.&#10;&#10;Fixed plotting of transients in pcbplot" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added exception for bounds to handle z-scored inputs with negative magnitudes.&#10;&#10;Fixed plotting of transients in pcbplot" />
+    <MESSAGE value="Updated docstrings, added negative value exceptions to reproductive function" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated docstrings, added negative value exceptions to reproductive function" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -766,36 +767,6 @@
           <url>file://$PROJECT_DIR$/../../Scripts/diifrhth.py</url>
           <line>15</line>
           <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/pycyclebio/fitting.py</url>
-          <line>115</line>
-          <option name="timeStamp" value="28" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/pycyclebio/fitting.py</url>
-          <line>116</line>
-          <option name="timeStamp" value="29" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/pycyclebio/fitting.py</url>
-          <line>119</line>
-          <option name="timeStamp" value="31" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/pycyclebio/fitting.py</url>
-          <line>117</line>
-          <option name="timeStamp" value="32" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/pycyclebio/fitting.py</url>
-          <line>118</line>
-          <option name="timeStamp" value="33" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/pycyclebio/fitting.py</url>
-          <line>120</line>
-          <option name="timeStamp" value="34" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
