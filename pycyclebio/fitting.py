@@ -35,7 +35,7 @@ def p_square_wave(t, a, gamma, omega, phi, y):
 
 
 def p_cycloid_wave(t, a, gamma, omega, phi, y):
-    return a * np.exp(gamma * t) * (2*np.cos((omega*t) + phi)-(np.cos(2*((omega*t)+phi)))) + y
+    return a * np.exp(gamma * t) * (np.cos((omega*t) + phi)-(np.cos(2*((omega*t)+phi)))/2) + y
 
 
 def p_transient_impulse(t, a, gamma,  period, width, phi,  y):

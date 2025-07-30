@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="Updated pyproject.toml with new license field">
+    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="Simplified cycloid equation">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pycyclebio/fitting.py" beforeDir="false" afterPath="$PROJECT_DIR$/pycyclebio/fitting.py" afterDir="false" />
     </list>
@@ -291,15 +291,7 @@
       <workItem from="1753445316576" duration="4588000" />
       <workItem from="1753771901750" duration="2287000" />
       <workItem from="1753794787969" duration="1230000" />
-      <workItem from="1753861142999" duration="3668000" />
-    </task>
-    <task id="LOCAL-00031" summary="Testing action">
-      <option name="closed" value="true" />
-      <created>1732205051069</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1732205051069</updated>
+      <workItem from="1753861142999" duration="4756000" />
     </task>
     <task id="LOCAL-00032" summary="Testing action">
       <option name="closed" value="true" />
@@ -685,7 +677,15 @@
       <option name="project" value="LOCAL" />
       <updated>1753126234374</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="Simplified cycloid equation">
+      <option name="closed" value="true" />
+      <created>1753868498584</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1753868498585</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -731,7 +731,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Readme revision" />
     <MESSAGE value="Added whitespace for a e s t h e t i c s" />
     <MESSAGE value="Capped corrected p vals" />
     <MESSAGE value="Version bump" />
@@ -756,7 +755,8 @@
     <MESSAGE value="Updated docstrings, added negative value exceptions to reproductive function" />
     <MESSAGE value="Added saving functionality to plots generated with pcbplot" />
     <MESSAGE value="Updated pyproject.toml with new license field" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated pyproject.toml with new license field" />
+    <MESSAGE value="Simplified cycloid equation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Simplified cycloid equation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
