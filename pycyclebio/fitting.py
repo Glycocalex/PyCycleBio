@@ -35,7 +35,7 @@ def p_square_wave(t, a, gamma, omega, phi, y):
 
 
 def p_cycloid_wave(t, a, gamma, omega, phi, y):
-    return a * np.exp(gamma * t) * (-0.5 * ((np.cos(2*((omega*t)+phi))) - 2*np.cos((omega*t) + phi))) + y
+    return a * np.exp(gamma * t) * (2*np.cos((omega*t) + phi)-(np.cos(2*((omega*t)+phi)))) + y
 
 
 def p_transient_impulse(t, a, gamma,  period, width, phi,  y):
@@ -106,7 +106,7 @@ def fit_best_waveform(df_row, period, models, timepoints, reps, lbound):
         lbound = np.min(amplitudes)
     if lbound == 0:  # 0 = neg values absent
         lbound = 0
-    cyclbound = -np.abs(amplitudes[np.argmax(np.abs(amplitudes))])
+    cyclbound = np.abs(amplitudes[np.argmax(np.abs(amplitudes))])
 
 #     variances = calculate_variances(df_row)
 #     weights = np.array([1 / variances[tp] if tp in variances and variances[tp] != 0 else 0.0001 for tp in timepoints]
@@ -192,9 +192,9 @@ def fit_best_waveform(df_row, period, models, timepoints, reps, lbound):
         # Fit cycloid oscillators
         # (t, a, gamma, omega, phi, y):
         cycloid_initial_params = [np.median(amplitudes), 0, 1, 0, np.mean(amplitudes)]
-        cycloid_lower_bounds = [cyclbound, -0.2, 0.9, -period/2,
-                                cyclbound]
-        cycloid_upper_bounds = [np.max(amplitudes), 0.2, 1.1, period/2, np.max(amplitudes)]
+        cycloid_lower_bounds = [-np.max(amplitudes), -0.2, 0.9, -period/2,
+                                -np.max(amplitudes)]
+        cycloid_upper_bounds = [cyclbound, 0.2, 1.1, period/2, cyclbound]
         cycloid_bounds = (cycloid_lower_bounds, cycloid_upper_bounds)
         try:
             cycloid_res = curve_fit(

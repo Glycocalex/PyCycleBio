@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="Added saving functionality to plots generated with pcbplot">
+    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="Updated pyproject.toml with new license field">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pycyclebio/fitting.py" beforeDir="false" afterPath="$PROJECT_DIR$/pycyclebio/fitting.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +58,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Alex Bennett/Desktop/Python/Scripts/20240208 james glycan plotting.py&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Alex Bennett/Desktop/Python/PyCycle/test data/PyCycle analysis.py&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -280,14 +281,17 @@
       <workItem from="1752755481857" duration="1823000" />
       <workItem from="1752830755233" duration="3388000" />
       <workItem from="1753106419823" duration="3000" />
-    </task>
-    <task id="LOCAL-00030" summary="Added dist file">
-      <option name="closed" value="true" />
-      <created>1732204282093</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1732204282093</updated>
+      <workItem from="1753126143771" duration="96000" />
+      <workItem from="1753352390114" duration="3000" />
+      <workItem from="1753358274610" duration="1239000" />
+      <workItem from="1753360013770" duration="6115000" />
+      <workItem from="1753428818758" duration="1229000" />
+      <workItem from="1753435280275" duration="7530000" />
+      <workItem from="1753444931181" duration="197000" />
+      <workItem from="1753445316576" duration="4588000" />
+      <workItem from="1753771901750" duration="2287000" />
+      <workItem from="1753794787969" duration="1230000" />
+      <workItem from="1753861142999" duration="3668000" />
     </task>
     <task id="LOCAL-00031" summary="Testing action">
       <option name="closed" value="true" />
@@ -673,7 +677,15 @@
       <option name="project" value="LOCAL" />
       <updated>1752834158784</updated>
     </task>
-    <option name="localTasksCounter" value="79" />
+    <task id="LOCAL-00079" summary="Updated pyproject.toml with new license field">
+      <option name="closed" value="true" />
+      <created>1753126234373</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1753126234374</updated>
+    </task>
+    <option name="localTasksCounter" value="80" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -719,7 +731,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Version bump&#10;Added colab notebook to readme" />
     <MESSAGE value="Readme revision" />
     <MESSAGE value="Added whitespace for a e s t h e t i c s" />
     <MESSAGE value="Capped corrected p vals" />
@@ -744,7 +755,8 @@
     <MESSAGE value="Added exception for bounds to handle z-scored inputs with negative magnitudes.&#10;&#10;Fixed plotting of transients in pcbplot" />
     <MESSAGE value="Updated docstrings, added negative value exceptions to reproductive function" />
     <MESSAGE value="Added saving functionality to plots generated with pcbplot" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added saving functionality to plots generated with pcbplot" />
+    <MESSAGE value="Updated pyproject.toml with new license field" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated pyproject.toml with new license field" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
