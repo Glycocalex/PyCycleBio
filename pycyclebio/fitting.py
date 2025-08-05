@@ -192,8 +192,8 @@ def fit_best_waveform(df_row, period, models, timepoints, reps, lbound):
         # Fit cycloid oscillators
         # (t, a, gamma, omega, phi, y):
         cycloid_initial_params = [np.median(amplitudes), 0, 1, 0, np.mean(amplitudes)]
-        cycloid_lower_bounds = [-np.max(amplitudes), -0.2, 0.9, -period/2,
-                                -np.max(amplitudes)]
+        cycloid_lower_bounds = [-cyclbound, -0.2, 0.9, -period/2,
+                                -cyclbound]
         cycloid_upper_bounds = [cyclbound, 0.2, 1.1, period/2, cyclbound]
         cycloid_bounds = (cycloid_lower_bounds, cycloid_upper_bounds)
         try:
@@ -553,3 +553,46 @@ def pcbplot(data, res, molecule, period=24, colour=None, path = None):
     if path != None:
         plt.savefig(path)
     plt.show()
+
+
+def get_regs(data, res, target, regs, period=24):
+
+    rhythmic_regs = pd.DataFrame()
+
+    row = res[res.iloc[:, 0] == target]
+    if row.iloc[0, 3] == 'square' or 'cycloid':
+        complex_wave = 1
+    else:
+        complex_wave = 0
+
+    for i in range(0, len(regs)):
+
+        reg_iter = regs[i]
+        element = res[res.iloc[:, 0].str.lower() == reg_iter.lower()]
+        try:
+            if element.iloc[0, 2] < 0.05:
+                element = element.assign(Likely_Component='Carrier')
+                rhythmic_regs = pd.concat([rhythmic_regs, element])
+        except IndexError:
+            pass
+
+    if complex_wave == 1:
+        print("Finding high-frequency components, "
+              "access regulatory elements with 'results[0]' and this analysis with 'results[1]'")
+        sub_res = get_pycycle(data, period/2)
+
+        for i in range(0, len(regs)):
+
+            reg_iter = regs[i]
+            element = sub_res[sub_res.iloc[:, 0].str.lower() == reg_iter.lower()]
+            try:
+                if element.iloc[0, 2] < 0.05:
+                    element = element.assign(Likely_Component='Modulator')
+                    rhythmic_regs = pd.concat([rhythmic_regs, element])
+            except IndexError:
+                pass
+        return [rhythmic_regs.sort_values(by='BH-padj'), sub_res]
+
+    else:
+        return rhythmic_regs.sort_values(by='BH-padj')
+

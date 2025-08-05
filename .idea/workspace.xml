@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="Simplified cycloid equation">
+    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="Tweaked cycloid bounds for new eqn">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pycyclebio/fitting.py" beforeDir="false" afterPath="$PROJECT_DIR$/pycyclebio/fitting.py" afterDir="false" />
     </list>
@@ -54,11 +54,12 @@
     &quot;Python.diifrhth.executor&quot;: &quot;Debug&quot;,
     &quot;Python.drhyth test.executor&quot;: &quot;Debug&quot;,
     &quot;Python.fitting.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.genehancer regulation function.executor&quot;: &quot;Debug&quot;,
     &quot;Python.pcb 0amp testing.executor&quot;: &quot;Debug&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Alex Bennett/Desktop/Python/PyCycle/test data/PyCycle analysis.py&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Alex Bennett/Desktop/Python/PyCycle/Pycycledev/genehancer reulation&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -77,11 +78,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Alex Bennett\Desktop\Python\PyCycle\Pycycledev\genehancer reulation" />
       <recent name="C:\Users\Alex Bennett\Desktop\Python\Scripts" />
       <recent name="C:\Users\Alex Bennett\Documents\Papers\PyCycle\Datasets\PMID29911688" />
       <recent name="C:\Users\Alex Bennett\Documents\Papers\PyCycle\wave graphs" />
       <recent name="C:\Users\Alex Bennett\Documents\Papers\PyCycle\Datasets\runtimes" />
-      <recent name="C:\Users\Alex Bennett\Documents\Papers\PyCycle\Datasets\PMID35511946\sampling conditions res" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -291,15 +292,15 @@
       <workItem from="1753445316576" duration="4588000" />
       <workItem from="1753771901750" duration="2287000" />
       <workItem from="1753794787969" duration="1230000" />
-      <workItem from="1753861142999" duration="4756000" />
-    </task>
-    <task id="LOCAL-00032" summary="Testing action">
-      <option name="closed" value="true" />
-      <created>1732205301144</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1732205301144</updated>
+      <workItem from="1753861142999" duration="4828000" />
+      <workItem from="1753874456509" duration="2028000" />
+      <workItem from="1753881935821" duration="3852000" />
+      <workItem from="1753946616205" duration="14414000" />
+      <workItem from="1754040726190" duration="1000" />
+      <workItem from="1754041214888" duration="380000" />
+      <workItem from="1754294260149" duration="4685000" />
+      <workItem from="1754377212052" duration="18869000" />
+      <workItem from="1754399144205" duration="3798000" />
     </task>
     <task id="LOCAL-00033" summary="Testing action">
       <option name="closed" value="true" />
@@ -685,7 +686,15 @@
       <option name="project" value="LOCAL" />
       <updated>1753868498585</updated>
     </task>
-    <option name="localTasksCounter" value="81" />
+    <task id="LOCAL-00081" summary="Tweaked cycloid bounds for new eqn">
+      <option name="closed" value="true" />
+      <created>1753869478026</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1753869478026</updated>
+    </task>
+    <option name="localTasksCounter" value="82" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -731,7 +740,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added whitespace for a e s t h e t i c s" />
     <MESSAGE value="Capped corrected p vals" />
     <MESSAGE value="Version bump" />
     <MESSAGE value="Major cleanup of variable names and functions" />
@@ -756,7 +764,8 @@
     <MESSAGE value="Added saving functionality to plots generated with pcbplot" />
     <MESSAGE value="Updated pyproject.toml with new license field" />
     <MESSAGE value="Simplified cycloid equation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Simplified cycloid equation" />
+    <MESSAGE value="Tweaked cycloid bounds for new eqn" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tweaked cycloid bounds for new eqn" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -795,11 +804,12 @@
     <SUITE FILE_PATH="coverage/PyCycle_clone$20240819_busted_ass_PyCycle.coverage" NAME="20240819 busted ass PyCycle Coverage Results" MODIFIED="1724096502880" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../.." />
     <SUITE FILE_PATH="coverage/PyCycle_clone$diifrhth.coverage" NAME="diifrhth Coverage Results" MODIFIED="1749049659114" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../Scripts" />
     <SUITE FILE_PATH="coverage/PyCycle_clone$20240208_james_glycan_plotting.coverage" NAME="20240208 james glycan plotting Coverage Results" MODIFIED="1740571116967" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../Scripts" />
-    <SUITE FILE_PATH="coverage/PyCycle_clone$fitting.coverage" NAME="fitting Coverage Results" MODIFIED="1752741350637" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pycyclebio" />
+    <SUITE FILE_PATH="coverage/PyCycle_clone$fitting.coverage" NAME="fitting Coverage Results" MODIFIED="1753956059853" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pycyclebio" />
     <SUITE FILE_PATH="coverage/PyCycle_clone$colab_prototype.coverage" NAME="colab prototype Coverage Results" MODIFIED="1742997925863" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../Scripts" />
     <SUITE FILE_PATH="coverage/PyCycle_clone$pcb_0amp_testing.coverage" NAME="pcb 0amp testing Coverage Results" MODIFIED="1750777457214" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../Scripts" />
     <SUITE FILE_PATH="coverage/PyCycle_clone$PyCycle_analysis.coverage" NAME="PyCycle analysis Coverage Results" MODIFIED="1731941506149" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../test data" />
     <SUITE FILE_PATH="coverage/PyCycle_clone$PyCycle.coverage" NAME="PyCycle Coverage Results" MODIFIED="1730799367783" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PyCycle_clone$drhyth_test.coverage" NAME="drhyth test Coverage Results" MODIFIED="1749113386092" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../Scripts" />
+    <SUITE FILE_PATH="coverage/PyCycle_clone$genehancer_regulation_function.coverage" NAME="genehancer regulation function Coverage Results" MODIFIED="1754397419181" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../Pycycledev/genehancer reulation" />
   </component>
 </project>
