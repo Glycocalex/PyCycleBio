@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="Tweaked cycloid bounds for new eqn">
+    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="Added function to aid with identifying possible regulatory elements">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pycyclebio/fitting.py" beforeDir="false" afterPath="$PROJECT_DIR$/pycyclebio/fitting.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +58,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Alex Bennett/Desktop/Python/PyCycle/Pycycledev/genehancer reulation&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Alex Bennett/Desktop/Python/PyCycle/Pycycledev/genehancer regulation/genehancer regulation function.py&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -300,15 +299,9 @@
       <workItem from="1754041214888" duration="380000" />
       <workItem from="1754294260149" duration="4685000" />
       <workItem from="1754377212052" duration="18869000" />
-      <workItem from="1754399144205" duration="3798000" />
-    </task>
-    <task id="LOCAL-00033" summary="Testing action">
-      <option name="closed" value="true" />
-      <created>1732209553177</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1732209553177</updated>
+      <workItem from="1754399144205" duration="4251000" />
+      <workItem from="1754464735572" duration="6952000" />
+      <workItem from="1754485416512" duration="847000" />
     </task>
     <task id="LOCAL-00034" summary="New pypi version">
       <option name="closed" value="true" />
@@ -694,7 +687,15 @@
       <option name="project" value="LOCAL" />
       <updated>1753869478026</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="Added function to aid with identifying possible regulatory elements">
+      <option name="closed" value="true" />
+      <created>1754403198819</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1754403198820</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -740,7 +741,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Capped corrected p vals" />
     <MESSAGE value="Version bump" />
     <MESSAGE value="Major cleanup of variable names and functions" />
     <MESSAGE value="More cleanup of variable names and functions" />
@@ -765,7 +765,8 @@
     <MESSAGE value="Updated pyproject.toml with new license field" />
     <MESSAGE value="Simplified cycloid equation" />
     <MESSAGE value="Tweaked cycloid bounds for new eqn" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tweaked cycloid bounds for new eqn" />
+    <MESSAGE value="Added function to aid with identifying possible regulatory elements" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added function to aid with identifying possible regulatory elements" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
