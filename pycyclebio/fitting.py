@@ -404,7 +404,7 @@ def get_pycycle(df_in, period):
     mod_type = []
     parameters = []
     fitted_model = []
-    rmse = []
+    model_rmse = []
     models = ['harmonic', 'square', 'cycloid', 'transient']
     timepoints = np.array([float(re.findall(r'\d+', col)[0]) for col in df.columns])
     timepoints = (timepoints / period * (2 * math.pi))
@@ -432,11 +432,12 @@ def get_pycycle(df_in, period):
         mod_type.append(modulation)
         parameters.append(params)
         fitted_model.append(fitted_values)
+        model_rmse.append(rmse)
     corr_pvals = multipletests(pvals, alpha=0.001, method='fdr_tsbh')[1]
     cap_bh_pvals = np.where(pvals > corr_pvals, pvals, corr_pvals)
     df_out = pd.DataFrame({"Feature": df.index.tolist(), "p-val": pvals, "BH-padj": cap_bh_pvals, "Waveform": osc_type,
                            "Modulation": mod_type, "parameters": parameters, "Fitted_values": fitted_model,
-                          "RMSE": rmse})  # Todo: all RMSE is the same, fix this
+                          "RMSE": model_rmse})
     invariant_features = df_invariant.index.tolist()
     invariant_rows = pd.DataFrame({
         "Feature": invariant_features,
