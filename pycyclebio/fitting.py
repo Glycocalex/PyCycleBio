@@ -600,9 +600,11 @@ def get_regs(data, res, target, regs, period=24):
                     rhythmic_regs = pd.concat([rhythmic_regs, element])
             except IndexError:
                 pass
+        rhythmic_regs.sort_values(by='BH-padj')
         rhythmic_regs = rhythmic_regs[~rhythmic_regs.duplicated(subset=rhythmic_regs.columns[0], keep='first')]
-        return [rhythmic_regs.sort_values(by='BH-padj'), sub_res]
+        return [rhythmic_regs, sub_res]
 
     else:
+        rhythmic_regs.sort_values(by='BH-padj')
         rhythmic_regs = rhythmic_regs[~rhythmic_regs.duplicated(subset=rhythmic_regs.columns[0], keep='first')]
         return rhythmic_regs.sort_values(by='BH-padj')
