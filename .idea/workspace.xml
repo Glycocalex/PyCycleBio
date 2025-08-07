@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="Code clean up">
+    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="Fixed bug where all elements of output had same rmse">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pycyclebio/fitting.py" beforeDir="false" afterPath="$PROJECT_DIR$/pycyclebio/fitting.py" afterDir="false" />
     </list>
@@ -303,15 +303,7 @@
       <workItem from="1754399144205" duration="4251000" />
       <workItem from="1754464735572" duration="6952000" />
       <workItem from="1754485416512" duration="1455000" />
-      <workItem from="1754547496703" duration="6782000" />
-    </task>
-    <task id="LOCAL-00035" summary="New pypi version">
-      <option name="closed" value="true" />
-      <created>1732210022604</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1732210022604</updated>
+      <workItem from="1754547496703" duration="10750000" />
     </task>
     <task id="LOCAL-00036" summary="New pypi version">
       <option name="closed" value="true" />
@@ -697,7 +689,15 @@
       <option name="project" value="LOCAL" />
       <updated>1754486599971</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="Fixed bug where all elements of output had same rmse">
+      <option name="closed" value="true" />
+      <created>1754556075998</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1754556075999</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -743,7 +743,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Major cleanup of variable names and functions" />
     <MESSAGE value="More cleanup of variable names and functions" />
     <MESSAGE value="Fixed bare exceptions during model fitting" />
     <MESSAGE value="Fixed typos" />
@@ -768,7 +767,8 @@
     <MESSAGE value="Tweaked cycloid bounds for new eqn" />
     <MESSAGE value="Added function to aid with identifying possible regulatory elements" />
     <MESSAGE value="Code clean up" />
-    <option name="LAST_COMMIT_MESSAGE" value="Code clean up" />
+    <MESSAGE value="Fixed bug where all elements of output had same rmse" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed bug where all elements of output had same rmse" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -832,31 +832,6 @@
           <url>file://$PROJECT_DIR$/pycyclebio/fitting.py</url>
           <line>272</line>
           <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/pycyclebio/fitting.py</url>
-          <line>297</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/pycyclebio/fitting.py</url>
-          <line>314</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/pycyclebio/fitting.py</url>
-          <line>331</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/pycyclebio/fitting.py</url>
-          <line>348</line>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/pycyclebio/fitting.py</url>
-          <line>350</line>
-          <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>

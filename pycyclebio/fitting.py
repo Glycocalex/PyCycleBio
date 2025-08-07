@@ -559,11 +559,12 @@ def pcbplot(data, res, molecule, period=24, colour=None, path=None):
 def get_regs(data, res, target, regs, period=24):
 
     rhythmic_regs = pd.DataFrame()
+    complex_wave = None
 
     row = res[res.iloc[:, 0] == target]
-    if row.iloc[0, 3] == 'square' or 'cycloid':
+    if row.iloc[0, 3] == 'square':
         complex_wave = 1
-    else:
+    if row.iloc[0, 3] == 'cycloid':
         complex_wave = 0
 
     for i in range(0, len(regs)):
@@ -577,10 +578,17 @@ def get_regs(data, res, target, regs, period=24):
         except IndexError:
             pass
 
+    if complex_wave == 0:
+        print("Finding high-frequency components, "
+              "access regulatory elements with 'results[0]' and this analysis with 'results[1]'")
+        sub_res = get_pycycle(data, period/3)
+
     if complex_wave == 1:
         print("Finding high-frequency components, "
               "access regulatory elements with 'results[0]' and this analysis with 'results[1]'")
         sub_res = get_pycycle(data, period/2)
+
+    if complex_wave:
 
         for i in range(0, len(regs)):
 
@@ -592,7 +600,9 @@ def get_regs(data, res, target, regs, period=24):
                     rhythmic_regs = pd.concat([rhythmic_regs, element])
             except IndexError:
                 pass
+        rhythmic_regs = rhythmic_regs[~rhythmic_regs.duplicated(subset=rhythmic_regs.columns[0], keep='first')]
         return [rhythmic_regs.sort_values(by='BH-padj'), sub_res]
 
     else:
+        rhythmic_regs = rhythmic_regs[~rhythmic_regs.duplicated(subset=rhythmic_regs.columns[0], keep='first')]
         return rhythmic_regs.sort_values(by='BH-padj')
