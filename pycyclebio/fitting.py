@@ -560,6 +560,7 @@ def get_regs(data, res, target, regs, period=24):
 
     rhythmic_regs = pd.DataFrame()
     complex_wave = None
+    sub_res = None
 
     row = res[res.iloc[:, 0] == target]
     if row.iloc[0, 3] == 'square':

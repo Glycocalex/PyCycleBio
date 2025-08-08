@@ -302,15 +302,9 @@
       <workItem from="1754399144205" duration="4251000" />
       <workItem from="1754464735572" duration="6952000" />
       <workItem from="1754485416512" duration="1455000" />
-      <workItem from="1754547496703" duration="11583000" />
-    </task>
-    <task id="LOCAL-00037" summary="New pypi version">
-      <option name="closed" value="true" />
-      <created>1732217347301</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1732217347301</updated>
+      <workItem from="1754547496703" duration="14452000" />
+      <workItem from="1754567649709" duration="141000" />
+      <workItem from="1754634554262" duration="1830000" />
     </task>
     <task id="LOCAL-00038" summary="Updated todo list">
       <option name="closed" value="true" />
@@ -696,7 +690,15 @@
       <option name="project" value="LOCAL" />
       <updated>1754563658782</updated>
     </task>
-    <option name="localTasksCounter" value="86" />
+    <task id="LOCAL-00086" summary="Removed dulpicate regulatory results">
+      <option name="closed" value="true" />
+      <created>1754564633966</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1754564633966</updated>
+    </task>
+    <option name="localTasksCounter" value="87" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
