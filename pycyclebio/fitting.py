@@ -515,7 +515,7 @@ def fit_repro(df_in):
     return df_out.sort_values(by='p-val').sort_values(by='BH-padj')
 
 
-def pcbplot(data, res, molecule, period=24, colour=None, shading=None, path=None):
+def pcbplot(data, res, molecule, period=24, colour=None, shading=None, title=True, path=None):
 
     data = data.set_index(data.columns[0])
     res = res.set_index(res.columns[0])
@@ -548,9 +548,11 @@ def pcbplot(data, res, molecule, period=24, colour=None, shading=None, path=None
     timepoints_plot = (timepoints * period) / (2 * math.pi)
     t_plot = (t * period) / (2 * math.pi)
 
-    plt.scatter(x=timepoints_plot, y=measurements.transpose(), color="#000000")
-    plt.plot(t_plot, eq, color=wavecolour, linewidth=3)
+    plt.scatter(x=timepoints_plot, y=measurements.transpose(), zorder=3, color="#000000")
+    plt.plot(t_plot, eq, color=wavecolour, linewidth=3, zorder=2)
     plt.xticks(np.arange(0, np.max(timepoints_plot), 6))
+    if title is True:
+        plt.title(molecule)
     xmin, xmax = plt.xlim()
     if shading:
         shading_starts = []
@@ -559,7 +561,7 @@ def pcbplot(data, res, molecule, period=24, colour=None, shading=None, path=None
             shading_starts.append(shading[i*2])
             shading_ends.append(shading[i*2+1])
             for start, end in [(shading_starts[i], shading_ends[i])]:
-                plt.axvspan(start, end, color='gray', alpha=0.4)
+                plt.axvspan(start, end, color='gray', alpha=0.4, zorder=1)
 
     plt.xlim(xmin, xmax)
     if path:
