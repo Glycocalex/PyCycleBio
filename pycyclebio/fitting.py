@@ -577,9 +577,9 @@ def get_regs(data, res, target, regs, period=24):
 
     row = res[res.iloc[:, 0] == target]
     if row.iloc[0, 3] == 'square':
-        complex_wave = 1
-    if row.iloc[0, 3] == 'cycloid':
         complex_wave = 0
+    if row.iloc[0, 3] == 'cycloid':
+        complex_wave = 1
 
     for i in range(0, len(regs)):
 
