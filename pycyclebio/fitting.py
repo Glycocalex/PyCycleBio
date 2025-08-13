@@ -386,7 +386,7 @@ def variance_based_filtering(df, min_feature_variance=0.05):
 
 
 # noinspection DuplicatedCode
-def get_pycycle(df_in, period):
+def get_pycycle(df_in, period, models=None):
     """
     Models expression data using 4 equations.
 
@@ -394,6 +394,7 @@ def get_pycycle(df_in, period):
                     The first column and row should contain strings identifying samples or molecules.
                     Samples should be organised in ascending time order (all reps per timepoint should be together)
     :param period: An integer indicating the primary period length of interest (in same AU as timepoints)
+    :param models: A list of strings identifying the models to be used. ->['harmonic', 'square', 'cycloid', 'transient']
     :return: df_out: A dataframe containing the best-fitting model, with parameters that produced the best fit,
                         alongside statistics indicating the robustness of the model's fit compared to input data.
     """
@@ -405,7 +406,8 @@ def get_pycycle(df_in, period):
     parameters = []
     fitted_model = []
     model_rmse = []
-    models = ['harmonic', 'square', 'cycloid', 'transient']
+    if models is None:
+        models = ['harmonic', 'square', 'cycloid', 'transient']
     timepoints = np.array([float(re.findall(r'\d+', col)[0]) for col in df.columns])
     timepoints = (timepoints / period * (2 * math.pi))
     reps = len(timepoints) / len(np.unique(timepoints))
@@ -602,7 +604,7 @@ def get_regs(data, res, target, regs, period=24):
               "access regulatory elements with 'results[0]' and this analysis with 'results[1]'")
         sub_res = get_pycycle(data, period/2)
 
-    if complex_wave:
+    if complex_wave is not None:
 
         for i in range(0, len(regs)):
 
