@@ -27,3 +27,7 @@ dependencies = [
 [project.urls]
 Homepage = "https://github.com/Glycocalex/PyCycle"
 Issues = "https://github.com/Glycocalex/PyCycle/issues"
+
+
+[tool.setuptools]
+packages = ["pycyclebio"]
