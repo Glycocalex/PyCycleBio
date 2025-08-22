@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="Fixed bug with square / cycloid modulator detection">
+    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="Added argument to run specific models">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pycyclebio/fitting.py" beforeDir="false" afterPath="$PROJECT_DIR$/pycyclebio/fitting.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,46 +42,46 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Python.20240208 james glycan plotting.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.20240819 busted ass PyCycle.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.PyCycle analysis.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.PyCycle.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.colab prototype.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.diifrhth.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.drhyth test.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.fitting.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.genehancer regulation function.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.pcb 0amp testing.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Alex Bennett/Desktop/Python/PyCycle/Pycycledev/genehancer regulation/genehancer regulation function.py&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Python.20240208 james glycan plotting.executor": "Debug",
+    "Python.20240819 busted ass PyCycle.executor": "Debug",
+    "Python.PyCycle analysis.executor": "Debug",
+    "Python.PyCycle.executor": "Debug",
+    "Python.colab prototype.executor": "Debug",
+    "Python.diifrhth.executor": "Debug",
+    "Python.drhyth test.executor": "Debug",
+    "Python.fitting.executor": "Debug",
+    "Python.genehancer regulation function.executor": "Debug",
+    "Python.pcb 0amp testing.executor": "Debug",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/Alex Bennett/Desktop/Python/PyCycle/PyCycle clone",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
-      &quot;Python&quot;,
-      &quot;TOML&quot;,
-      &quot;Markdown&quot;
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "Python",
+      "TOML",
+      "Markdown"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Alex Bennett\Desktop\Python\PyCycle\Pycycledev\genehancer reulation" />
       <recent name="C:\Users\Alex Bennett\Desktop\Python\Scripts" />
+      <recent name="C:\Users\Alex Bennett\Desktop\Python\PyCycle\Pycycledev\genehancer regulation" />
+      <recent name="C:\Users\Alex Bennett\Desktop\Python\PyCycle\Pycycledev\genehancer reulation" />
       <recent name="C:\Users\Alex Bennett\Documents\Papers\PyCycle\Datasets\PMID29911688" />
       <recent name="C:\Users\Alex Bennett\Documents\Papers\PyCycle\wave graphs" />
-      <recent name="C:\Users\Alex Bennett\Documents\Papers\PyCycle\Datasets\runtimes" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -310,15 +309,15 @@
       <workItem from="1754909813539" duration="18820000" />
       <workItem from="1754982954283" duration="11794000" />
       <workItem from="1755001846732" duration="5297000" />
-      <workItem from="1755070247312" duration="1051000" />
-    </task>
-    <task id="LOCAL-00042" summary="Fixed cycloid and trand labels">
-      <option name="closed" value="true" />
-      <created>1740584280278</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1740584280278</updated>
+      <workItem from="1755070247312" duration="5335000" />
+      <workItem from="1755153172085" duration="6051000" />
+      <workItem from="1755445072170" duration="42000" />
+      <workItem from="1755445815833" duration="13000" />
+      <workItem from="1755591098361" duration="610000" />
+      <workItem from="1755598734285" duration="9019000" />
+      <workItem from="1755622044253" duration="27000" />
+      <workItem from="1755673279049" duration="3822000" />
+      <workItem from="1755775211845" duration="1559000" />
     </task>
     <task id="LOCAL-00043" summary="Implemented all oscillators in Python">
       <option name="closed" value="true" />
@@ -704,7 +703,15 @@
       <option name="project" value="LOCAL" />
       <updated>1754920925134</updated>
     </task>
-    <option name="localTasksCounter" value="91" />
+    <task id="LOCAL-00091" summary="Added argument to run specific models">
+      <option name="closed" value="true" />
+      <created>1755071665244</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1755071665246</updated>
+    </task>
+    <option name="localTasksCounter" value="92" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -750,7 +757,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Expanded todo list" />
     <MESSAGE value="Implemented lack-of-fit F statistic function" />
     <MESSAGE value="Implemented lack-of-fit test with 0 amplitude after optimal waveform is selected" />
     <MESSAGE value="Bugfixed lack-of-fit F test&#10;&#10;Included RMSE in outputs" />
@@ -775,7 +781,8 @@
     <MESSAGE value="pcbplot now accepts shaded background regions" />
     <MESSAGE value="Fixed pcbplot z order and added title argyument to plots" />
     <MESSAGE value="Fixed bug with square / cycloid modulator detection" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed bug with square / cycloid modulator detection" />
+    <MESSAGE value="Added argument to run specific models" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added argument to run specific models" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
