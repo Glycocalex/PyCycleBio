@@ -8,7 +8,7 @@ version = "1.0.7"
 authors = [
   { name="Alexander R Bennett", email="alex.bennett@gu.se" },
 ]
-license = { text = "MIT" }
+license = "MIT"
 description = "Python based toolkit for temporal molecular biology"
 readme = "README.md"
 requires-python = ">=3.8"

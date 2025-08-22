@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="Fixed bare exceptions during model fitting">
+    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="Fixed bug with square / cycloid modulator detection">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pycyclebio/fitting.py" beforeDir="false" afterPath="$PROJECT_DIR$/pycyclebio/fitting.py" afterDir="false" />
     </list>
@@ -29,6 +29,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/pycyclebio/fitting.py" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -48,11 +51,15 @@
     &quot;Python.PyCycle analysis.executor&quot;: &quot;Debug&quot;,
     &quot;Python.PyCycle.executor&quot;: &quot;Debug&quot;,
     &quot;Python.colab prototype.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.diifrhth.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.drhyth test.executor&quot;: &quot;Debug&quot;,
     &quot;Python.fitting.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.genehancer regulation function.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.pcb 0amp testing.executor&quot;: &quot;Debug&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Alex Bennett/Desktop/Python/PyCycle/test data/PyCycle analysis.py&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Alex Bennett/Desktop/Python/PyCycle/Pycycledev/genehancer regulation/genehancer regulation function.py&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -71,11 +78,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Alex Bennett\Desktop\Python\PyCycle\Pycycledev\genehancer reulation" />
       <recent name="C:\Users\Alex Bennett\Desktop\Python\Scripts" />
       <recent name="C:\Users\Alex Bennett\Documents\Papers\PyCycle\Datasets\PMID29911688" />
       <recent name="C:\Users\Alex Bennett\Documents\Papers\PyCycle\wave graphs" />
       <recent name="C:\Users\Alex Bennett\Documents\Papers\PyCycle\Datasets\runtimes" />
-      <recent name="C:\Users\Alex Bennett\Documents\Papers\PyCycle\Datasets\PMID35511946\sampling conditions res" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -225,247 +232,85 @@
       <workItem from="1744723407155" duration="3268000" />
       <workItem from="1744728430071" duration="1347000" />
       <workItem from="1744806677930" duration="68000" />
-      <workItem from="1744809986656" duration="4606000" />
-    </task>
-    <task id="LOCAL-00012" summary="Updated PyCycle docstrings">
-      <option name="closed" value="true" />
-      <created>1729671823930</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1729671823930</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Added Holm adjustments and now report params for all variant molecules.">
-      <option name="closed" value="true" />
-      <created>1730114179206</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1730114179206</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Removed done todo">
-      <option name="closed" value="true" />
-      <created>1730207588584</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1730207588584</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Removed done todos">
-      <option name="closed" value="true" />
-      <created>1730207769763</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1730207769763</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Removed done todos">
-      <option name="closed" value="true" />
-      <created>1730214630059</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1730214630059</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Commented out print-statement">
-      <option name="closed" value="true" />
-      <created>1730214675167</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1730214675167</updated>
-    </task>
-    <task id="LOCAL-00018" summary="Fixed equations&#10;Commented out print-statement">
-      <option name="closed" value="true" />
-      <created>1731578626812</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1731578626812</updated>
-    </task>
-    <task id="LOCAL-00019" summary="Set freq to +/- 0.25&#10;Commented out print-statement">
-      <option name="closed" value="true" />
-      <created>1731579379687</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1731579379687</updated>
-    </task>
-    <task id="LOCAL-00020" summary="Reduced fitting iterations by factor of 10&#10;Commented out print-statement">
-      <option name="closed" value="true" />
-      <created>1731579574272</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1731579574272</updated>
-    </task>
-    <task id="LOCAL-00021" summary="Reduced iterations further in attempt to increase speed.&#10;&#10;Also introduced contingency if-statements for iterations where no solution is found">
-      <option name="closed" value="true" />
-      <created>1731944438044</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1731944438044</updated>
-    </task>
-    <task id="LOCAL-00022" summary="Increased iterations to improve results">
-      <option name="closed" value="true" />
-      <created>1732007737346</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1732007737346</updated>
-    </task>
-    <task id="LOCAL-00023" summary="Removed python oscillators">
-      <option name="closed" value="true" />
-      <created>1732117456503</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1732117456503</updated>
-    </task>
-    <task id="LOCAL-00024" summary="corrected imports">
-      <option name="closed" value="true" />
-      <created>1732195069961</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1732195069961</updated>
-    </task>
-    <task id="LOCAL-00025" summary="housekeeping">
-      <option name="closed" value="true" />
-      <created>1732201034866</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1732201034866</updated>
-    </task>
-    <task id="LOCAL-00026" summary="Removed redundent output parameters">
-      <option name="closed" value="true" />
-      <created>1732201441402</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1732201441402</updated>
-    </task>
-    <task id="LOCAL-00027" summary="Removed redundent output parameters">
-      <option name="closed" value="true" />
-      <created>1732201803910</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1732201803910</updated>
-    </task>
-    <task id="LOCAL-00028" summary="Removed redundent output parameters">
-      <option name="closed" value="true" />
-      <created>1732201816477</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1732201816477</updated>
-    </task>
-    <task id="LOCAL-00029" summary="Housekeeping">
-      <option name="closed" value="true" />
-      <created>1732203946251</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1732203946251</updated>
-    </task>
-    <task id="LOCAL-00030" summary="Added dist file">
-      <option name="closed" value="true" />
-      <created>1732204282093</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1732204282093</updated>
-    </task>
-    <task id="LOCAL-00031" summary="Testing action">
-      <option name="closed" value="true" />
-      <created>1732205051069</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1732205051069</updated>
-    </task>
-    <task id="LOCAL-00032" summary="Testing action">
-      <option name="closed" value="true" />
-      <created>1732205301144</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1732205301144</updated>
-    </task>
-    <task id="LOCAL-00033" summary="Testing action">
-      <option name="closed" value="true" />
-      <created>1732209553177</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1732209553177</updated>
-    </task>
-    <task id="LOCAL-00034" summary="New pypi version">
-      <option name="closed" value="true" />
-      <created>1732210014675</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1732210014675</updated>
-    </task>
-    <task id="LOCAL-00035" summary="New pypi version">
-      <option name="closed" value="true" />
-      <created>1732210022604</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1732210022604</updated>
-    </task>
-    <task id="LOCAL-00036" summary="New pypi version">
-      <option name="closed" value="true" />
-      <created>1732210956981</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1732210956981</updated>
-    </task>
-    <task id="LOCAL-00037" summary="New pypi version">
-      <option name="closed" value="true" />
-      <created>1732217347301</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1732217347301</updated>
-    </task>
-    <task id="LOCAL-00038" summary="Updated todo list">
-      <option name="closed" value="true" />
-      <created>1739372035477</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1739372035477</updated>
-    </task>
-    <task id="LOCAL-00039" summary="Added new parameter that allows period of interest to be defined">
-      <option name="closed" value="true" />
-      <created>1739892400775</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1739892400775</updated>
-    </task>
-    <task id="LOCAL-00040" summary="Renamed 'harmonic' to 'sinusoidal' in outputs">
-      <option name="closed" value="true" />
-      <created>1739892981991</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1739892981991</updated>
-    </task>
-    <task id="LOCAL-00041" summary="Added model values to output">
-      <option name="closed" value="true" />
-      <created>1740557005137</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1740557005137</updated>
+      <workItem from="1744809986656" duration="6092000" />
+      <workItem from="1745498875359" duration="186000" />
+      <workItem from="1745499127746" duration="546000" />
+      <workItem from="1745564647064" duration="3370000" />
+      <workItem from="1745584799068" duration="581000" />
+      <workItem from="1745830160894" duration="2037000" />
+      <workItem from="1746514628513" duration="617000" />
+      <workItem from="1746520668893" duration="1313000" />
+      <workItem from="1746533878637" duration="635000" />
+      <workItem from="1746536553391" duration="599000" />
+      <workItem from="1746540054321" duration="455000" />
+      <workItem from="1746601167584" duration="1303000" />
+      <workItem from="1746774916970" duration="609000" />
+      <workItem from="1746782448791" duration="175000" />
+      <workItem from="1747212970145" duration="254000" />
+      <workItem from="1747750829834" duration="20000" />
+      <workItem from="1747983132476" duration="14000" />
+      <workItem from="1747985933770" duration="1261000" />
+      <workItem from="1748333634033" duration="1529000" />
+      <workItem from="1748417956559" duration="19000" />
+      <workItem from="1748421291044" duration="381000" />
+      <workItem from="1748431137587" duration="1345000" />
+      <workItem from="1748433253147" duration="65000" />
+      <workItem from="1748434774184" duration="642000" />
+      <workItem from="1748435456834" duration="1162000" />
+      <workItem from="1748525139513" duration="3000" />
+      <workItem from="1748951498443" duration="166000" />
+      <workItem from="1749019411734" duration="639000" />
+      <workItem from="1749047105530" duration="3632000" />
+      <workItem from="1749105381606" duration="1371000" />
+      <workItem from="1749107138082" duration="653000" />
+      <workItem from="1749108444147" duration="7635000" />
+      <workItem from="1749641099304" duration="15000" />
+      <workItem from="1750061192719" duration="382000" />
+      <workItem from="1750063240167" duration="185000" />
+      <workItem from="1750662769743" duration="22000" />
+      <workItem from="1750683892244" duration="24000" />
+      <workItem from="1750754343162" duration="15665000" />
+      <workItem from="1750787110348" duration="957000" />
+      <workItem from="1750836002042" duration="13764000" />
+      <workItem from="1750871077219" duration="2003000" />
+      <workItem from="1750921486022" duration="6758000" />
+      <workItem from="1751009578438" duration="11684000" />
+      <workItem from="1752475887146" duration="13646000" />
+      <workItem from="1752568511414" duration="10446000" />
+      <workItem from="1752650738057" duration="10930000" />
+      <workItem from="1752674816452" duration="12302000" />
+      <workItem from="1752755481857" duration="1823000" />
+      <workItem from="1752830755233" duration="3388000" />
+      <workItem from="1753106419823" duration="3000" />
+      <workItem from="1753126143771" duration="96000" />
+      <workItem from="1753352390114" duration="3000" />
+      <workItem from="1753358274610" duration="1239000" />
+      <workItem from="1753360013770" duration="6115000" />
+      <workItem from="1753428818758" duration="1229000" />
+      <workItem from="1753435280275" duration="7530000" />
+      <workItem from="1753444931181" duration="197000" />
+      <workItem from="1753445316576" duration="4588000" />
+      <workItem from="1753771901750" duration="2287000" />
+      <workItem from="1753794787969" duration="1230000" />
+      <workItem from="1753861142999" duration="4828000" />
+      <workItem from="1753874456509" duration="2028000" />
+      <workItem from="1753881935821" duration="3852000" />
+      <workItem from="1753946616205" duration="14414000" />
+      <workItem from="1754040726190" duration="1000" />
+      <workItem from="1754041214888" duration="380000" />
+      <workItem from="1754294260149" duration="4685000" />
+      <workItem from="1754377212052" duration="18869000" />
+      <workItem from="1754399144205" duration="4251000" />
+      <workItem from="1754464735572" duration="6952000" />
+      <workItem from="1754485416512" duration="1455000" />
+      <workItem from="1754547496703" duration="14452000" />
+      <workItem from="1754567649709" duration="141000" />
+      <workItem from="1754634554262" duration="11193000" />
+      <workItem from="1754649496526" duration="2000" />
+      <workItem from="1754909813539" duration="18820000" />
+      <workItem from="1754982954283" duration="11794000" />
+      <workItem from="1755001846732" duration="5297000" />
+      <workItem from="1755070247312" duration="1051000" />
     </task>
     <task id="LOCAL-00042" summary="Fixed cycloid and trand labels">
       <option name="closed" value="true" />
@@ -619,7 +464,247 @@
       <option name="project" value="LOCAL" />
       <updated>1744815087330</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="Fixed typos">
+      <option name="closed" value="true" />
+      <created>1744815415193</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1744815415193</updated>
+    </task>
+    <task id="LOCAL-00062" summary="Cleaned up curve_fit usage">
+      <option name="closed" value="true" />
+      <created>1745499346238</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1745499346238</updated>
+    </task>
+    <task id="LOCAL-00063" summary="Removed duplicate inspection from fitting function: maintains ability to bound waveforms differently in the future.">
+      <option name="closed" value="true" />
+      <created>1745499637317</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1745499637317</updated>
+    </task>
+    <task id="LOCAL-00064" summary="Expanded todo list">
+      <option name="closed" value="true" />
+      <created>1748334528922</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1748334528923</updated>
+    </task>
+    <task id="LOCAL-00065" summary="Implemented lack-of-fit F statistic function">
+      <option name="closed" value="true" />
+      <created>1750770693961</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1750770693961</updated>
+    </task>
+    <task id="LOCAL-00066" summary="Implemented lack-of-fit test with 0 amplitude after optimal waveform is selected">
+      <option name="closed" value="true" />
+      <created>1750771432208</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1750771432208</updated>
+    </task>
+    <task id="LOCAL-00067" summary="Bugfixed lack-of-fit F test&#10;&#10;Included RMSE in outputs">
+      <option name="closed" value="true" />
+      <created>1750860079449</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1750860079450</updated>
+    </task>
+    <task id="LOCAL-00068" summary="Added functionality for reproductive rhythms">
+      <option name="closed" value="true" />
+      <created>1751017386633</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1751017386633</updated>
+    </task>
+    <task id="LOCAL-00069" summary="Code cleanup">
+      <option name="closed" value="true" />
+      <created>1751293588635</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1751293588635</updated>
+    </task>
+    <task id="LOCAL-00070" summary="Added plot function">
+      <option name="closed" value="true" />
+      <created>1752586497416</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1752586497417</updated>
+    </task>
+    <task id="LOCAL-00071" summary="Fixed plot colours, added custom colour option">
+      <option name="closed" value="true" />
+      <created>1752586788476</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1752586788476</updated>
+    </task>
+    <task id="LOCAL-00072" summary="Cleanup">
+      <option name="closed" value="true" />
+      <created>1752587391458</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1752587391458</updated>
+    </task>
+    <task id="LOCAL-00073" summary="Cleanup">
+      <option name="closed" value="true" />
+      <created>1752589786805</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1752589786805</updated>
+    </task>
+    <task id="LOCAL-00074" summary="Edited docstrings">
+      <option name="closed" value="true" />
+      <created>1752589964233</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1752589964233</updated>
+    </task>
+    <task id="LOCAL-00075" summary="Tweaked waveform labels">
+      <option name="closed" value="true" />
+      <created>1752656085941</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1752656085941</updated>
+    </task>
+    <task id="LOCAL-00076" summary="Added exception for bounds to handle z-scored inputs with negative magnitudes.&#10;&#10;Fixed plotting of transients in pcbplot">
+      <option name="closed" value="true" />
+      <created>1752742991235</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1752742991235</updated>
+    </task>
+    <task id="LOCAL-00077" summary="Updated docstrings, added negative value exceptions to reproductive function">
+      <option name="closed" value="true" />
+      <created>1752830955173</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1752830955173</updated>
+    </task>
+    <task id="LOCAL-00078" summary="Added saving functionality to plots generated with pcbplot">
+      <option name="closed" value="true" />
+      <created>1752834158784</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1752834158784</updated>
+    </task>
+    <task id="LOCAL-00079" summary="Updated pyproject.toml with new license field">
+      <option name="closed" value="true" />
+      <created>1753126234373</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1753126234374</updated>
+    </task>
+    <task id="LOCAL-00080" summary="Simplified cycloid equation">
+      <option name="closed" value="true" />
+      <created>1753868498584</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1753868498585</updated>
+    </task>
+    <task id="LOCAL-00081" summary="Tweaked cycloid bounds for new eqn">
+      <option name="closed" value="true" />
+      <created>1753869478026</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1753869478026</updated>
+    </task>
+    <task id="LOCAL-00082" summary="Added function to aid with identifying possible regulatory elements">
+      <option name="closed" value="true" />
+      <created>1754403198819</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1754403198820</updated>
+    </task>
+    <task id="LOCAL-00083" summary="Code clean up">
+      <option name="closed" value="true" />
+      <created>1754486599970</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1754486599971</updated>
+    </task>
+    <task id="LOCAL-00084" summary="Fixed bug where all elements of output had same rmse">
+      <option name="closed" value="true" />
+      <created>1754556075998</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1754556075999</updated>
+    </task>
+    <task id="LOCAL-00085" summary="Removed dulpicate regulatory results">
+      <option name="closed" value="true" />
+      <created>1754563658782</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1754563658782</updated>
+    </task>
+    <task id="LOCAL-00086" summary="Removed dulpicate regulatory results">
+      <option name="closed" value="true" />
+      <created>1754564633966</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1754564633966</updated>
+    </task>
+    <task id="LOCAL-00087" summary="Code tidied">
+      <option name="closed" value="true" />
+      <created>1754636538348</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1754636538349</updated>
+    </task>
+    <task id="LOCAL-00088" summary="pcbplot now accepts shaded background regions">
+      <option name="closed" value="true" />
+      <created>1754912161525</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1754912161525</updated>
+    </task>
+    <task id="LOCAL-00089" summary="Fixed pcbplot z order and added title argyument to plots">
+      <option name="closed" value="true" />
+      <created>1754916174157</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1754916174157</updated>
+    </task>
+    <task id="LOCAL-00090" summary="Fixed bug with square / cycloid modulator detection">
+      <option name="closed" value="true" />
+      <created>1754920925134</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1754920925134</updated>
+    </task>
+    <option name="localTasksCounter" value="91" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -665,32 +750,32 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Testing action" />
-    <MESSAGE value="New pypi version" />
-    <MESSAGE value="Updated todo list" />
-    <MESSAGE value="Added new parameter that allows period of interest to be defined" />
-    <MESSAGE value="Renamed 'harmonic' to 'sinusoidal' in outputs" />
-    <MESSAGE value="Added model values to output" />
-    <MESSAGE value="Fixed cycloid and trand labels" />
-    <MESSAGE value="Implemented all oscillators in Python" />
-    <MESSAGE value="Cleaned up for new version" />
-    <MESSAGE value="Fixed pyproject.toml error" />
-    <MESSAGE value="Four nans Jeremy?! That's insane" />
-    <MESSAGE value="Updating pyproject.toml" />
-    <MESSAGE value="Merge branch 'main' into dev" />
-    <MESSAGE value="Pypi version upgrade" />
-    <MESSAGE value="Corrected version in pyproject.toml" />
-    <MESSAGE value="Added tqdm progress bar" />
-    <MESSAGE value="Updated todos" />
-    <MESSAGE value="Version bump&#10;Added colab notebook to readme" />
-    <MESSAGE value="Readme revision" />
-    <MESSAGE value="Added whitespace for a e s t h e t i c s" />
-    <MESSAGE value="Capped corrected p vals" />
-    <MESSAGE value="Version bump" />
-    <MESSAGE value="Major cleanup of variable names and functions" />
-    <MESSAGE value="More cleanup of variable names and functions" />
-    <MESSAGE value="Fixed bare exceptions during model fitting" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed bare exceptions during model fitting" />
+    <MESSAGE value="Expanded todo list" />
+    <MESSAGE value="Implemented lack-of-fit F statistic function" />
+    <MESSAGE value="Implemented lack-of-fit test with 0 amplitude after optimal waveform is selected" />
+    <MESSAGE value="Bugfixed lack-of-fit F test&#10;&#10;Included RMSE in outputs" />
+    <MESSAGE value="Added functionality for reproductive rhythms" />
+    <MESSAGE value="Code cleanup" />
+    <MESSAGE value="Added plot function" />
+    <MESSAGE value="Fixed plot colours, added custom colour option" />
+    <MESSAGE value="Cleanup" />
+    <MESSAGE value="Edited docstrings" />
+    <MESSAGE value="Tweaked waveform labels" />
+    <MESSAGE value="Added exception for bounds to handle z-scored inputs with negative magnitudes.&#10;&#10;Fixed plotting of transients in pcbplot" />
+    <MESSAGE value="Updated docstrings, added negative value exceptions to reproductive function" />
+    <MESSAGE value="Added saving functionality to plots generated with pcbplot" />
+    <MESSAGE value="Updated pyproject.toml with new license field" />
+    <MESSAGE value="Simplified cycloid equation" />
+    <MESSAGE value="Tweaked cycloid bounds for new eqn" />
+    <MESSAGE value="Added function to aid with identifying possible regulatory elements" />
+    <MESSAGE value="Code clean up" />
+    <MESSAGE value="Fixed bug where all elements of output had same rmse" />
+    <MESSAGE value="Removed dulpicate regulatory results" />
+    <MESSAGE value="Code tidied" />
+    <MESSAGE value="pcbplot now accepts shaded background regions" />
+    <MESSAGE value="Fixed pcbplot z order and added title argyument to plots" />
+    <MESSAGE value="Fixed bug with square / cycloid modulator detection" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed bug with square / cycloid modulator detection" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -710,15 +795,31 @@
           <line>115</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/../../Scripts/diifrhth.py</url>
+          <line>15</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
       </breakpoints>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/PyCycle_clone$20240819_busted_ass_PyCycle.coverage" NAME="20240819 busted ass PyCycle Coverage Results" MODIFIED="1724096502880" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../.." />
+    <SUITE FILE_PATH="coverage/PyCycle_clone$diifrhth.coverage" NAME="diifrhth Coverage Results" MODIFIED="1749049659114" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../Scripts" />
     <SUITE FILE_PATH="coverage/PyCycle_clone$20240208_james_glycan_plotting.coverage" NAME="20240208 james glycan plotting Coverage Results" MODIFIED="1740571116967" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../Scripts" />
-    <SUITE FILE_PATH="coverage/PyCycle_clone$fitting.coverage" NAME="fitting Coverage Results" MODIFIED="1741164171504" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pycyclebio" />
+    <SUITE FILE_PATH="coverage/PyCycle_clone$fitting.coverage" NAME="fitting Coverage Results" MODIFIED="1754637164828" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pycyclebio" />
     <SUITE FILE_PATH="coverage/PyCycle_clone$colab_prototype.coverage" NAME="colab prototype Coverage Results" MODIFIED="1742997925863" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../Scripts" />
-    <SUITE FILE_PATH="coverage/PyCycle_clone$PyCycle_analysis.coverage" NAME="PyCycle analysis Coverage Results" MODIFIED="1731941506149" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../test data" />
+    <SUITE FILE_PATH="coverage/PyCycle_clone$pcb_0amp_testing.coverage" NAME="pcb 0amp testing Coverage Results" MODIFIED="1750777457214" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../Scripts" />
+    <SUITE FILE_PATH="coverage/PyCycle_clone$PyCycle_analysis.coverage" NAME="PyCycle analysis Coverage Results" MODIFIED="1754639967071" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../test data" />
     <SUITE FILE_PATH="coverage/PyCycle_clone$PyCycle.coverage" NAME="PyCycle Coverage Results" MODIFIED="1730799367783" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyCycle_clone$drhyth_test.coverage" NAME="drhyth test Coverage Results" MODIFIED="1749113386092" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../Scripts" />
+    <SUITE FILE_PATH="coverage/PyCycle_clone$genehancer_regulation_function.coverage" NAME="genehancer regulation function Coverage Results" MODIFIED="1754397419181" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../Pycycledev/genehancer reulation" />
   </component>
 </project>
