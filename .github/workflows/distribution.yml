@@ -3,6 +3,7 @@ name: Build and Publish upon release
 on:
   release:
     types: [published]
+  workflow_dispatch:
 
 jobs:
   publish:
