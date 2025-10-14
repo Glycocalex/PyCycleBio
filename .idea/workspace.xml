@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="Added argument to run specific models">
+    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="Updated distribution info">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -58,7 +58,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/Alex Bennett/Desktop/Python/PyCycle/PyCycle clone",
+    "last_opened_file_path": "C:/Users/Alex Bennett/Desktop/Python/Glycowork/glycowork_ab",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -318,30 +318,29 @@
       <workItem from="1755622044253" duration="27000" />
       <workItem from="1755673279049" duration="3822000" />
       <workItem from="1755775211845" duration="1559000" />
-    </task>
-    <task id="LOCAL-00043" summary="Implemented all oscillators in Python">
-      <option name="closed" value="true" />
-      <created>1741078714251</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1741078714251</updated>
-    </task>
-    <task id="LOCAL-00044" summary="Cleaned up for new version">
-      <option name="closed" value="true" />
-      <created>1742577289656</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1742577289656</updated>
-    </task>
-    <task id="LOCAL-00045" summary="Fixed pyproject.toml error">
-      <option name="closed" value="true" />
-      <created>1742823493397</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1742823493397</updated>
+      <workItem from="1755862048723" duration="1219000" />
+      <workItem from="1755867996863" duration="1284000" />
+      <workItem from="1756049682849" duration="1094000" />
+      <workItem from="1756293623617" duration="4196000" />
+      <workItem from="1756541486620" duration="26000" />
+      <workItem from="1756732900210" duration="3000" />
+      <workItem from="1756735815780" duration="18000" />
+      <workItem from="1757409981971" duration="2530000" />
+      <workItem from="1757422689768" duration="88000" />
+      <workItem from="1757428772871" duration="661000" />
+      <workItem from="1757489487994" duration="7788000" />
+      <workItem from="1759238102562" duration="1593000" />
+      <workItem from="1759320881650" duration="7000" />
+      <workItem from="1759321119513" duration="23000" />
+      <workItem from="1759321654295" duration="13000" />
+      <workItem from="1759324975540" duration="4000" />
+      <workItem from="1759331375255" duration="8000" />
+      <workItem from="1759396173092" duration="1316000" />
+      <workItem from="1759397515600" duration="248000" />
+      <workItem from="1759400041224" duration="1839000" />
+      <workItem from="1759406075501" duration="5122000" />
+      <workItem from="1759473775469" duration="2090000" />
+      <workItem from="1759483576448" duration="2333000" />
     </task>
     <task id="LOCAL-00046" summary="Four nans Jeremy?! That's insane">
       <option name="closed" value="true" />
@@ -711,7 +710,31 @@
       <option name="project" value="LOCAL" />
       <updated>1755071665246</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="Updated license">
+      <option name="closed" value="true" />
+      <created>1755862106835</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1755862106835</updated>
+    </task>
+    <task id="LOCAL-00093" summary="Updated license">
+      <option name="closed" value="true" />
+      <created>1755862249057</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1755862249057</updated>
+    </task>
+    <task id="LOCAL-00094" summary="Updated distribution info">
+      <option name="closed" value="true" />
+      <created>1755863144297</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1755863144297</updated>
+    </task>
+    <option name="localTasksCounter" value="95" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -757,8 +780,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Implemented lack-of-fit F statistic function" />
-    <MESSAGE value="Implemented lack-of-fit test with 0 amplitude after optimal waveform is selected" />
     <MESSAGE value="Bugfixed lack-of-fit F test&#10;&#10;Included RMSE in outputs" />
     <MESSAGE value="Added functionality for reproductive rhythms" />
     <MESSAGE value="Code cleanup" />
@@ -782,7 +803,9 @@
     <MESSAGE value="Fixed pcbplot z order and added title argyument to plots" />
     <MESSAGE value="Fixed bug with square / cycloid modulator detection" />
     <MESSAGE value="Added argument to run specific models" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added argument to run specific models" />
+    <MESSAGE value="Updated license" />
+    <MESSAGE value="Updated distribution info" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated distribution info" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

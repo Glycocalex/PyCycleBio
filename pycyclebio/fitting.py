@@ -438,7 +438,7 @@ def get_pycycle(df_in, period, models=None):
     corr_pvals = multipletests(pvals, alpha=0.001, method='fdr_tsbh')[1]
     cap_bh_pvals = np.where(pvals > corr_pvals, pvals, corr_pvals)
     df_out = pd.DataFrame({"Feature": df.index.tolist(), "p-val": pvals, "BH-padj": cap_bh_pvals, "Waveform": osc_type,
-                           "Modulation": mod_type, "parameters": parameters, "Fitted_values": fitted_model,
+                           "Modulation": mod_type, "Amp, damping, period, phase, (pulse-width), mesor": parameters, "Fitted_values": fitted_model,
                           "RMSE": model_rmse})
     invariant_features = df_invariant.index.tolist()
     invariant_rows = pd.DataFrame({
