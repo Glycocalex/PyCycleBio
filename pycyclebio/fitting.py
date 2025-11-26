@@ -91,6 +91,7 @@ def compute_aic(k, sse, n):
     aic = 2 * k + n * np.log(sse/n)
     return aic
 
+
 # noinspection DuplicatedCode
 def fit_best_waveform(df_row, period, models, timepoints, reps, lbound, n):
     """
@@ -103,6 +104,7 @@ def fit_best_waveform(df_row, period, models, timepoints, reps, lbound, n):
     :param reps: (int) number of replicates per timepoint, calculated from column labels.
     :param lbound: (binary) boolean to identify if dataframe contains normalised (negative) values,
     which require models to be rebounded.
+    :param n: (int) number of samples being used to construct model
     :return: A tuple containing the best-fit parameters, the waveform type, and the covariance of the fit.
     """
     amplitudes = df_row.values
@@ -148,14 +150,12 @@ def fit_best_waveform(df_row, period, models, timepoints, reps, lbound, n):
             harmonic_params = np.nan
             harmonic_covariance = np.nan
             harmonic_fitted_values = [0] * len(df_row)
-            harmonic_sse = np.inf
             harmonic_rmse = np.inf
             harmonic_aic = np.inf
     else:
         harmonic_params = np.nan
         harmonic_covariance = np.nan
         harmonic_fitted_values = [0] * len(df_row)
-        harmonic_sse = np.inf
         harmonic_rmse = np.inf
         harmonic_aic = np.inf
 
@@ -190,7 +190,6 @@ def fit_best_waveform(df_row, period, models, timepoints, reps, lbound, n):
             square_params = np.nan
             square_covariance = np.nan
             square_fitted_values = [0] * len(df_row)
-            square_sse = np.inf
             square_rmse = np.inf
             square_aic = np.inf
 
@@ -198,7 +197,6 @@ def fit_best_waveform(df_row, period, models, timepoints, reps, lbound, n):
         square_params = np.nan
         square_covariance = np.nan
         square_fitted_values = [0] * len(df_row)
-        square_sse = np.inf
         square_rmse = np.inf
         square_aic = np.inf
 
@@ -234,14 +232,12 @@ def fit_best_waveform(df_row, period, models, timepoints, reps, lbound, n):
             cycloid_params = np.nan
             cycloid_covariance = np.nan
             cycloid_fitted_values = [0] * len(df_row)
-            cycloid_sse = np.inf
             cycloid_rmse = np.inf
             cycloid_aic = np.inf
     else:
         cycloid_params = np.nan
         cycloid_covariance = np.nan
         cycloid_fitted_values = [0] * len(df_row)
-        cycloid_sse = np.inf
         cycloid_rmse = np.inf
         cycloid_aic = np.inf
 
@@ -279,14 +275,12 @@ def fit_best_waveform(df_row, period, models, timepoints, reps, lbound, n):
             transient_params = np.nan
             transient_covariance = np.nan
             transient_fitted_values = [0] * len(df_row)
-            transient_sse = np.inf
             transient_rmse = np.inf
             transient_aic = np.inf
     else:
         transient_params = np.nan
         transient_covariance = np.nan
         transient_fitted_values = [0] * len(df_row)
-        transient_sse = np.inf
         transient_rmse = np.inf
         transient_aic = np.inf
     # Determine best fit
