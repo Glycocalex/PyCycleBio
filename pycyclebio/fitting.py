@@ -86,8 +86,13 @@ def lack_of_fit_f(timepoints, y_obs, y_fit, params, reps):
     return f_stat, p_value
 
 
+def compute_aic(k, sse, n):
+    # Todo: Using sse as likelihood estimator makes lots of assumptions about variance, use Kalman filter instead
+    aic = 2 * k + n * np.log(sse/n)
+    return aic
+
 # noinspection DuplicatedCode
-def fit_best_waveform(df_row, period, models, timepoints, reps, lbound):
+def fit_best_waveform(df_row, period, models, timepoints, reps, lbound, n):
     """
     Fits all three waveform models to the data and determines the best fit.
 
@@ -137,18 +142,22 @@ def fit_best_waveform(df_row, period, models, timepoints, reps, lbound):
             harmonic_residuals = amplitudes - harmonic_fitted_values
             harmonic_sse = np.sum(harmonic_residuals ** 2)
             harmonic_rmse = np.sqrt(harmonic_sse/len(harmonic_residuals))
+            harmonic_aic = compute_aic(7, harmonic_sse, n)
+
         except RuntimeError:
             harmonic_params = np.nan
             harmonic_covariance = np.nan
             harmonic_fitted_values = [0] * len(df_row)
             harmonic_sse = np.inf
             harmonic_rmse = np.inf
+            harmonic_aic = np.inf
     else:
         harmonic_params = np.nan
         harmonic_covariance = np.nan
         harmonic_fitted_values = [0] * len(df_row)
         harmonic_sse = np.inf
         harmonic_rmse = np.inf
+        harmonic_aic = np.inf
 
     if 'square' in models:
         # Fit square oscillator
@@ -175,18 +184,23 @@ def fit_best_waveform(df_row, period, models, timepoints, reps, lbound):
             square_residuals = amplitudes - square_fitted_values
             square_sse = np.sum(square_residuals ** 2)
             square_rmse = np.sqrt(square_sse/len(square_residuals))
+            square_aic = compute_aic(7, square_sse, n)
+
         except RuntimeError:
             square_params = np.nan
             square_covariance = np.nan
             square_fitted_values = [0] * len(df_row)
             square_sse = np.inf
             square_rmse = np.inf
+            square_aic = np.inf
+
     else:
         square_params = np.nan
         square_covariance = np.nan
         square_fitted_values = [0] * len(df_row)
         square_sse = np.inf
         square_rmse = np.inf
+        square_aic = np.inf
 
     if 'cycloid' in models:
         # Fit cycloid oscillators
@@ -214,18 +228,22 @@ def fit_best_waveform(df_row, period, models, timepoints, reps, lbound):
             cycloid_residuals = amplitudes - cycloid_fitted_values
             cycloid_sse = np.sum(cycloid_residuals ** 2)
             cycloid_rmse = np.sqrt(cycloid_sse/len(cycloid_residuals))
+            cycloid_aic = compute_aic(7, cycloid_sse, n)
+
         except RuntimeError:
             cycloid_params = np.nan
             cycloid_covariance = np.nan
             cycloid_fitted_values = [0] * len(df_row)
             cycloid_sse = np.inf
             cycloid_rmse = np.inf
+            cycloid_aic = np.inf
     else:
         cycloid_params = np.nan
         cycloid_covariance = np.nan
         cycloid_fitted_values = [0] * len(df_row)
         cycloid_sse = np.inf
         cycloid_rmse = np.inf
+        cycloid_aic = np.inf
 
     if 'transient' in models:
         # Fit transient oscillator
@@ -256,22 +274,25 @@ def fit_best_waveform(df_row, period, models, timepoints, reps, lbound):
             transient_residuals = amplitudes - transient_fitted_values
             transient_sse = np.sum(transient_residuals ** 2)
             transient_rmse = np.sqrt(transient_sse/len(transient_residuals))
+            transient_aic = compute_aic(8, transient_sse, n)
         except RuntimeError:
             transient_params = np.nan
             transient_covariance = np.nan
             transient_fitted_values = [0] * len(df_row)
             transient_sse = np.inf
             transient_rmse = np.inf
+            transient_aic = np.inf
     else:
         transient_params = np.nan
         transient_covariance = np.nan
         transient_fitted_values = [0] * len(df_row)
         transient_sse = np.inf
         transient_rmse = np.inf
+        transient_aic = np.inf
     # Determine best fit
-    sse_values = [harmonic_sse, square_sse, cycloid_sse, transient_sse]
-    best_fit_index = np.argmin(sse_values)
-    if sse_values == [np.inf, np.inf, np.inf, np.inf]:
+    aic_values = [harmonic_aic, square_aic, cycloid_aic, transient_aic]
+    best_fit_index = np.argmin(aic_values)
+    if aic_values == [np.inf, np.inf, np.inf, np.inf]:
         best_params = np.nan
         best_waveform = 'unsolved'
         best_covariance = np.nan
@@ -410,7 +431,8 @@ def get_pycycle(df_in, period, models=None):
         models = ['harmonic', 'square', 'cycloid', 'transient']
     timepoints = np.array([float(re.findall(r'\d+', col)[0]) for col in df.columns])
     timepoints = (timepoints / period * (2 * math.pi))
-    reps = len(timepoints) / len(np.unique(timepoints))
+    num_samples = len(timepoints)
+    reps = num_samples / len(np.unique(timepoints))
     if np.any(df.to_numpy() < 0):
         lbound = 1  # 1 = neg values present
     else:
@@ -419,7 +441,7 @@ def get_pycycle(df_in, period, models=None):
         df = df.set_index(df.columns.tolist()[0])
     for i in tqdm(range(df.shape[0])):
         waveform, params, covariance, fitted_values, rmse = fit_best_waveform(df.iloc[i, :], period, models, timepoints,
-                                                                              reps, lbound)
+                                                                              reps, lbound, num_samples)
         if waveform == 'unsolved' or waveform == 'non-rhythmic':
             tau, p_value = np.nan, np.nan
             modulation = np.nan
@@ -438,8 +460,8 @@ def get_pycycle(df_in, period, models=None):
     corr_pvals = multipletests(pvals, alpha=0.001, method='fdr_tsbh')[1]
     cap_bh_pvals = np.where(pvals > corr_pvals, pvals, corr_pvals)
     df_out = pd.DataFrame({"Feature": df.index.tolist(), "p-val": pvals, "BH-padj": cap_bh_pvals, "Waveform": osc_type,
-                           "Modulation": mod_type, "Amp, damping, period, phase, (pulse-width), mesor": parameters, "Fitted_values": fitted_model,
-                          "RMSE": model_rmse})
+                           "Modulation": mod_type, "Amp, damping, period, phase, (pulse-width), mesor": parameters,
+                           "Fitted_values": fitted_model, "RMSE": model_rmse})
     invariant_features = df_invariant.index.tolist()
     invariant_rows = pd.DataFrame({
         "Feature": invariant_features,
@@ -475,7 +497,8 @@ def fit_repro(df_in):
     models = ['harmonic', 'transient']
     timepoints = np.array([float(re.findall(r'\d+', col)[0]) for col in df.columns])
     timepoints = (timepoints / period * (2 * math.pi))
-    reps = len(timepoints) / len(np.unique(timepoints))
+    num_samples = len(timepoints)
+    reps = num_samples / len(np.unique(timepoints))
     if np.any(df.to_numpy() < 0):
         lbound = 1  # 1 = neg values present
     else:
@@ -484,7 +507,7 @@ def fit_repro(df_in):
         df = df.set_index(df.columns.tolist()[0])
     for i in tqdm(range(df.shape[0])):
         waveform, params, covariance, fitted_values, rmse = fit_best_waveform(df.iloc[i, :], period, models, timepoints,
-                                                                              reps, lbound)
+                                                                              reps, lbound, num_samples)
         if waveform == 'unsolved' or waveform == 'non-rhythmic':
             tau, p_value = np.nan, np.nan
             modulation = np.nan

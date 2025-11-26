@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="Updated distribution info">
+    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="Improved parameter labels">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pycyclebio/fitting.py" beforeDir="false" afterPath="$PROJECT_DIR$/pycyclebio/fitting.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,39 +43,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Python.20240208 james glycan plotting.executor": "Debug",
-    "Python.20240819 busted ass PyCycle.executor": "Debug",
-    "Python.PyCycle analysis.executor": "Debug",
-    "Python.PyCycle.executor": "Debug",
-    "Python.colab prototype.executor": "Debug",
-    "Python.diifrhth.executor": "Debug",
-    "Python.drhyth test.executor": "Debug",
-    "Python.fitting.executor": "Debug",
-    "Python.genehancer regulation function.executor": "Debug",
-    "Python.pcb 0amp testing.executor": "Debug",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/Alex Bennett/Desktop/Python/Glycowork/glycowork_ab",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Python.20240208 james glycan plotting.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.20240819 busted ass PyCycle.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.PyCycle analysis.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.PyCycle.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.colab prototype.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.diifrhth.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.drhyth test.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.fitting.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.genehancer regulation function.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.pcb 0amp testing.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Alex Bennett/Desktop/Python/PyCycle/PyCycle clone&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "Python",
-      "TOML",
-      "Markdown"
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;Python&quot;,
+      &quot;TOML&quot;,
+      &quot;Markdown&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Alex Bennett\Desktop\Python\Scripts" />
@@ -341,14 +342,14 @@
       <workItem from="1759406075501" duration="5122000" />
       <workItem from="1759473775469" duration="2090000" />
       <workItem from="1759483576448" duration="2333000" />
-    </task>
-    <task id="LOCAL-00046" summary="Four nans Jeremy?! That's insane">
-      <option name="closed" value="true" />
-      <created>1742823782313</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1742823782313</updated>
+      <workItem from="1760428278300" duration="4289000" />
+      <workItem from="1760442265223" duration="3375000" />
+      <workItem from="1760515258182" duration="121000" />
+      <workItem from="1760517164856" duration="653000" />
+      <workItem from="1761125488155" duration="6665000" />
+      <workItem from="1761202213777" duration="1155000" />
+      <workItem from="1764165277150" duration="515000" />
+      <workItem from="1764166303735" duration="6353000" />
     </task>
     <task id="LOCAL-00047" summary="Updating pyproject.toml">
       <option name="closed" value="true" />
@@ -734,7 +735,15 @@
       <option name="project" value="LOCAL" />
       <updated>1755863144297</updated>
     </task>
-    <option name="localTasksCounter" value="95" />
+    <task id="LOCAL-00095" summary="Improved parameter labels">
+      <option name="closed" value="true" />
+      <created>1760428521821</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1760428521821</updated>
+    </task>
+    <option name="localTasksCounter" value="96" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -780,7 +789,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Bugfixed lack-of-fit F test&#10;&#10;Included RMSE in outputs" />
     <MESSAGE value="Added functionality for reproductive rhythms" />
     <MESSAGE value="Code cleanup" />
     <MESSAGE value="Added plot function" />
@@ -805,7 +813,8 @@
     <MESSAGE value="Added argument to run specific models" />
     <MESSAGE value="Updated license" />
     <MESSAGE value="Updated distribution info" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated distribution info" />
+    <MESSAGE value="Improved parameter labels" />
+    <option name="LAST_COMMIT_MESSAGE" value="Improved parameter labels" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
