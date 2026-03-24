@@ -8,6 +8,8 @@ Variant rows are modelled using 4 equations. The model with lowest residuals is 
 
 You can use PyCycle without installing python [here.](https://colab.research.google.com/github/Glycocalex/PyCycleBio/blob/main/PyCycleBio.ipynb)
 
+Reference PyCycle here: https://doi.org/10.1093/bioadv/vbag018
+
 https://github.com/Glycocalex/PyCycleBio
 
 https://pypi.org/project/pycyclebio/
