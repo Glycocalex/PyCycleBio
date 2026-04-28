@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="Improved parameter labels">
+    <list default="true" id="25dfaad1-47f8-4fb0-b333-9394fc40fef7" name="Changes" comment="Cleanup">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pycyclebio/fitting.py" beforeDir="false" afterPath="$PROJECT_DIR$/pycyclebio/fitting.py" afterDir="false" />
     </list>
@@ -59,7 +59,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Alex Bennett/Desktop/Python/PyCycle/PyCycle clone&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Alex Bennett/Desktop/Python/Glycowork/glycowork_ab&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -349,23 +349,26 @@
       <workItem from="1761125488155" duration="6665000" />
       <workItem from="1761202213777" duration="1155000" />
       <workItem from="1764165277150" duration="515000" />
-      <workItem from="1764166303735" duration="6353000" />
-    </task>
-    <task id="LOCAL-00047" summary="Updating pyproject.toml">
-      <option name="closed" value="true" />
-      <created>1742829556647</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1742829556647</updated>
-    </task>
-    <task id="LOCAL-00048" summary="Corrected version in pyproject.toml">
-      <option name="closed" value="true" />
-      <created>1744640530524</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1744640530524</updated>
+      <workItem from="1764166303735" duration="7747000" />
+      <workItem from="1765201632142" duration="4028000" />
+      <workItem from="1767339613974" duration="986000" />
+      <workItem from="1767427573166" duration="6000" />
+      <workItem from="1767860443199" duration="15886000" />
+      <workItem from="1767946099554" duration="610000" />
+      <workItem from="1767964011473" duration="533000" />
+      <workItem from="1768376989130" duration="2000" />
+      <workItem from="1768390810706" duration="27000" />
+      <workItem from="1768485915488" duration="244000" />
+      <workItem from="1769008226638" duration="4000" />
+      <workItem from="1769444036902" duration="3000" />
+      <workItem from="1769508722767" duration="2000" />
+      <workItem from="1769519389314" duration="38000" />
+      <workItem from="1770106028134" duration="53000" />
+      <workItem from="1770307067448" duration="13000" />
+      <workItem from="1774449860056" duration="3183000" />
+      <workItem from="1775744976505" duration="457000" />
+      <workItem from="1776258729416" duration="1415000" />
+      <workItem from="1776280068613" duration="242000" />
     </task>
     <task id="LOCAL-00049" summary="Version bump">
       <option name="closed" value="true" />
@@ -743,7 +746,23 @@
       <option name="project" value="LOCAL" />
       <updated>1760428521821</updated>
     </task>
-    <option name="localTasksCounter" value="96" />
+    <task id="LOCAL-00096" summary="Added AIC calculation for model selection">
+      <option name="closed" value="true" />
+      <created>1764174583419</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1764174583419</updated>
+    </task>
+    <task id="LOCAL-00097" summary="Cleanup">
+      <option name="closed" value="true" />
+      <created>1764175889181</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1764175889181</updated>
+    </task>
+    <option name="localTasksCounter" value="98" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -789,11 +808,9 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added functionality for reproductive rhythms" />
     <MESSAGE value="Code cleanup" />
     <MESSAGE value="Added plot function" />
     <MESSAGE value="Fixed plot colours, added custom colour option" />
-    <MESSAGE value="Cleanup" />
     <MESSAGE value="Edited docstrings" />
     <MESSAGE value="Tweaked waveform labels" />
     <MESSAGE value="Added exception for bounds to handle z-scored inputs with negative magnitudes.&#10;&#10;Fixed plotting of transients in pcbplot" />
@@ -814,7 +831,9 @@
     <MESSAGE value="Updated license" />
     <MESSAGE value="Updated distribution info" />
     <MESSAGE value="Improved parameter labels" />
-    <option name="LAST_COMMIT_MESSAGE" value="Improved parameter labels" />
+    <MESSAGE value="Added AIC calculation for model selection" />
+    <MESSAGE value="Cleanup" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cleanup" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -839,6 +858,11 @@
           <line>15</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/pycyclebio/fitting.py</url>
+          <line>711</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
@@ -848,12 +872,17 @@
         </breakpoint>
       </default-breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="f_stat" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/PyCycle_clone$20240819_busted_ass_PyCycle.coverage" NAME="20240819 busted ass PyCycle Coverage Results" MODIFIED="1724096502880" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../.." />
     <SUITE FILE_PATH="coverage/PyCycle_clone$diifrhth.coverage" NAME="diifrhth Coverage Results" MODIFIED="1749049659114" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../Scripts" />
     <SUITE FILE_PATH="coverage/PyCycle_clone$20240208_james_glycan_plotting.coverage" NAME="20240208 james glycan plotting Coverage Results" MODIFIED="1740571116967" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../Scripts" />
-    <SUITE FILE_PATH="coverage/PyCycle_clone$fitting.coverage" NAME="fitting Coverage Results" MODIFIED="1754637164828" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pycyclebio" />
+    <SUITE FILE_PATH="coverage/PyCycle_clone$fitting.coverage" NAME="fitting Coverage Results" MODIFIED="1767882747876" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pycyclebio" />
     <SUITE FILE_PATH="coverage/PyCycle_clone$colab_prototype.coverage" NAME="colab prototype Coverage Results" MODIFIED="1742997925863" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../Scripts" />
     <SUITE FILE_PATH="coverage/PyCycle_clone$pcb_0amp_testing.coverage" NAME="pcb 0amp testing Coverage Results" MODIFIED="1750777457214" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../Scripts" />
     <SUITE FILE_PATH="coverage/PyCycle_clone$PyCycle_analysis.coverage" NAME="PyCycle analysis Coverage Results" MODIFIED="1754639967071" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../test data" />

@@ -88,6 +88,8 @@ def lack_of_fit_f(timepoints, y_obs, y_fit, params, reps):
 
 def compute_aic(k, sse, n):
     # Todo: Using sse as likelihood estimator makes lots of assumptions about variance, use Kalman filter instead
+    # Note sse/n = mse
+    # Consider using Hannan-Quinn IC: HQIC=−2L+2klnlnn
     aic = 2 * k + n * np.log(sse/n)
     return aic
 
@@ -144,7 +146,7 @@ def fit_best_waveform(df_row, period, models, timepoints, reps, lbound, n):
             harmonic_residuals = amplitudes - harmonic_fitted_values
             harmonic_sse = np.sum(harmonic_residuals ** 2)
             harmonic_rmse = np.sqrt(harmonic_sse/len(harmonic_residuals))
-            harmonic_aic = compute_aic(7, harmonic_sse, n)
+            harmonic_aic = compute_aic(5, harmonic_sse, n)
 
         except RuntimeError:
             harmonic_params = np.nan
@@ -184,7 +186,7 @@ def fit_best_waveform(df_row, period, models, timepoints, reps, lbound, n):
             square_residuals = amplitudes - square_fitted_values
             square_sse = np.sum(square_residuals ** 2)
             square_rmse = np.sqrt(square_sse/len(square_residuals))
-            square_aic = compute_aic(7, square_sse, n)
+            square_aic = compute_aic(5, square_sse, n)
 
         except RuntimeError:
             square_params = np.nan
@@ -226,7 +228,7 @@ def fit_best_waveform(df_row, period, models, timepoints, reps, lbound, n):
             cycloid_residuals = amplitudes - cycloid_fitted_values
             cycloid_sse = np.sum(cycloid_residuals ** 2)
             cycloid_rmse = np.sqrt(cycloid_sse/len(cycloid_residuals))
-            cycloid_aic = compute_aic(7, cycloid_sse, n)
+            cycloid_aic = compute_aic(5, cycloid_sse, n)
 
         except RuntimeError:
             cycloid_params = np.nan
@@ -270,7 +272,7 @@ def fit_best_waveform(df_row, period, models, timepoints, reps, lbound, n):
             transient_residuals = amplitudes - transient_fitted_values
             transient_sse = np.sum(transient_residuals ** 2)
             transient_rmse = np.sqrt(transient_sse/len(transient_residuals))
-            transient_aic = compute_aic(8, transient_sse, n)
+            transient_aic = compute_aic(6, transient_sse, n)
         except RuntimeError:
             transient_params = np.nan
             transient_covariance = np.nan
@@ -641,3 +643,100 @@ def get_regs(data, res, target, regs, period=24):
         rhythmic_regs.sort_values(by='BH-padj')
         rhythmic_regs = rhythmic_regs[~rhythmic_regs.duplicated(subset=rhythmic_regs.columns[0], keep='first')]
         return rhythmic_regs.sort_values(by='BH-padj')
+
+
+def get_differential_rhythmicity(df_in, period, models=None):
+    """
+    Detects differentially rhythmic behavior between to strains.
+    :param df_row: A DataFrame row containing the data to fit.
+    :param period: (float) The period of oscillatory behaviour of interest.
+    :param only_fit_sine: (bool) Choose between only fitting sinusoidal models or all possible models.
+    :return:
+
+    Note: label columns as 'timepoint'_'replicate'_'strain'
+    """
+
+    if isinstance(df_in.iloc[0, 0], str):
+        df_in = df_in.set_index(df_in.columns.tolist()[0])
+    df_in = df_in[(df_in != 0).any(axis=1)]
+    df, df_invariant = variance_based_filtering(df_in)  # Filtering removes invariant molecules from analysis
+    pvals = []
+    osc_type = []
+    mod_type = []
+    parameters = []
+    fitted_model = []
+    model_rmse = []
+    if models is None:
+        models = ['harmonic', 'square', 'cycloid', 'transient']
+    if np.any(df.to_numpy() < 0):
+        lbound = 1  # 1 = neg values present
+    else:
+        lbound = 0  # 0 = neg values absent
+    # split df into strains:
+    #replicates = df.columns.str.extract(r'(\d+)_\D*(\d+)_\D*(\d+)')
+    timepoints = np.array([float(re.findall(r'\d+', col)[0]) for col in df.columns])
+    replicates = np.array([float(re.findall(r'\d+', col)[1]) for col in df.columns])
+    strains = np.array([str(re.findall(r'\d+', col)[2]) for col in df.columns])
+    strain_dfs = {}
+    num_samples = len(timepoints)
+    group_size= (len(np.unique(timepoints)) * len(np.unique(replicates)))
+    n_groups = int(num_samples/group_size)
+    reps = num_samples / len(np.unique(timepoints))
+    for strain in np.unique(strains):
+        columns = df.columns[strains == strain]
+        strain_dfs[strain] = df[columns]
+    results = []
+    for i in tqdm(range(df.shape[0])):
+        feature_name = df.index[i]
+        y_all = df.iloc[i, :].values
+        # fit waveform to all data
+        waveform, params, covariance, fitted_values, rmse = fit_best_waveform(df.iloc[i, :], period, models, timepoints,
+                                                                              reps, lbound, num_samples)
+        if waveform == 'non-rhythmic': # Todo: Can this be moved outside the loop for speed?
+            fitted_values = [np.nan]*group_size*n_groups
+            params = [np.nan]*group_size*n_groups # TOdo: This is incorrect, need to skip f stat production for invariant models
+
+        # split fitted values into strain groups
+        #n_groups = len(strain_dfs)
+        #group_size = len(fitted_values) // n_groups
+        split_fits = [fitted_values[j * group_size:(j + 1) * group_size] for j in range(n_groups)]
+        row_results = {'feature': feature_name, 'waveform': waveform}
+        for strain_idx, (strain, df_strain) in enumerate(strain_dfs.items()):
+            y_obs = df_strain.iloc[i, :].values
+            y_fit = split_fits[0]
+            times = timepoints[strains == strain]
+            # F-test: compare model fit vs mean at each timepoint
+            df_time = pd.DataFrame({'t': times, 'y': y_obs})
+            y_meanfit = df_time.groupby('t')['y'].transform('mean').values
+            n = len(y_obs)
+            p = len(params)
+            k = len(np.unique(times))
+            df1, df2 = k - p, n - p
+            if df1 > 0 and df2 > 0:
+                rss_model = np.sum((y_obs - y_fit) ** 2)
+                rss_mean = np.sum((y_obs - y_meanfit) ** 2)
+                numerator = rss_mean - rss_model / df1
+                denominator = rss_model / df2
+                f_stat = numerator / denominator if denominator != 0 else np.nan
+                p_value = 1 - f.cdf(f_stat, df1, df2) if not np.isnan(f_stat) else np.nan
+            else:
+                rss_model, rss_mean, f_stat, p_value = np.nan, np.nan, np.nan, np.nan
+
+            row_results[f'strain_{strain}_F'] = f_stat
+            row_results[f'strain_{strain}_p'] = p_value
+            row_results[f'strain_{strain}_RSS_model'] = rss_model
+            row_results[f'strain_{strain}_RSS_mean'] = rss_mean
+        results.append(row_results)
+
+    df_out = pd.DataFrame(results).set_index("feature")
+    for strain in strain_dfs.keys():
+        pval_idx = df_out.columns.get_loc(f'strain_{strain}_p')
+        pvals = df_out[f'strain_{strain}_p'].tolist()
+        corr_pvals = multipletests(pvals, alpha=0.05, method='fdr_bh')[1]
+        cap_bh_pvals = np.where(pvals > corr_pvals, pvals, corr_pvals)
+        df_out.insert(pval_idx + 1, f'strain_{strain}_p_corr', cap_bh_pvals)
+    return df_out
+
+#data = pd.read_csv(r'C:\Users\Alex Bennett\Desktop\Thaiss.csv')
+#res = get_differential_rhythmicity(data, 24)
+#res.to_csv('C:\\Users\\Alex Bennett\\Desktop\\20260108 drhyth res2.csv', sep=',', index=False)
